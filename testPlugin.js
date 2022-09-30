@@ -5,16 +5,21 @@ const plugin = ({dashboard, simulator}) => {
         "AIzaSyD_WxxqknIQR40Bp7_d5gnucZ0P-X8XwWk",
         dashboard.create(1, 2), [
         {
-            lat: 48.813254159291475,
-            lng: 9.212379215835714
+            lat: a,
+            lng: b
         },
         {
-            lat: 49.20261646797924,
-            lng: 9.189121574828052
+            lat: c,
+            lng: d
         },
     ])
 
-    return {}
+    return {
+        set_location: (a,b,c,d) => {
+            a,b,c,d
+        }
+
+    }
 }
 
 export default plugin
