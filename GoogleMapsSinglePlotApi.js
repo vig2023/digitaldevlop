@@ -53,4 +53,4 @@ const GoogleMapsSinglePlot = (apikey, space, path) => {
     });
 };
 
-export default GoogleMapsSinglePlotApi;
+export default GoogleMapsSinglePlot;
