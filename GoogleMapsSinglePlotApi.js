@@ -1,4 +1,6 @@
 const appendMapScript = (window, apikey) => {
+    console.log("Vkkkk",apikey);
+    debugger
     return new Promise(async (resolve, reject) => {
         try {
             const GOOGLE_MAPS_API = `https://maps.googleapis.com/maps/api/js?key=${apikey}`;
@@ -32,6 +34,7 @@ const appendMapScript = (window, apikey) => {
 // }
 
 const GoogleMapsSinglePlot = (apikey, space, path) => {
+    console.log('HIIIII')
     appendMapScript(space.window, apikey).then(() => {
         const container = document.createElement("div");
         container.setAttribute("style", `display:flex; height: 100%; width: 100%;`);
