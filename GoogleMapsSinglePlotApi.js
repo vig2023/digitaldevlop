@@ -35,14 +35,14 @@ const GoogleMapsSinglePlot = (apikey, space, path) => {
     appendMapScript(space.window, apikey).then(() => {
         const container = document.createElement("div");
         container.setAttribute("style", `display:flex; height: 100%; width: 100%;`);
-        const directionsService = new space.window.google.maps.DirectionsService();
-        const directionsRenderer = new space.window.google.maps.DirectionsRenderer();
-        const mapCoOrdinates = { lat: -25.344, lng: 131.031 };
+        // const directionsService = new space.window.google.maps.DirectionsService();
+        // const directionsRenderer = new space.window.google.maps.DirectionsRenderer();
+        // const mapCoOrdinates = { lat: -25.344, lng: 131.031 };
         const map = new space.window.google.maps.Map(container, {
             zoom: 7,
             center: path[0],
         });
-        directionsRenderer.setMap(map);
+        // directionsRenderer.setMap(map);
         const marker = new space.window.google.maps.Marker({
             position: uluru,
             map: map,
