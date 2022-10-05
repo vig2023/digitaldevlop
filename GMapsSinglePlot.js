@@ -1,4 +1,4 @@
-import GoogleMapsSinglePlot from "./GoogleMapsSinglePlotApi"
+import GoogleMapsSinglePlot from "./GoogleMapsSinglePlotApi.js"
 
 const plugin = ({grid, simulator}) => {
     return {
