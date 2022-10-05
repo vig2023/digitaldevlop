@@ -3,7 +3,7 @@ const plugin = ({grid, simulator}) => {
     container.setAttribute("style", `display:flex; height: 100%; width: 100%;`)
     container.innerHTML = (`
     <div style="max-width: fit-content; margin: 0 auto; position: relative; margin: auto 0;">
-        <img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fvehicle_status_asset.png?alt=media&token=0f9b503c-da94-4c50-beaf-7f2e1883ec9b">
+        <img style="width:18em" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fvehicle_status_asset.png?alt=media&token=0f9b503c-da94-4c50-beaf-7f2e1883ec9b">
        
     </div>
     `)
