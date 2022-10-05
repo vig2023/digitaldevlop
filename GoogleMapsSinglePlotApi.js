@@ -1,6 +1,5 @@
 const appendMapScript = (window, apikey) => {
     console.log("Vkkkk",apikey);
-    debugger
     return new Promise(async (resolve, reject) => {
         try {
             const GOOGLE_MAPS_API = `https://maps.googleapis.com/maps/api/js?key=${apikey}`;
