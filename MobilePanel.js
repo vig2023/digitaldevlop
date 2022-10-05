@@ -8,7 +8,7 @@ const plugin = ({grid, simulator}) => {
     </div>
     `)
 
-    grid.create(3, 4).injectNode(container)
+    grid.create(3, 8).injectNode(container)
 
     // let currentValue = ""
 
