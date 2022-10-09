@@ -7,8 +7,17 @@ const plugin = ({grid, simulator}) => {
        
     </div>
     `)
+    let boxGlobal = null
+    // grid.create(3, 8).injectNode(container)
+    widgets.register("locatecar", (box) => {
+        boxGlobal = box
+        box.injectNode(container)
+        return () => {
+            boxGlobal = null
+            // Deactivation function for clearing intervals or such.
+        }
+    })
 
-    grid.create(3, 8).injectNode(container)
 
     // let currentValue = ""
 

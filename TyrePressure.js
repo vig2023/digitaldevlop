@@ -9,6 +9,7 @@ const plugin = ({widgets, simulator}) => {
     `)
 
     let boxGlobal = null
+    
 
     widgets.register("pressureindicator", (box) => {
         boxGlobal = box
