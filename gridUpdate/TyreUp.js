@@ -2,7 +2,7 @@ const plugin = ({widgets, simulator}) => {
     const container = document.createElement("div")
     container.setAttribute("style", `height: 100%; width: 100%;`)
     container.innerHTML = (`
-    <div style="max-width: fit-content; margin: 0 auto; position: relative; margin: auto 0;">
+    <div style="max-width: fit-content;position: relative; margin: auto 0;">
        
         <div class="status-text" style="position: absolute;color: black;font-family: 'Lato';width: 100%;top: 0;height: 100%;box-sizing: border-box;display: inline-grid;justify-content: center;padding-top: 10px;">
         <div >
@@ -22,7 +22,7 @@ const plugin = ({widgets, simulator}) => {
 
     let boxGlobal = null
 
-    widgets.register("tyreupdate", (box) => {
+    widgets.register("tyreup", (box) => {
         boxGlobal = box
         box.injectNode(container)
         return () => {
