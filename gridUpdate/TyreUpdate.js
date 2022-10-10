@@ -22,7 +22,7 @@ const plugin = ({widgets, simulator}) => {
 
     let boxGlobal = null
 
-    widgets.register("tyrecontent", (box) => {
+    widgets.register("tyreupdate", (box) => {
         boxGlobal = box
         box.injectNode(container)
         return () => {
