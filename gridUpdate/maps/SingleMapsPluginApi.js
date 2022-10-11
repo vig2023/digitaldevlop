@@ -38,10 +38,10 @@ const GoogleMapsPluginApi = (apikey, box, path) => {
         container.setAttribute("style", `display:flex; height: 100%; width: 100%;`);
         // const directionsService = new box.window.google.maps.DirectionsService();
         // const directionsRenderer = new box.window.google.maps.DirectionsRenderer();
-        const mapCoOrdinates = { lat: path[0], lng: path[1] };
+        const mapCoOrdinates = { lat: path[0].lat, lng: path[0].lng };
         const map = new box.window.google.maps.Map(container, {
             zoom: 7,
-            center: path[0],
+            center: path[0].lat,
         });
         const marker = new space.window.google.maps.Marker({
             position: mapCoOrdinates,
