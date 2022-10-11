@@ -41,7 +41,7 @@ const GoogleMapsPluginApi = (apikey, box, path) => {
         const mapCoOrdinates = { lat: path[0].lat, lng: path[0].lng };
         const map = new box.window.google.maps.Map(container, {
             zoom: 7,
-            center: path[0].lat,
+            center: path[0],
         });
         const marker = new space.window.google.maps.Marker({
             position: mapCoOrdinates,

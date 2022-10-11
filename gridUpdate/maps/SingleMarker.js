@@ -1,4 +1,4 @@
-import GoogleMapsPluginApi from "./SingleMapsPluginApi.js"
+import GoogleMapsPluginApi from "./SinglePluginApi.js"
 
 const plugin = ({widgets, simulator}) => {
     let boxGlobal = null
