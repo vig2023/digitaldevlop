@@ -22,7 +22,7 @@ setRandom();
 setInterval(setRandom, 5000);
     let boxGlobal = null
 
-    widgets.register("acvalue", (box) => {
+    widgets.register("acvalueinterval", (box) => {
         boxGlobal = box
         box.injectNode(container)
         return () => {
