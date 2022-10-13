@@ -14,9 +14,12 @@ const plugin = ({widgets, simulator}) => {
 
     return {
         createDirections: (path) => {
+            path[0].lat=12.991179 
+            path[0].lng=80.219936
             if (boxGlobal !== null) {
                 GoogleMapsPluginApi("AIzaSyCQd4f14bPr1ediLmgEQGK-ZrepsQKQQ6Y", boxGlobal, path)
             }
+
         }
     }
 }
