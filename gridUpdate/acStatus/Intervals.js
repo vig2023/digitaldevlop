@@ -11,7 +11,7 @@ const plugin = ({widgets, simulator}) => {
     `)
     function setRandom() {
         var val= Math.random() * 45;
-        var element=container.querySelector(".status-text").textContent=val;
+        var element=container.querySelector(".status-text");
         if(val<18){
            element.setAttribute("style", "color:red; background-color:#e1f0fe")
         }
@@ -22,7 +22,7 @@ setRandom();
 setInterval(setRandom, 5000);
     let boxGlobal = null
 
-    widgets.register("acvalueinterval", (box) => {
+    widgets.register("acintervals", (box) => {
         boxGlobal = box
         box.injectNode(container)
         return () => {
