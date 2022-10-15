@@ -31,6 +31,7 @@ const plugin = ({widgets, simulator}) => {
         if(val<=20){
         //    element.setAttribute("style", "color:red; background-color:#e1f0fe")
         let ele = container.querySelector(".front");
+        console.log(ele)
         ele.setAttribute("style", "display:none")
         }else if(val<=40){
             let ele = container.querySelector(".left-one");
@@ -55,7 +56,7 @@ setRandom();
 setInterval(setRandom, 5000);
     let boxGlobal = null
 
-    widgets.register("doorcheckthree", (box) => {
+    widgets.register("doorcheckfour", (box) => {
         boxGlobal = box
         box.injectNode(container)
         return () => {

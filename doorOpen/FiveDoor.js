@@ -28,25 +28,25 @@ const plugin = ({widgets, simulator}) => {
     function setRandom() {
         var val= Math.random() * 120;
         // var element=container.querySelector(".status-text");
+        var eleOne = container.querySelector(".front");
+        let eleTwo = container.querySelector(".left-one");
+        let eleThree = container.querySelector(".left-two");
+        let eleFour = container.querySelector(".right-one");
+        let eleFive = container.querySelector(".right-two");
+        let eleSix = container.querySelector(".bannet");
         if(val<=20){
         //    element.setAttribute("style", "color:red; background-color:#e1f0fe")
-        let ele = container.querySelector(".front");
-        ele.setAttribute("style", "display:none")
+            eleOne.setAttribute("style", "display:none")
         }else if(val<=40){
-            let ele = container.querySelector(".left-one");
-            ele.setAttribute("style", "display:none")
+            eleTwo.setAttribute("style", "display:none")
         }else if(val<=60){
-            let ele = container.querySelector(".left-two");
-            ele.setAttribute("style", "display:none")
+            eleThree.setAttribute("style", "display:none")
         }else if(val<=80){
-            let ele = container.querySelector(".right-one");
-            ele.setAttribute("style", "display:none")
+            eleFour.setAttribute("style", "display:none")
         }else if(val<=100){
-            let ele = container.querySelector(".right-two");
-            ele.setAttribute("style", "display:none")
+            eleFive.setAttribute("style", "display:none")
         }else if(val<=120){
-            let ele = container.querySelector(".bannet");
-            ele.setAttribute("style", "display:none")
+            eleSix.setAttribute("style", "display:none")
         }
         // container.querySelector(".status-text").textContent=val
     // document.getElementById('out').innerHTML = Math.random() * 101 | 0;
@@ -55,7 +55,7 @@ setRandom();
 setInterval(setRandom, 5000);
     let boxGlobal = null
 
-    widgets.register("doorcheckthree", (box) => {
+    widgets.register("doorcheckfive", (box) => {
         boxGlobal = box
         box.injectNode(container)
         return () => {
