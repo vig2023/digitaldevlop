@@ -25,15 +25,15 @@ const plugin = ({widgets, simulator}) => {
         </div>
     </div>
     `)
-    function setRandom() {
-        container.querySelector(".status-text").textContent=  Math.random() * 101 | 0;
-    // document.getElementById('out').innerHTML = Math.random() * 101 | 0;
-}
-setRandom();
-setInterval(setRandom, 5000);
+//     function setRandom() {
+//         container.querySelector(".status-text").textContent=  Math.random() * 101 | 0;
+//     // document.getElementById('out').innerHTML = Math.random() * 101 | 0;
+// }
+// setRandom();
+// setInterval(setRandom, 5000);
     let boxGlobal = null
 
-    widgets.register("acvalue", (box) => {
+    widgets.register("doocheck", (box) => {
         boxGlobal = box
         box.injectNode(container)
         return () => {
