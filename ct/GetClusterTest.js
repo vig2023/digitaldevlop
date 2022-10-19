@@ -1,6 +1,5 @@
-import GoogleMapsPluginApi from "/GoogleMapsPluginApi.js"
-import StatusTable from "./StatusTable.js"
-import DataTableHTML from "./DataTableHTML.js"
+// import GoogleMapsPluginApi from "/GoogleMapsPluginApi.js"
+// import StatusTable from "./StatusTable.js.js"
 
 const plugin = ({widgets, simulator, vehicle}) => {
     // let setVehiclePinGlobal = null
@@ -121,11 +120,11 @@ const plugin = ({widgets, simulator, vehicle}) => {
     //     })
     // }
 
-    widgets.register("VehicleDetails", StatusTable({
-        apis,
-        vehicle,
-        refresh: 300
-    }))
+    // widgets.register("VehicleDetails", StatusTable({
+    //     apis,
+    //     vehicle,
+    //     refresh: 300
+    // }))
 
     let nextChargeStationDiv = null
 
