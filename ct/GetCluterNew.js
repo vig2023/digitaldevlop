@@ -193,12 +193,11 @@ setInterval(setSpeedRandom, 2500);
         </style>
         <div style="display: flex; flex-direction: column; width: 100%; height: 100%; padding: 30px 40px; justify-content: center; color: #808080; user-select: none; background-color: #f7f7f7;">
             <div style="display: flex; align-items:center; justify-content: center; margin-bottom: 30px;">
-            <img src="https://pic.onlinewebfonts.com/svg/img_273202.png" style="height: 100%; width: 100%; object-fit: cover;">               
+            <img src="https://pic.onlinewebfonts.com/svg/img_273202.png" style="height: 75%; width: 60%; object-fit: cover;">               
             </div>
-            <div style="font-size: 2em; line-height: 1.5em;">
-                <div  class ="speedVal"data-cell="speed-stat"><strong>Speed: </strong><span></span></div>
-                // <div data-cell="Distance"><strong>Distance: </strong><span></span></div>
-                // <div data-cell="ETA"><strong>ETA: </strong><span></span></div>
+            <div style="font-size: 3em; line-height: 1.5em;">
+                <div  class ="speedVal"data-cell="speed-stat"><strong> </strong><span></span></div>
+              
             </div>
         </div>
         `
