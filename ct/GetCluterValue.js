@@ -175,7 +175,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
     // document.getElementById('out').innerHTML = Math.random() * 101 | 0;
 }
 setInterval(setSpeedRandom, 2500);
-    widgets.register("SpeedStatustest", (box) => {
+    widgets.register("SpeedStatustestOne", (box) => {
         const div = document.createElement("div")
         div.style = "display: flex;height: 100%;width: 100%;"
 
@@ -196,7 +196,7 @@ setInterval(setSpeedRandom, 2500);
             <img src="https://pic.onlinewebfonts.com/svg/img_273202.png" style="height: 100%; width: 100%; object-fit: cover;">               
             </div>
             <div style="font-size: 2em; line-height: 1.5em;">
-                <div  class ="speedVal"data-cell="distance-stat"><strong>Speed: </strong><span></span></div>
+                <div  class ="speedVal"data-cell="speed-stat"><strong>Speed: </strong><span></span></div>
                 // <div data-cell="Distance"><strong>Distance: </strong><span></span></div>
                 // <div data-cell="ETA"><strong>ETA: </strong><span></span></div>
             </div>
@@ -231,7 +231,7 @@ setInterval(setSpeedRandom, 2500);
 }
 setInterval(setDistanceRandom, 2500); 
 
-    widgets.register("DistanceStatustest", (box) => {
+    widgets.register("DistanceStatustestOne", (box) => {
         const div = document.createElement("div")
         div.style = "display: flex;height: 100%;width: 100%;"
 
