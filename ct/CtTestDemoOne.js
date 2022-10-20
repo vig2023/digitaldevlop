@@ -176,7 +176,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
     // document.getElementById('out').innerHTML = Math.random() * 101 | 0;
 }
 setInterval(setSpeedRandom, 2500);
-    widgets.register("demospeedone", (box) => {
+    widgets.register("demospeedonett", (box) => {
         const div = document.createElement("div")
         div.style = "display: flex;height: 100%;width: 100%;"
 
@@ -194,9 +194,9 @@ setInterval(setSpeedRandom, 2500);
         </style>
         <div style="display: flex; flex-direction: column; width: 100%; height: 100%; padding: 30px 40px; justify-content: center; color: #808080; user-select: none; background-color: #f7f7f7;">
             <div style="display: flex; align-items:center; justify-content: center; margin-bottom: 30px;">
-            <img src="https://pic.onlinewebfonts.com/svg/img_273202.png" style="height: 75%; width: 60%; object-fit: cover;">               
+            <img src="https://pic.onlinewebfonts.com/svg/img_273202.png" style="height: 100%; width: 72%; object-fit: cover;">               
             </div>
-            <div style="font-size: 3em; line-height: 1.5em;">
+            <div style="font-size: 3em; line-height: 1.5em;text-align:center">
                 <div  class ="speedVal"data-cell="speed-stat"><strong> </strong><span></span></div>
               
             </div>
@@ -232,7 +232,7 @@ setInterval(setSpeedRandom, 2500);
 }
 setInterval(setDistanceRandom, 2500); 
 
-    widgets.register("distancedemotwo", (box) => {
+    widgets.register("distancedemotwott", (box) => {
         const div = document.createElement("div")
         div.style = "display: flex;height: 100%;width: 100%;"
 
