@@ -155,7 +155,8 @@ const plugin = ({widgets, simulator, vehicle}) => {
     let speedStatusDiv = null
     function setSpeedRandom() {
         var val= Math.random() * 90;
-        var trVal= Math.trunc(val);
+        var trVal= Math.round(val);
+        console.log(trVal)
         // var element=container.querySelector(".status-text");
         speedStatusDiv.querySelector(`[data-cell="speed-stat"] span`).textContent = trVal
         var eleOne = speedStatusDiv.querySelector(".speedVal");
@@ -175,7 +176,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
     // document.getElementById('out').innerHTML = Math.random() * 101 | 0;
 }
 setInterval(setSpeedRandom, 2500);
-    widgets.register("SpeedStatustestdemo", (box) => {
+    widgets.register("demospeedone", (box) => {
         const div = document.createElement("div")
         div.style = "display: flex;height: 100%;width: 100%;"
 
@@ -208,9 +209,10 @@ setInterval(setSpeedRandom, 2500);
     let distanceStatusDiv = null
     function setDistanceRandom() {
         var val= Math.random() * 90;
-        var trVal= Math.trunc(val)
+        var trDistanceVal= Math.round(val)
+        console.log(trDistanceVal)
         // var element=container.querySelector(".status-text");
-        distanceStatusDiv.querySelector(`[data-cell="distance-stat"] span`).textContent = trVal
+        distanceStatusDiv.querySelector(`[data-cell="distance-stat"] span`).textContent = trDistanceVal
         var eleOne = distanceStatusDiv.querySelector(".distanceVal");
         // let eleTwo = container.querySelector(".left-one");
         // let eleThree = container.querySelector(".left-two");
@@ -230,7 +232,7 @@ setInterval(setSpeedRandom, 2500);
 }
 setInterval(setDistanceRandom, 2500); 
 
-    widgets.register("DistanceStatustestdemo", (box) => {
+    widgets.register("distancedemotwo", (box) => {
         const div = document.createElement("div")
         div.style = "display: flex;height: 100%;width: 100%;"
 
