@@ -155,8 +155,9 @@ const plugin = ({widgets, simulator, vehicle}) => {
     let speedStatusDiv = null
     function setSpeedRandom() {
         var val= Math.random() * 90;
+        var trVal= Math.trunc(val);
         // var element=container.querySelector(".status-text");
-        speedStatusDiv.querySelector(`[data-cell="speed-stat"] span`).textContent = val
+        speedStatusDiv.querySelector(`[data-cell="speed-stat"] span`).textContent = trVal
         var eleOne = speedStatusDiv.querySelector(".speedVal");
         // let eleTwo = container.querySelector(".left-one");
         // let eleThree = container.querySelector(".left-two");
@@ -194,10 +195,65 @@ setInterval(setSpeedRandom, 2500);
             <div style="display: flex; align-items:center; justify-content: center; margin-bottom: 30px;">
             <img src="https://pic.onlinewebfonts.com/svg/img_273202.png" style="height: 100%; width: 100%; object-fit: cover;">               
             </div>
-            <div style="font-size: .8em; line-height: 1.5em;">
-                <div  class ="speedVal"data-cell="speed-stat"><strong>Speed: </strong><span></span></div>
+            <div style="font-size: 2em; line-height: 1.5em;">
+                <div  class ="speedVal"data-cell="distance-stat"><strong>Speed: </strong><span></span></div>
                 // <div data-cell="Distance"><strong>Distance: </strong><span></span></div>
                 // <div data-cell="ETA"><strong>ETA: </strong><span></span></div>
+            </div>
+        </div>
+        `
+
+        box.injectNode(div)
+    })
+
+    let distanceStatusDiv = null
+    function setSpeedRandom() {
+        var val= Math.random() * 90;
+        var trVal= Math.trunc(val)
+        // var element=container.querySelector(".status-text");
+        distanceStatusDiv.querySelector(`[data-cell="distance-stat"] span`).textContent = trVal
+        var eleOne = distanceStatusDiv.querySelector(".distanceVal");
+        // let eleTwo = container.querySelector(".left-one");
+        // let eleThree = container.querySelector(".left-two");
+        // let eleFour = container.querySelector(".right-one");
+        // let eleFive = container.querySelector(".right-two");
+        // let eleSix = container.querySelector(".bannet");
+        if(val<=20){
+        //    element.setAttribute("style", "color:red; background-color:#e1f0fe")
+            eleOne.setAttribute("style", "color:orange;font-weight:bolder")
+            distanceStatusDiv.querySelector(`[data-cell="mode-drive"] span`).textContent = "Parking"
+        }else if(val<=40){
+            eleOne.setAttribute("style", "color:blue")
+            distanceStatusDiv.querySelector(`[data-cell="mode-drive"] span`).textContent = "Drive"
+        }
+        // container.querySelector(".status-text").textContent=val
+    // document.getElementById('out').innerHTML = Math.random() * 101 | 0;
+}
+setInterval(setSpeedRandom, 2500); 
+
+    widgets.register("DistanceStatus", (box) => {
+        const div = document.createElement("div")
+        div.style = "display: flex;height: 100%;width: 100%;"
+
+        speedStatusDiv = div
+
+        div.innerHTML = `
+        <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Lato', sans-serif;
+        }    
+        </style>
+        <div style="display: flex; flex-direction: column; width: 100%; height: 100%; padding: 30px 40px; justify-content: center; color: #808080; user-select: none; background-color: #f7f7f7;">
+            <div style="display: flex; align-items:center; justify-content: center; margin-bottom: 30px;">
+            <img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fdistance.png?alt=media&token=d965e8c2-edc4-416c-8312-9e88264d9fda" style="height: 100%; width: 100%; object-fit: cover;">               
+            </div>
+            <div style="font-size: 1em; line-height: 1.5em;">
+                <div  class ="distanceVal"data-cell="distance-stat"><strong>Distance: </strong><span></span></div>
+                <div data-cell="mode-drive"><strong>Driving Mode: </strong><span></span></div>
             </div>
         </div>
         `
