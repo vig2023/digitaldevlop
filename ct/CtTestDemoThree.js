@@ -176,7 +176,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
     // document.getElementById('out').innerHTML = Math.random() * 101 | 0;
 }
 setInterval(setSpeedRandom, 2500);
-    widgets.register("demospeedonett", (box) => {
+    widgets.register("demospeedonettThree", (box) => {
         const div = document.createElement("div")
         div.style = "display: flex;height: 100%;width: 100%;"
 
@@ -232,7 +232,7 @@ setInterval(setSpeedRandom, 2500);
 }
 setInterval(setDistanceRandom, 2500); 
 
-    widgets.register("distancedemotwott", (box) => {
+    widgets.register("distancedemotwottThree", (box) => {
         const div = document.createElement("div")
         div.style = "display: flex;height: 100%;width: 100%;"
 
@@ -270,6 +270,60 @@ setInterval(setDistanceRandom, 2500);
     //     </div>
     //     `)
     // })
+
+    //CT-Car-Placement
+    widgets.register("ctcardisplay", (box) => {
+        const div = document.createElement("div")
+        div.style = "display: flex;height: 100%;width: 100%;"
+
+        speedStatusDiv = div
+
+        div.innerHTML = `
+        <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Lato', sans-serif;
+        }    
+        </style>
+        <div style="display: flex; flex-direction: column; width: 100%; height: 100%; padding: 30px 40px; justify-content: center; color: #808080; user-select: none; background-color: #f7f7f7;">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/TM4ZpNHKC3I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        `
+
+        box.injectNode(div)
+    })
+    //eof CT-car
+     //CT-Car-Placement
+     widgets.register("ctMobileDisplay", (box) => {
+        const div = document.createElement("div")
+        div.style = "display: flex;height: 100%;width: 100%;"
+
+        speedStatusDiv = div
+
+        div.innerHTML = `
+        <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Lato', sans-serif;
+        }    
+        </style>
+        <div style="display: flex; flex-direction: column; width: 100%; height: 100%; padding: 30px 40px; justify-content: center; color: #808080; user-select: none; background-color: #f7f7f7;">
+        <div style="display: flex; align-items:center; justify-content: center; margin-bottom: 30px;">
+        <img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2FMobile_view.png?alt=media&token=f4ec950a-72d6-4218-b440-08f6af307600" style="height: 100%; width: 100%; object-fit: cover;">
+        <img src=" https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fmid_body.png?alt=media&token=99619916-1333-406e-b31f-9fd779e8e468" style="height: 100%; width: 100%; object-fit: cover;">
+        </div>
+        </div>
+        `
+
+        box.injectNode(div)
+    })
+    //eof CT-car
 
     return {
         // set_vehicle: (vehicleIndex) => {
