@@ -175,7 +175,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
     // document.getElementById('out').innerHTML = Math.random() * 101 | 0;
 }
 setInterval(setSpeedRandom, 2500);
-    widgets.register("SpeedStatustestOne", (box) => {
+    widgets.register("SpeedStatustestdemo", (box) => {
         const div = document.createElement("div")
         div.style = "display: flex;height: 100%;width: 100%;"
 
@@ -230,7 +230,7 @@ setInterval(setSpeedRandom, 2500);
 }
 setInterval(setDistanceRandom, 2500); 
 
-    widgets.register("DistanceStatustestOne", (box) => {
+    widgets.register("DistanceStatustestdemo", (box) => {
         const div = document.createElement("div")
         div.style = "display: flex;height: 100%;width: 100%;"
 
