@@ -161,7 +161,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
         speedStatusDiv.querySelector(`[data-cell="speed-stat"] span`).textContent = trVal
         var eleOne = speedStatusDiv.querySelector(".speedVal");
         var leftWheel = distanceStatusDiv.querySelector(".ct-left");
-        var rightWheel = distanceStatusDiv.querySelector(".ct-left");
+        var rightWheel = distanceStatusDiv.querySelector(".ct-right");
 
         // let eleTwo = container.querySelector(".left-one");
         // let eleThree = container.querySelector(".left-two");
@@ -171,11 +171,11 @@ const plugin = ({widgets, simulator, vehicle}) => {
         if(val<=20){
         //    element.setAttribute("style", "color:red; background-color:#e1f0fe")
             eleOne.setAttribute("style", "color:orange;font-weight:bolder");
-            leftWheel.setAttribute("style", "color:orange;font-weight:bolder");
-            rightWheel.setAttribute("style", "color:orange;font-weight:bolder");
+            leftWheel.setAttribute("style", "height: 44%;width: 60%;position: absolute; animation-name: left_move;animation-duration: 4s;animation-fill-mode: forwards;");
+            rightWheel.setAttribute("style", "height: 44%;width: 60%;position: absolute;right: 20%;");
         }else if(val>20){
-            leftWheel.setAttribute("style", "color:orange;font-weight:bolder");
-            rightWheel.setAttribute("style", "color:orange;font-weight:bolder")
+            leftWheel.setAttribute("style", "height: 44%;width: 60%;position: absolute;right: 20%;");
+            rightWheel.setAttribute("style", "height: 44%;width: 60%;position: absolute;right: 25%;")
         }
         else if(val<=40){
             eleOne.setAttribute("style", "color:#383c7f;font-weight:bolder")
@@ -185,7 +185,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
     // document.getElementById('out').innerHTML = Math.random() * 101 | 0;
 }
 setInterval(setSpeedRandom, 2500);
-    widgets.register("demospeedonettThree", (box) => {
+    widgets.register("demospeedonettFour", (box) => {
         const div = document.createElement("div")
         div.style = "display: flex;height: 100%;width: 100%;"
 
@@ -242,7 +242,7 @@ setInterval(setSpeedRandom, 2500);
 }
 setInterval(setDistanceRandom, 2500); 
 
-    widgets.register("distancedemotwottThree", (box) => {
+    widgets.register("distancedemotwottFour", (box) => {
         const div = document.createElement("div")
         div.style = "display: flex;height: 100%;width: 100%;"
 
@@ -282,7 +282,7 @@ setInterval(setDistanceRandom, 2500);
     // })
 
     //CT-Car-Placement
-    widgets.register("ctcardisplay", (box) => {
+    widgets.register("ctcardisplayFour", (box) => {
         const div = document.createElement("div")
         div.style = "display: flex;height: 100%;width: 100%;"
 
@@ -307,7 +307,7 @@ setInterval(setDistanceRandom, 2500);
     })
     //eof CT-car
      //CT-Car-Placement
-     widgets.register("ctMobileDisplay", (box) => {
+     widgets.register("ctMobileDisplayFour", (box) => {
         const div = document.createElement("div")
         div.style = "display: flex;height: 100%;width: 100%;"
 
@@ -322,13 +322,21 @@ setInterval(setDistanceRandom, 2500);
         body {
             font-family: 'Lato', sans-serif;
         }    
+        @keyframes left_move {
+            from {
+              left: 25%;
+            }
+            100% {
+              left: 20%;
+            }
+          }
         </style>
         <div style="display: flex; flex-direction: column; width: 100%; height: 100%; padding: 30px 40px; justify-content: center; color: #808080; user-select: none; background-color: #f7f7f7;">
         <div style="display: flex; flex-direction: column; width: 100%; height: 100%; padding: 30px 40px; justify-content: center; color: #808080; user-select: none; background-color: #f7f7f7;">
         <div style="display: flex; align-items:center; justify-content: center; margin-bottom: 30px;">
         <img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2FMobile_view.png?alt=media&amp;token=f4ec950a-72d6-4218-b440-08f6af307600" style="height: 34em;width: 18em;object-fit: cover;">
-        <img class="ct-left" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fleft_wheel.png?alt=media&amp;token=49e1b2c8-a832-4d5a-9fb9-a3ab51e8f269" style="height: 44%;width: 60%;/* object-fit: cover; */position: absolute;left: 25%;">
-        <img class="ct-right" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fright_wheel.png?alt=media&amp;token=5585a090-61b1-42e8-8d0a-edb97b5cfcf7" style="height: 44%;width: 60%;/* object-fit: cover; */position: absolute;right: 25%;">
+        <img class="ct-left" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fleft_wheel.png?alt=media&amp;token=49e1b2c8-a832-4d5a-9fb9-a3ab51e8f269" style="height: 44%;width: 60%;position: absolute;left: 25%;">
+        <img class="ct-right" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fright_wheel.png?alt=media&amp;token=5585a090-61b1-42e8-8d0a-edb97b5cfcf7" style="height: 44%;width: 60%;position: absolute;right: 25%;">
         <img class="ct-body" src=" https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fmid_body.png?alt=media&amp;token=99619916-1333-406e-b31f-9fd779e8e468" style="height: 44%;width: 60%;/* object-fit: cover; */position: absolute;">
         </div>
         </div>
