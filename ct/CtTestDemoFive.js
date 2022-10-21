@@ -160,8 +160,8 @@ const plugin = ({widgets, simulator, vehicle}) => {
         // var element=container.querySelector(".status-text");
         speedStatusDiv.querySelector(`[data-cell="speed-stat"] span`).textContent = trVal
         var eleOne = speedStatusDiv.querySelector(".speedVal");
-        var leftWheel = distanceStatusDiv.querySelector(".ct-left");
-        var rightWheel = distanceStatusDiv.querySelector(".ct-right");
+        var leftWheel = speedStatusDiv.querySelector(".ct-left");
+        var rightWheel = speedStatusDiv.querySelector(".ct-right");
 
         // let eleTwo = container.querySelector(".left-one");
         // let eleThree = container.querySelector(".left-two");
@@ -185,7 +185,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
     // document.getElementById('out').innerHTML = Math.random() * 101 | 0;
 }
 setInterval(setSpeedRandom, 2500);
-    widgets.register("demospeedonettFour", (box) => {
+    widgets.register("demospeedonettFive", (box) => {
         const div = document.createElement("div")
         div.style = "display: flex;height: 100%;width: 100%;"
 
@@ -242,7 +242,7 @@ setInterval(setSpeedRandom, 2500);
 }
 setInterval(setDistanceRandom, 2500); 
 
-    widgets.register("distancedemotwottFour", (box) => {
+    widgets.register("distancedemotwottFive", (box) => {
         const div = document.createElement("div")
         div.style = "display: flex;height: 100%;width: 100%;"
 
@@ -282,7 +282,7 @@ setInterval(setDistanceRandom, 2500);
     // })
 
     //CT-Car-Placement
-    widgets.register("ctcardisplayFour", (box) => {
+    widgets.register("ctcardisplayFive", (box) => {
         const div = document.createElement("div")
         div.style = "display: flex;height: 100%;width: 100%;"
 
@@ -307,7 +307,7 @@ setInterval(setDistanceRandom, 2500);
     })
     //eof CT-car
      //CT-Car-Placement
-     widgets.register("ctMobileDisplayFour", (box) => {
+     widgets.register("ctMobileDisplayFive", (box) => {
         const div = document.createElement("div")
         div.style = "display: flex;height: 100%;width: 100%;"
 
