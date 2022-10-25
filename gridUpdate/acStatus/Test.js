@@ -1,4 +1,5 @@
 const plugin = ({widgets, simulator}) => {
+
     const container = document.createElement("div")
     container.setAttribute("style", `display:flex; height: 100%; width: 100%;`)
     container.innerHTML = (`
@@ -8,7 +9,12 @@ const plugin = ({widgets, simulator}) => {
         <div class="status-text" style="position: absolute;color: white;font-family: 'Lato';width: 100%;top: 0;height: 100%;box-sizing: border-box;display: flex;justify-content: center;padding-top: 10px;padding-right:20px"></div>
     </div>
     `)
-
+    function setRandom() {
+        container.querySelector(".status-text").textContent=  Math.random() * 101 | 0;
+    // document.getElementById('out').innerHTML = Math.random() * 101 | 0;
+}
+setRandom();
+setInterval(setRandom, 5000);
     let boxGlobal = null
 
     widgets.register("acvalue", (box) => {
@@ -20,19 +26,19 @@ const plugin = ({widgets, simulator}) => {
         }
     })
 
-    let currentValue = ""
+    // let currentValue = ""
 
-    simulator("Vehicle.Cabin.InstrumentPanel.Status", "get", async ({args}) => {
-        return currentValue
-    })
+    // simulator("Vehicle.Cabin.InstrumentPanel.Status", "get", async ({args}) => {
+    //     return currentValue
+    // })
 
-    simulator("Vehicle.Cabin.InstrumentPanel.Status", "set", async ({args}) => {
-        currentValue = args[0]
-        if (boxGlobal !== null) {
-            container.querySelector(".status-text").textContent = currentValue
-        }
-        return null
-    })
+    // simulator("Vehicle.Cabin.InstrumentPanel.Status", "set", async ({args}) => {
+    //     currentValue = args[0]
+    //     if (boxGlobal !== null) {
+    //         container.querySelector(".status-text").textContent = currentValue
+    //     }
+    //     return null
+    // })
 
     
     return {}

@@ -174,12 +174,9 @@ const plugin = ({widgets, simulator, vehicle}) => {
             leftWheel.setAttribute("style", "height: 44%;width: 60%;position: absolute; animation-name: left_move;animation-duration: 4s;animation-fill-mode: forwards;");
             rightWheel.setAttribute("style", "height: 44%;width: 60%;position: absolute;right: 20%;");
         }else if(val>20){
+            eleOne.setAttribute("style", "color:#383c7f;font-weight:bolder")
             leftWheel.setAttribute("style", "height: 44%;width: 60%;position: absolute;right: 20%;");
             rightWheel.setAttribute("style", "height: 44%;width: 60%;position: absolute;right: 25%;")
-        }
-        else if(val<=40){
-            eleOne.setAttribute("style", "color:#383c7f;font-weight:bolder")
-            
         }
         // container.querySelector(".status-text").textContent=val
     // document.getElementById('out').innerHTML = Math.random() * 101 | 0;

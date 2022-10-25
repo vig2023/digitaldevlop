@@ -31,22 +31,22 @@ const plugin = ({widgets, simulator}) => {
         if(val<=20){
         //    element.setAttribute("style", "color:red; background-color:#e1f0fe")
         let ele = container.querySelector(".front");
-        ele.style.display='none'
+        ele.setAttribute("style", "display:none")
         }else if(val<=40){
             let ele = container.querySelector("left-one");
-            ele.style.display='none'
+            ele.setAttribute("style", "display:none")
         }else if(val<=60){
             let ele = container.querySelector("left-two");
-            ele.style.display='none'
+            ele.setAttribute("style", "display:none")
         }else if(val<=80){
             let ele = container.querySelector("right-one");
-            ele.style.display='none'
+            ele.setAttribute("style", "display:none")
         }else if(val<=100){
             let ele = container.querySelector("right-two");
-            ele.style.display='none'
+            ele.setAttribute("style", "display:none")
         }else if(val<=120){
             let ele = container.querySelector("bannet");
-            ele.style.display='none'
+            ele.setAttribute("style", "display:none")
         }
         // container.querySelector(".status-text").textContent=val
     // document.getElementById('out').innerHTML = Math.random() * 101 | 0;
@@ -55,7 +55,7 @@ setRandom();
 setInterval(setRandom, 5000);
     let boxGlobal = null
 
-    widgets.register("doorchecktwo", (box) => {
+    widgets.register("doorcheckthree", (box) => {
         boxGlobal = box
         box.injectNode(container)
         return () => {
