@@ -154,30 +154,40 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
     let speedStatusDiv = null;
     let ctStatusDiv = null;
+    isStop=false;
     function setSpeedRandom() {
-        var val= Math.random() * 90;
-        var trVal= Math.round(val);
-        console.log(trVal)
-        // var element=container.querySelector(".status-text");
-        speedStatusDiv.querySelector(`[data-cell="speed-stat"] span`).textContent = trVal
-        var eleOne = speedStatusDiv.querySelector(".speedVal");
-        var leftWheel = ctStatusDiv.querySelector(".ct-left");
-        var rightWheel = ctStatusDiv.querySelector(".ct-right");
+        console.log(window.isStop,"isStooop... from simulator...")
+        if(window.isStop){
 
-        // let eleTwo = container.querySelector(".left-one");
-        // let eleThree = container.querySelector(".left-two");
-        // let eleFour = container.querySelector(".right-one");
-        // let eleFive = container.querySelector(".right-two");
-        // let eleSix = container.querySelector(".bannet");
-        if(val<=30){
-        //    element.setAttribute("style", "color:red; background-color:#e1f0fe")
+            var val= Math.random() * 90;
+            var trVal= Math.round(val);
+            console.log(trVal)
+            // var element=container.querySelector(".status-text");
+            speedStatusDiv.querySelector(`[data-cell="speed-stat"] span`).textContent = trVal
+            var eleOne = speedStatusDiv.querySelector(".speedVal");
+            var leftWheel = ctStatusDiv.querySelector(".ct-left");
+            var rightWheel = ctStatusDiv.querySelector(".ct-right");
+    
+            // let eleTwo = container.querySelector(".left-one");
+            // let eleThree = container.querySelector(".left-two");
+            // let eleFour = container.querySelector(".right-one");
+            // let eleFive = container.querySelector(".right-two");
+            // let eleSix = container.querySelector(".bannet");
+            if(val<=30){
+            //    element.setAttribute("style", "color:red; background-color:#e1f0fe")
+                eleOne.setAttribute("style", "color:orange;font-weight:bolder");
+                leftWheel.setAttribute("style", "height: 44%;width: 60%;position: absolute;right: 15%;");
+                rightWheel.setAttribute("style", "height: 44%;width: 60%;position: absolute;right: 25%;");
+            }else if(val>30){
+                eleOne.setAttribute("style", "color:#383c7f;font-weight:bolder")
+                leftWheel.setAttribute("style", "height: 44%;width: 60%;position: absolute;right: 20%;");
+                rightWheel.setAttribute("style", "height: 44%;width: 60%;position: absolute;right: 20%;")
+            }
+        }else{
+            speedStatusDiv.querySelector(`[data-cell="speed-stat"] span`).textContent = "0 Stopped"
             eleOne.setAttribute("style", "color:orange;font-weight:bolder");
             leftWheel.setAttribute("style", "height: 44%;width: 60%;position: absolute;right: 15%;");
             rightWheel.setAttribute("style", "height: 44%;width: 60%;position: absolute;right: 25%;");
-        }else if(val>30){
-            eleOne.setAttribute("style", "color:#383c7f;font-weight:bolder")
-            leftWheel.setAttribute("style", "height: 44%;width: 60%;position: absolute;right: 20%;");
-            rightWheel.setAttribute("style", "height: 44%;width: 60%;position: absolute;right: 20%;")
         }
         // container.querySelector(".status-text").textContent=val
     // document.getElementById('out').innerHTML = Math.random() * 101 | 0;
