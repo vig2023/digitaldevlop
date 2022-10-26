@@ -96,8 +96,8 @@ var steps = [];
 
 function calcRoute() {
   console.log(window.isStop,"isStooop... from onClick mapComponent...")
-  window.isStop=true
-
+  window.isStop=false
+  console.log(window.isStop,"isStooop... from onClick afterrrr mapComponent...")
   if (timerHandle) {
     clearTimeout(timerHandle);
   }

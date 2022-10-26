@@ -154,7 +154,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
 
     let speedStatusDiv = null;
     let ctStatusDiv = null;
-    window.isStop=false;
+    window.isStop=true;
     function setSpeedRandom() {
         console.log(window.isStop,"isStooop... from simulator...")
         if(window.isStop){
