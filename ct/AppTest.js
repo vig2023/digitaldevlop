@@ -182,7 +182,10 @@ const plugin = ({widgets, simulator, vehicle}) => {
         // container.querySelector(".status-text").textContent=val
     // document.getElementById('out').innerHTML = Math.random() * 101 | 0;
 }
-setInterval(setSpeedRandom, 2500);
+if(speedStatusDiv!==null){
+
+    setInterval(setSpeedRandom, 2500);
+}
     widgets.register("demospeedonettApp", (box) => {
         const div = document.createElement("div")
         div.style = "display: flex;height: 100%;width: 100%;"
