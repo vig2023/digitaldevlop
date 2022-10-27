@@ -159,7 +159,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
         var trVal= Math.round(val);
         console.log(trVal)
         // var element=container.querySelector(".status-text");
-        speedStatusnewDiv.querySelector(`[data-cell="speed-stat"] span`).textContent = trVal
+        speedStatusnewDiv.querySelector(`[data-cell="speed-stat-new"] span`).textContent = trVal
         var eleOne = speedStatusnewDiv.querySelector(".speedVal");
         var leftWheel = ctStatusnewDiv.querySelector(".ct-left");
         var rightWheel = ctStatusnewDiv.querySelector(".ct-right");
@@ -204,7 +204,7 @@ setInterval(setSpeedRandom, 2500);
         <img src="https://pic.onlinewebfonts.com/svg/img_273202.png" style="height: 100%;width: 33%;object-fit: cover;">               
         </div>
         <div style="font-size: 9em;line-height: 1.5em;text-align:center">
-            <div class="speedVal" data-cell="speed-stat" style="color:#383c7f;font-weight:bolder"><strong> </strong><span>29</span></div>
+            <div class="speedVal" data-cell="speed-stat-new" style="color:#383c7f;font-weight:bolder"><strong> </strong><span>29</span></div>
           
         </div>
     </div>
