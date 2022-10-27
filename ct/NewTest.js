@@ -152,46 +152,42 @@ const plugin = ({widgets, simulator, vehicle}) => {
     //     box.injectNode(div)
     // })
 
-    let speedStatusDiv = null;
-    let ctStatusDiv = null;
-   
+    let speedStatusnewDiv = null;
+    let ctStatusnewDiv = null;
     function setSpeedRandom() {
-        // console.log()
-            var val= Math.random() * 90;
-            var trVal= Math.round(val);
-            console.log(trVal,"vkkkk..")
-            // var element=container.querySelector(".status-text");
-            
-            speedStatusDiv.querySelector(`[data-cell="speed-stat"] span`).textContent = trVal
-            var eleOne = speedStatusDiv.querySelector(".speedVal");
-            var leftWheel = ctStatusDiv.querySelector(".ct-left");
-            var rightWheel = ctStatusDiv.querySelector(".ct-right");
-    
-            // let eleTwo = container.querySelector(".left-one");
-            // let eleThree = container.querySelector(".left-two");
-            // let eleFour = container.querySelector(".right-one");
-            // let eleFive = container.querySelector(".right-two");
-            // let eleSix = container.querySelector(".bannet");
-            if(val<=30){
-            //    element.setAttribute("style", "color:red; background-color:#e1f0fe")
-                eleOne.setAttribute("style", "color:orange;font-weight:bolder");
-                leftWheel.setAttribute("style", "height: 44%;width: 60%;position: absolute;right: 15%;");
-                rightWheel.setAttribute("style", "height: 44%;width: 60%;position: absolute;right: 25%;");
-            }else if(val>30){
-                eleOne.setAttribute("style", "color:#383c7f;font-weight:bolder")
-                leftWheel.setAttribute("style", "height: 44%;width: 60%;position: absolute;right: 20%;");
-                rightWheel.setAttribute("style", "height: 44%;width: 60%;position: absolute;right: 20%;")
-            }
-        
+        var val= Math.random() * 90;
+        var trVal= Math.round(val);
+        console.log(trVal)
+        // var element=container.querySelector(".status-text");
+        speedStatusDiv.querySelector(`[data-cell="speed-stat"] span`).textContent = trVal
+        var eleOne = speedStatusDiv.querySelector(".speedVal");
+        var leftWheel = ctStatusDiv.querySelector(".ct-left");
+        var rightWheel = ctStatusDiv.querySelector(".ct-right");
+
+        // let eleTwo = container.querySelector(".left-one");
+        // let eleThree = container.querySelector(".left-two");
+        // let eleFour = container.querySelector(".right-one");
+        // let eleFive = container.querySelector(".right-two");
+        // let eleSix = container.querySelector(".bannet");
+        if(val<=30){
+        //    element.setAttribute("style", "color:red; background-color:#e1f0fe")
+            eleOne.setAttribute("style", "color:orange;font-weight:bolder");
+            leftWheel.setAttribute("style", "height: 44%;width: 60%;position: absolute;right: 15%;");
+            rightWheel.setAttribute("style", "height: 44%;width: 60%;position: absolute;right: 25%;");
+        }else if(val>30){
+            eleOne.setAttribute("style", "color:#383c7f;font-weight:bolder")
+            leftWheel.setAttribute("style", "height: 44%;width: 60%;position: absolute;right: 20%;");
+            rightWheel.setAttribute("style", "height: 44%;width: 60%;position: absolute;right: 20%;")
+        }
         // container.querySelector(".status-text").textContent=val
     // document.getElementById('out').innerHTML = Math.random() * 101 | 0;
 }
 setInterval(setSpeedRandom, 2500);
-    widgets.register("demospeedonettFinalTest", (box) => {
+    widgets.register("demospeedonettNew", (box) => {
         const div = document.createElement("div")
         div.style = "display: flex;height: 100%;width: 100%;"
 
-        speedStatusDiv = div
+        speedStatusnewDiv = div
 
         div.innerHTML = `
         <style>
@@ -217,13 +213,13 @@ setInterval(setSpeedRandom, 2500);
         box.injectNode(div)
     })
 
-    let distanceStatusDiv = null
+    let distanceStatusnewDiv = null
     function setDistanceRandom() {
         var val= Math.random() * 90;
         var trDistanceVal= Math.round(val)
         console.log(trDistanceVal)
         // var element=container.querySelector(".status-text");
-        distanceStatusDiv.querySelector(`[data-cell="distance-stat"] span`).textContent = trDistanceVal
+        distanceStatusnewDiv.querySelector(`[data-cell="distance-stat"] span`).textContent = trDistanceVal
         var eleOne = distanceStatusDiv.querySelector(".distanceVal");
         
         // let eleTwo = container.querySelector(".left-one");
@@ -234,17 +230,17 @@ setInterval(setSpeedRandom, 2500);
         if(val<=20){
         //    element.setAttribute("style", "color:red; background-color:#e1f0fe")
             eleOne.setAttribute("style", "color:orange;font-weight:bolder")
-            distanceStatusDiv.querySelector(`[data-cell="mode-drive"] span`).textContent = "Parking"
+            distanceStatusnewDiv.querySelector(`[data-cell="mode-drive"] span`).textContent = "Parking"
         }else if(val<=40){
             eleOne.setAttribute("style", "color:blue")
-            distanceStatusDiv.querySelector(`[data-cell="mode-drive"] span`).textContent = "Drive"
+            distanceStatusnewDiv.querySelector(`[data-cell="mode-drive"] span`).textContent = "Drive"
         }
         // container.querySelector(".status-text").textContent=val
     // document.getElementById('out').innerHTML = Math.random() * 101 | 0;
 }
 setInterval(setDistanceRandom, 2500); 
 
-    widgets.register("distancedemotwottFinalTest", (box) => {
+    widgets.register("distancedemotwottNew", (box) => {
         const div = document.createElement("div")
         div.style = "display: flex;height: 100%;width: 100%;"
 
@@ -274,11 +270,11 @@ setInterval(setDistanceRandom, 2500);
         box.injectNode(div)
     })
 
-    widgets.register("distanceMapFinalTest", (box) => {
+    widgets.register("distanceMapNew", (box) => {
         const div = document.createElement("div")
         div.style = "display: flex;height: 100%;width: 100%;"
 
-        speedStatusDiv = div
+        speedStatusnewDiv = div
 
         div.innerHTML = `
         <style>
@@ -308,11 +304,11 @@ setInterval(setDistanceRandom, 2500);
     // })
 
     //CT-Car-Placement
-    widgets.register("ctcardisplayFinalTest", (box) => {
+    widgets.register("ctcardisplayNew", (box) => {
         const div = document.createElement("div")
         div.style = "display: flex;height: 100%;width: 100%;"
 
-        speedStatusDiv = div
+        speedStatusnewDiv = div
 
         div.innerHTML = `
         <style>
@@ -333,11 +329,11 @@ setInterval(setDistanceRandom, 2500);
     })
     //eof CT-car
      //CT-Car-Placement
-     widgets.register("ctMobileDisplayFinalTest", (box) => {
+     widgets.register("ctMobileDisplayNew", (box) => {
         const div = document.createElement("div")
         div.style = "display: flex;height: 100%;width: 100%;"
 
-        ctStatusDiv = div
+        ctStatusnewDiv = div
 
         div.innerHTML = `
         <style>
