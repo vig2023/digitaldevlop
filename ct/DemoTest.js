@@ -186,7 +186,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
     // document.getElementById('out').innerHTML = Math.random() * 101 | 0;
 }
 setInterval(setSpeedRandom, 2500);
-    widgets.register("demospeedonettDemoModel", (box) => {
+    widgets.register("demospeedonettDemoTest", (box) => {
         const div = document.createElement("div")
         div.style = "display: flex;height: 100%;width: 100%;"
 
@@ -273,7 +273,7 @@ setInterval(setSpeedRandom, 2500);
     //     box.injectNode(div)
     // })
 
-    widgets.register("distanceMapDemoModel", (box) => {
+    widgets.register("distanceMapDemoTest", (box) => {
         const div = document.createElement("div")
         div.style = "display: flex;height: 100%;width: 100%;"
 
@@ -307,7 +307,7 @@ setInterval(setSpeedRandom, 2500);
     // })
 
     //CT-Car-Placement
-    widgets.register("ctcardisplayDemoModel", (box) => {
+    widgets.register("ctcardisplayDemoTest", (box) => {
         const div = document.createElement("div")
         div.style = "display: flex;height: 100%;width: 100%;"
 
@@ -332,7 +332,7 @@ setInterval(setSpeedRandom, 2500);
     })
     //eof CT-car
      //CT-Car-Placement
-     widgets.register("ctMobileDisplayDemoModel", (box) => {
+     widgets.register("ctMobileDisplayDemoTest", (box) => {
         const div = document.createElement("div")
         div.style = "display: flex;height: 100%;width: 100%;"
 
