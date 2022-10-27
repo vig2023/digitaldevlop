@@ -244,7 +244,7 @@ setInterval(setDistanceRandom, 2500);
         const div = document.createElement("div")
         div.style = "display: flex;height: 100%;width: 100%;"
 
-        speedStatusDiv = div
+        speedStatusnewDiv = div
 
         div.innerHTML = `
         <style>
