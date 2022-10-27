@@ -50,7 +50,7 @@ setInterval(setSpeedRandomOne, 2500);
         <img src="https://pic.onlinewebfonts.com/svg/img_273202.png" style="height: 100%;width: 33%;object-fit: cover;">               
         </div>
         <div style="font-size: 9em;line-height: 1.5em;text-align:center">
-            <div class="speedVal" data-cell="speed-stat-one" style="color:#383c7f;font-weight:bolder"><strong> </strong><span>29</span></div>
+            <div class="speedVal-one" data-cell="speed-stat-one" style="color:#383c7f;font-weight:bolder"><strong> </strong><span>29</span></div>
           
         </div>
     </div>
