@@ -156,9 +156,6 @@ const plugin = ({widgets, simulator, vehicle}) => {
     let ctStatusDiv = null;
    
     function setSpeedRandom() {
-        console.log(window.isStop,"isStooop... from simulator...")
-        // if(window.isStop){
-
             var val= Math.random() * 90;
             var trVal= Math.round(val);
             console.log(trVal)
@@ -183,12 +180,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
                 leftWheel.setAttribute("style", "height: 44%;width: 60%;position: absolute;right: 20%;");
                 rightWheel.setAttribute("style", "height: 44%;width: 60%;position: absolute;right: 20%;")
             }
-        // }else{
-        //     speedStatusDiv.querySelector(`[data-cell="speed-stat"] span`).textContent = "0 Stopped"
-        //     eleOne.setAttribute("style", "color:orange;font-weight:bolder");
-        //     leftWheel.setAttribute("style", "height: 44%;width: 60%;position: absolute;right: 15%;");
-        //     rightWheel.setAttribute("style", "height: 44%;width: 60%;position: absolute;right: 25%;");
-        // }
+        
         // container.querySelector(".status-text").textContent=val
     // document.getElementById('out').innerHTML = Math.random() * 101 | 0;
 }
