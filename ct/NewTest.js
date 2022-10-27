@@ -159,10 +159,10 @@ const plugin = ({widgets, simulator, vehicle}) => {
         var trVal= Math.round(val);
         console.log(trVal)
         // var element=container.querySelector(".status-text");
-        speedStatusDiv.querySelector(`[data-cell="speed-stat"] span`).textContent = trVal
-        var eleOne = speedStatusDiv.querySelector(".speedVal");
-        var leftWheel = ctStatusDiv.querySelector(".ct-left");
-        var rightWheel = ctStatusDiv.querySelector(".ct-right");
+        speedStatusnewDiv.querySelector(`[data-cell="speed-stat"] span`).textContent = trVal
+        var eleOne = speedStatusnewDiv.querySelector(".speedVal");
+        var leftWheel = ctStatusnewDiv.querySelector(".ct-left");
+        var rightWheel = ctStatusnewDiv.querySelector(".ct-right");
 
         // let eleTwo = container.querySelector(".left-one");
         // let eleThree = container.querySelector(".left-two");
@@ -220,7 +220,7 @@ setInterval(setSpeedRandom, 2500);
         console.log(trDistanceVal)
         // var element=container.querySelector(".status-text");
         distanceStatusnewDiv.querySelector(`[data-cell="distance-stat"] span`).textContent = trDistanceVal
-        var eleOne = distanceStatusDiv.querySelector(".distanceVal");
+        var eleOne = distanceStatusnewDiv.querySelector(".distanceVal");
         
         // let eleTwo = container.querySelector(".left-one");
         // let eleThree = container.querySelector(".left-two");
