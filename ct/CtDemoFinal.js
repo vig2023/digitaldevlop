@@ -156,9 +156,10 @@ const plugin = ({widgets, simulator, vehicle}) => {
     let ctStatusDiv = null;
    
     function setSpeedRandom() {
+        // console.log()
             var val= Math.random() * 90;
             var trVal= Math.round(val);
-            console.log(trVal)
+            console.log(trVal,"vkkkk..")
             // var element=container.querySelector(".status-text");
             speedStatusDiv.querySelector(`[data-cell="speed-stat"] span`).textContent = trVal
             var eleOne = speedStatusDiv.querySelector(".speedVal");
