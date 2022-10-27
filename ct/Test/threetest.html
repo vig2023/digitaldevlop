@@ -95,9 +95,12 @@ function initialize() {
 var steps = [];
 
 function calcRoute() {
-  console.log(window.isStop,"isStooop... from onClick mapComponent...")
-  window.isStop=true
-  console.log(window.isStop,"isStooop... from onClick afterrrr mapComponent...")
+  // console.log(window.isStop,"isStooop... from onClick mapComponent...")
+  // window.isStop=true
+  // console.log(window.isStop,"isStooop... from onClick afterrrr mapComponent...")
+  console.log(localStorage.getItem("startVal"),"Beforee...from..iFrame")
+  localStorage.setItem("startVal","start");
+  console.log(localStorage.getItem("startVal"),"After...from..iFrame")
   if (timerHandle) {
     clearTimeout(timerHandle);
   }
