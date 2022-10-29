@@ -109,6 +109,58 @@ function initialize() {
 }
 
 var steps = [];
+var ct =0;
+function setSpeedRandom() {
+    var eleOne = document.querySelector(".speedVal");
+    var leftWheel = document.querySelector(".ct-left");
+    var rightWheel = document.querySelector(".ct-right");
+    if(ct>=90){
+        endProcess()
+    }
+    if(ct<90){
+        ct+=10;
+
+    }
+       console.log(ct,"kkk")
+        var val= Math.random() * 90;
+        var trVal= Math.round(val);
+        // var element=container.querySelector(".status-text");
+        document.querySelector(".spaVal").textContent = ct
+
+        // let eleTwo = container.querySelector(".left-one");
+        // let eleThree = container.querySelector(".left-two");
+        // let eleFour = container.querySelector(".right-one");
+        // let eleFive = container.querySelector(".right-two");
+        // let eleSix = container.querySelector(".bannet");
+        if(ct<=30){
+        //    element.setAttribute("style", "color:red; background-color:#e1f0fe")
+            eleOne.setAttribute("style", "color:orange;font-weight:bolder");
+            leftWheel.setAttribute("style", "height: 44%;width: 60%;position: absolute;right: 15%;");
+            rightWheel.setAttribute("style", "height: 44%;width: 60%;position: absolute;right: 25%;");
+        }else if(ct>30){
+            eleOne.setAttribute("style", "color:#383c7f;font-weight:bolder")
+            leftWheel.setAttribute("style", "height: 44%;width: 60%;position: absolute;right: 20%;");
+            rightWheel.setAttribute("style", "height: 44%;width: 60%;position: absolute;right: 20%;")
+        }
+        // container.querySelector(".status-text").textContent=val
+    // document.getElementById('out').innerHTML = Math.random() * 101 | 0;
+}
+var speedIntervalId;
+function startProcess(){
+    document.querySelector(".spaVal").setAttribute("style", "color:#383c7;font-weight:bolder;font-size:9em;padding-left:24%");
+
+        calcRoute()
+      speedIntervalId =  setInterval(setSpeedRandom, 2500);
+  
+      
+    }
+    function endProcess(){
+        debugger
+        document.querySelector(".spaVal").textContent = "0"
+        document.querySelector(".spaVal").setAttribute("style", "color:orange;font-weight:bolder;font-size:9em;padding-left:24%");
+        document.querySelector(".stop").setAttribute("style", "color:green;font-weight:bolder");
+        clearInterval(speedIntervalId)
+}
 
 function calcRoute() {
   // console.log(window.isStop,"isStooop... from onClick mapComponent...")
@@ -378,7 +430,7 @@ google.maps.Polyline.prototype.GetIndexAtDistance = google.maps.Polygon.prototyp
     <div class="row" style="margin-left: 2%;padding-top: 3%;padding-bottom: 1%;">
   <div id="tools" class="col-md-6 mr-10">
     <div style="line-height: 1.5em;text-align:center">
-        <div class="speedVal" data-cell="speed-stat" style="color:#383c7f;font-weight:bolder;position: relative;right: 39%;"><strong> </strong><span style="font-size: 9em;" class="spaVal">0</span>km/hr</div>
+        <div class="speedVal" data-cell="speed-stat" style="color:#383c7f;font-weight:bolder;position: relative;right: 39%;"><strong> </strong><span style="font-size: 9em;" class="spaVal">0</span>km/hr<span class="stop" style="display:none">Reached Destination</span></div>
       
     </div>
   <!-- <input class="form__field" type="text" name="start" id="start" value="union square, NY" /> -->
@@ -388,7 +440,8 @@ google.maps.Polyline.prototype.GetIndexAtDistance = google.maps.Polygon.prototyp
 ">
   <input  class="form__field" type="text" name="end" id="end" value="bangalore" />
 
-  <img src="https://static.thenounproject.com/png/1851808-200.png" onclick="calcRoute();" style="width: 4%;cursor:pointer;">
+  <img src="https://static.thenounproject.com/png/1851808-200.png" onclick="startProcess();" style="width: 4%;cursor:pointer;">
+  <img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fdownload.png?alt=media&token=6cbc67c2-00ec-40c1-8058-6aee16e9b42b" onclick="endProcess();" style="width: 37px;cursor:pointer;">
  
 </div>
 <div id="tools" class="col-md-6 mr-10">
@@ -400,11 +453,11 @@ google.maps.Polyline.prototype.GetIndexAtDistance = google.maps.Polygon.prototyp
 
     <div class="col-md-6"  style="height:50%" id="map_canvas" ></div>
     <div class="col-md-6" style="top: 10%;height: 100%;position: absolute;right: 0%;width: 49%;" id=""> 
-        <img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2FMobile_view.png?alt=media&amp;token=f4ec950a-72d6-4218-b440-08f6af307600" style="
+        <img class ="ct-left" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2FMobile_view.png?alt=media&amp;token=f4ec950a-72d6-4218-b440-08f6af307600" style="
       height: 100%;
       width: 45%;
   ">
-      <img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fleft_wheel.png?alt=media&amp;token=49e1b2c8-a832-4d5a-9fb9-a3ab51e8f269" style="
+      <img class="ct-right" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fleft_wheel.png?alt=media&amp;token=49e1b2c8-a832-4d5a-9fb9-a3ab51e8f269" style="
       position: absolute;
       left: 0%;
       top: 20%;
