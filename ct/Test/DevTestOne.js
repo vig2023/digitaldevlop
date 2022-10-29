@@ -18,7 +18,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
         }    
         </style>
         <div style="display: flex; flex-direction: column; width: 100%; height: 100%; padding: 30px 40px; justify-content: center; color: #808080; user-select: none; background-color: #f7f7f7;">
-        <iframe width="560" height="315" src="https://vig2023.github.io/digitaldevlop/ct/Test/dummy.html" title="application" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe width="560" height="315" src="https://vig2023.github.io/digitaldevlop/ct/Test/playground.html" title="application" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         `
 
