@@ -183,7 +183,7 @@ const plugin = ({widgets, simulator, vehicle}) => {
     // document.getElementById('out').innerHTML = Math.random() * 101 | 0;
 }
 setInterval(setSpeedRandom, 2500);
-    widgets.register("demospeedonettTwenty", (box) => {
+    widgets.register("demospeedonettApp", (box) => {
         const div = document.createElement("div")
         div.style = "display: flex;height: 100%;width: 100%;"
 
@@ -240,7 +240,7 @@ setInterval(setSpeedRandom, 2500);
 }
 setInterval(setDistanceRandom, 2500); 
 
-    widgets.register("distancedemotwottTwenty", (box) => {
+    widgets.register("distancedemotwottApp", (box) => {
         const div = document.createElement("div")
         div.style = "display: flex;height: 100%;width: 100%;"
 
@@ -270,7 +270,7 @@ setInterval(setDistanceRandom, 2500);
         box.injectNode(div)
     })
 
-    widgets.register("distanceMapTwenty", (box) => {
+    widgets.register("distanceMapApp", (box) => {
         const div = document.createElement("div")
         div.style = "display: flex;height: 100%;width: 100%;"
 
@@ -304,7 +304,7 @@ setInterval(setDistanceRandom, 2500);
     // })
 
     //CT-Car-Placement
-    widgets.register("ctcardisplayTwenty", (box) => {
+    widgets.register("ctcardisplayApp", (box) => {
         const div = document.createElement("div")
         div.style = "display: flex;height: 100%;width: 100%;"
 
@@ -329,7 +329,7 @@ setInterval(setDistanceRandom, 2500);
     })
     //eof CT-car
      //CT-Car-Placement
-     widgets.register("ctMobileDisplayTwenty", (box) => {
+     widgets.register("ctMobileDisplayApp", (box) => {
         const div = document.createElement("div")
         div.style = "display: flex;height: 100%;width: 100%;"
 

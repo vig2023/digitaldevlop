@@ -243,7 +243,7 @@ if(speedStatusDiv!==null){
 }
 setInterval(setDistanceRandom, 2500); 
 
-    widgets.register("distancedemotwottApp", (box) => {
+    widgets.register("distancedemotwottAppOne", (box) => {
         const div = document.createElement("div")
         div.style = "display: flex;height: 100%;width: 100%;"
 
@@ -273,7 +273,7 @@ setInterval(setDistanceRandom, 2500);
         box.injectNode(div)
     })
 
-    widgets.register("distanceMapApp", (box) => {
+    widgets.register("distanceMapAppOne", (box) => {
         const div = document.createElement("div")
         div.style = "display: flex;height: 100%;width: 100%;"
 
@@ -307,7 +307,7 @@ setInterval(setDistanceRandom, 2500);
     // })
 
     //CT-Car-Placement
-    widgets.register("ctcardisplayApp", (box) => {
+    widgets.register("ctcardisplayAppOne", (box) => {
         const div = document.createElement("div")
         div.style = "display: flex;height: 100%;width: 100%;"
 
@@ -332,7 +332,7 @@ setInterval(setDistanceRandom, 2500);
     })
     //eof CT-car
      //CT-Car-Placement
-     widgets.register("ctMobileDisplayApp", (box) => {
+     widgets.register("ctMobileDisplayAppOne", (box) => {
         const div = document.createElement("div")
         div.style = "display: flex;height: 100%;width: 100%;"
 
