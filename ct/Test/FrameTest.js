@@ -1,7 +1,7 @@
 const plugin = ({widgets, simulator, vehicle}) => {
 
     let testFrameDiv = null;
-    widgets.register("frameFull", (box) => {
+    widgets.register("frameFulltest", (box) => {
         const div = document.createElement("div")
         div.style = "display: flex;height: 100%;width: 100%;"
 
