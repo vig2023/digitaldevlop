@@ -1,7 +1,7 @@
 const plugin = ({widgets, simulator, vehicle}) => {
 
     let testFrameDiv = null;
-    widgets.register("distanceMapAppOne", (box) => {
+    widgets.register("frameFull", (box) => {
         const div = document.createElement("div")
         div.style = "display: flex;height: 100%;width: 100%;"
 
