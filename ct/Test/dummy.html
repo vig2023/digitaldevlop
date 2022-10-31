@@ -353,6 +353,8 @@ function animate(d) {
         
         var tar3 = Math.ceil(findRound(85)/50); //70% of steps + tar1 value = 85% of total val
         var tar2 = Math.ceil(Math.round(totDist/2)/50) //half of total steps
+        var tar11 = Math.ceil(findRound(40)/50); // 40%
+        var tar21 = Math.ceil(findRound(65)/50);
         console.log(jk,"singleeejkkk",tar1,"jjjjjjjjjjnewww",tar2,"tar2222",tar3,"tar33333");
        
         if((jk)==tar1){
@@ -361,13 +363,26 @@ function animate(d) {
         //    randomInteger(0,tar1)
         //    docum.wq.val()
         speedOvalMin = 30;
-        speedOvalMax=80
+        speedOvalMax=45
+          }  else if((jk)==tar11){
+            debugger
+            console.log(tar1,"TARGETONEEE")
+        //    randomInteger(0,tar1)
+        //    docum.wq.val()
+        speedOvalMin = 46;
+        speedOvalMax=70;
           }
           else if((jk)==tar2){  
             console.log(tar2,"TARGET2222")
             //  make speedo revers Math.Reverse  // 80 to 30
-              speedOvalMin = 80;
-              speedOvalMax=31
+              speedOvalMin = 70;
+              speedOvalMax=46
+          }
+          else if((jk)==tar21){  
+            console.log(tar2,"TARGET2222")
+            //  make speedo revers Math.Reverse  // 80 to 30
+              speedOvalMin = 46;
+              speedOvalMax=31;
           }
           else if((jk)==tar3){  
             console.log(tar3,"TARGET3333")

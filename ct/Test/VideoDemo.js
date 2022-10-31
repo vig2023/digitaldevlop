@@ -1,7 +1,7 @@
 const plugin = ({widgets, simulator, vehicle}) => {
 
     let ctvideo = null;
-    widgets.register("demoplug", (box) => {
+    widgets.register("demovideoct", (box) => {
         const div = document.createElement("div")
         div.style = "display: flex;height: 100%;width: 100%;"
 
