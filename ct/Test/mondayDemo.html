@@ -6,6 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://maps.googleapis.com/maps/api/js?libraries=geometry&key=AIzaSyCQd4f14bPr1ediLmgEQGK-ZrepsQKQQ6Y"></script>
+    <link href="https://vjs.zencdn.net/7.20.3/video-js.css" rel="stylesheet" />
+
+    <script>
+        var vid = document.getElementById("myVideo"); 
+
+function playVid() { 
+    debugger
+  vid.play(); 
+} 
+
+function pauseVid() { 
+  vid.pause(); 
+} 
+    </script>
     <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>  
     <style>
         html {
@@ -52,6 +66,8 @@ var speed = 0.000005,
   wait = 1;
 var infowindow = null;
 var timerHandle = null;
+
+
 
 
 function createMarker(latlng, label, html) {
@@ -133,6 +149,7 @@ function setSpeedRandom() {
         // var trVal= Math.round(val);
         // var element=container.querySelector(".status-text");
         document.querySelector(".spaVal").textContent = newSpeed
+        var myPlayer = videojs('my-video');
 
         // let eleTwo = container.querySelector(".left-one");
         // let eleThree = container.querySelector(".left-two");
@@ -141,13 +158,15 @@ function setSpeedRandom() {
         // let eleSix = container.querySelector(".bannet");
         if(newSpeed<=30){
         //    element.setAttribute("style", "color:red; background-color:#e1f0fe")
-            eleOne.setAttribute("style", "color:orange;font-weight:bolder");
-            leftWheel.setAttribute("style", "position: absolute;left:4%;top: 20%;");
-            rightWheel.setAttribute("style", "position: absolute;top: 20%;right:57%")
+            myPlayer.play();
+            // eleOne.setAttribute("style", "color:orange;font-weight:bolder");
+            // leftWheel.setAttribute("style", "position: absolute;left:4%;top: 20%;");
+            // rightWheel.setAttribute("style", "position: absolute;top: 20%;right:57%")
         }else if(newSpeed>30){
-            eleOne.setAttribute("style", "color:#383c7f;font-weight:bolder")
-            leftWheel.setAttribute("style", "position: absolute;left:0%;top: 20%;");
-            rightWheel.setAttribute("style", "position: absolute;top: 20%;right:53%")
+            myPlayer.pause();
+            // eleOne.setAttribute("style", "color:#383c7f;font-weight:bolder")
+            // leftWheel.setAttribute("style", "position: absolute;left:0%;top: 20%;");
+            // rightWheel.setAttribute("style", "position: absolute;top: 20%;right:53%")
         }
         // container.querySelector(".status-text").textContent=val
     // document.getElementById('out').innerHTML = Math.random() * 101 | 0;
@@ -353,6 +372,8 @@ function animate(d) {
         
         var tar3 = Math.ceil(findRound(85)/50); //70% of steps + tar1 value = 85% of total val
         var tar2 = Math.ceil(Math.round(totDist/2)/50) //half of total steps
+        var tar11 = Math.ceil(findRound(40)/50); // 40%
+        var tar21 = Math.ceil(findRound(65)/50);
         console.log(jk,"singleeejkkk",tar1,"jjjjjjjjjjnewww",tar2,"tar2222",tar3,"tar33333");
        
         if((jk)==tar1){
@@ -361,13 +382,26 @@ function animate(d) {
         //    randomInteger(0,tar1)
         //    docum.wq.val()
         speedOvalMin = 30;
-        speedOvalMax=80
+        speedOvalMax=45
+          }  else if((jk)==tar11){
+            debugger
+            console.log(tar1,"TARGETONEEE")
+        //    randomInteger(0,tar1)
+        //    docum.wq.val()
+        speedOvalMin = 46;
+        speedOvalMax=70;
           }
           else if((jk)==tar2){  
             console.log(tar2,"TARGET2222")
             //  make speedo revers Math.Reverse  // 80 to 30
-              speedOvalMin = 80;
-              speedOvalMax=31
+              speedOvalMin = 70;
+              speedOvalMax=46
+          }
+          else if((jk)==tar21){  
+            console.log(tar2,"TARGET2222")
+            //  make speedo revers Math.Reverse  // 80 to 30
+              speedOvalMin = 46;
+              speedOvalMax=31;
           }
           else if((jk)==tar3){  
             console.log(tar3,"TARGET3333")
@@ -571,29 +605,38 @@ google.maps.Polyline.prototype.GetIndexAtDistance = google.maps.Polygon.prototyp
 
 
     <div class="col-md-6"  style="height:50%" id="map_canvas" ></div>
-    <div class="col-md-6" style="top: 10%;height: 100%;position: absolute;right: 0%;width: 49%;" id=""> 
-        <img  src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2FMobile_view.png?alt=media&amp;token=f4ec950a-72d6-4218-b440-08f6af307600" style="
-      height: 100%;
-      width: 45%;
-  ">
-      <img class="ct-left" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fleft_wheel.png?alt=media&amp;token=49e1b2c8-a832-4d5a-9fb9-a3ab51e8f269" style="
-      position: absolute;
-      left: 0%;
-      top: 20%;
-  ">
-        
-        <img class="ct-right" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fright_wheel.png?alt=media&amp;token=5585a090-61b1-42e8-8d0a-edb97b5cfcf7" style="
-      position: absolute;
-      top: 20%;
-      right: 53%;
-  "><img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fmid_body.png?alt=media&amp;token=99619916-1333-406e-b31f-9fd779e8e468" style="
-      position: absolute;
-      left: 0%;
-      top: 20%;
-      /* align-items: center; */
-  ">
+    <div class="col-md-6" style="top: 32%;height: 100%;position: absolute;right: 0%;width: 48%;" id="">  
+        <!-- <video id="myVideo" width="320" height="176">
+            <source src="../video/ctDemo.mp4" type="video/mp4">
+            
+          </video>
+          <button onclick="playVid()" type="button">Play Video</button>
+<button onclick="pauseVid()" type="button">Pause Video</button><br>  -->
+<video
+    id="my-video"
+    class="video-js"
+    controls
+    preload="auto"
+    width="640"
+    height="264"
+    poster="MY_VIDEO_POSTER.jpg"
+    data-setup="{}"
+  >
+    <source src="../video/ctDemo.mp4" type="video/mp4" />
+    <!-- <source src="MY_VIDEO.webm" type="video/webm" /> -->
+    <p class="vjs-no-js">
+      To view this video please enable JavaScript, and consider upgrading to a
+      web browser that
+      <a href="https://videojs.com/html5-video-support/" target="_blank"
+        >supports HTML5 video</a
+      >
+    </p>
+  </video>
         
       </div>
+      <script src="https://vjs.zencdn.net/7.20.3/video.min.js"></script>
+     
+       
 
 </body>
 </html>
