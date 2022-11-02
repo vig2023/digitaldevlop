@@ -134,7 +134,7 @@ var acIntervalId;
         document.querySelector(".twoval").textContent = document.getElementById("frontleft").value;
     }
     function endProcess(){
-        debugger
+     
         document.querySelector(".spaVal").textContent = "0"
         document.querySelector(".spaVal").setAttribute("style", "color:orange;font-weight:bolder;font-size:9em;padding-left:24%");
         document.querySelector(".stop").setAttribute("style", "color:green;font-weight:bolder");
@@ -182,12 +182,13 @@ function startAc(){
       
   
     <div class="col-md-3" style="
-    position: relative;
+    position: absolute;
     top: bottom;
-    top: 66px;
+    top: 111px;
+    right: 20%;
 ">
 
-       <button type="button" onclick="pushVal()"class="btn btn-primary">Push ></button>
+       <button type="button" onclick="pushVal()"class="btn btn-primary">Push </button>
    </div>
    
 
