@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=geometry&key=AIzaSyCQd4f14bPr1ediLmgEQGK-ZrepsQKQQ6Y"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>  
+    <style>
+        html {
+  height: 100%;
+}
+body {
+  height: 100%;
+  margin: 0px;
+  font-family: Helvetica, Arial;
+}
+.gmnoprint,.gm-svpc{
+  display: none !important;
+}
+.form__field {
+  font-family: 'Lato', sans-serif;
+    width: 40%;
+    border: 0;
+    border-bottom: 2px solid #9b9b9b;
+    outline: 0;
+    font-size: 2rem;
+    color: rgb(44, 42, 42);
+    padding: 7px 0;
+    background: transparent;
+    transition: border-color 0.2s;
+}
+/* toggle */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+/* eof toggle */
+    </style>
+</head>
+<body>
+    <script>
+        var map;
+var isStartAc= false;
+
+
+var steps = [];
+var ct =0;
+
+var acIntervalId;
+// function setRandom() {
+//         var val= Math.random() * 45;
+   
+//       document.querySelector(".status").textContent = val
+//         if(val<18){
+//            element.setAttribute("style", "color:red; background-color:#e1f0fe")
+//         }
+//         document.querySelector(".status-text").textContent=val
+//     // document.getElementById('out').innerHTML = Math.random() * 101 | 0;
+// }
+// setInterval(setRandom, 5000);
+// function startProcess(){
+//     speedOvalMin=5;
+//     speedOvalMax=30;
+//     // document.querySelector(".spaVal").setAttribute("style", "color:#383c7;font-weight:bolder;font-size:9em;padding-left:24%");
+
+//         // calcRoute()
+//       speedIntervalId =  setInterval(setRandom, 3000);
+  
+      
+//     }
+let isFrontOpen=false;
+    function openFront(){
+        isFrontOpen=!isFrontOpen;
+        var eleOne = document.querySelector(".front");
+        if(isFrontOpen){
+
+            // let eleTwo = document.querySelector(".left-one");
+            // let eleThree = document.querySelector(".left-two");
+            // let eleFour = document.querySelector(".right-one");
+            // let eleFive = document.querySelector(".right-two");
+            // let eleSix = document.querySelector(".bannet");
+            eleOne.setAttribute("style", "display:none")
+                // eleTwo.setAttribute("style","display:block;height: 3%;width: 7%;position: absolute;top: 38%;left: 30%;")
+                // eleThree.setAttribute("style","display:block;height:3%;width: 7%;position: absolute;top: 50%;left: 30%;")
+                // eleFour.setAttribute("style","display:block;height:3%;width:5%;position: absolute;top: 38%;right: 22%;")
+                // eleFive.setAttribute("style","display:block;height:3%;width:5%;position: absolute;right: 22%;bottom: 47%;")
+                // eleSix.setAttribute("style","display:block;height:3%;width:5%;position: absolute;bottom: 31%;left: 47%;")
+             
+        }else{
+            eleOne.setAttribute("style","display:block;height:3%;width:5%;position: absolute;left: 48%;top: 15%;")
+        }
+    }
+    let isopenFrontLeft=false;
+    function openFrontLeft(){
+        isopenFrontLeft=!isopenFrontLeft;
+        let eleTwo = document.querySelector(".left-one");
+    //    var eleOne = document.querySelector(".front");
+    //    let eleThree = document.querySelector(".left-two");
+    //    let eleFour = document.querySelector(".right-one");
+    //    let eleFive = document.querySelector(".right-two");
+    //    let eleSix = document.querySelector(".bannet");
+     if(isopenFrontLeft){
+         eleTwo.setAttribute("style", "display:none")
+        }else{
+         eleTwo.setAttribute("style","display:block;height: 3%;width: 7%;position: absolute;top: 38%;left: 30%;")
+
+     }
+            // eleOne.setAttribute("style","display:block;height:3%;width:5%;position: absolute;left: 48%;top: 15%;")
+            // eleThree.setAttribute("style","display:block;height:3%;width: 7%;position: absolute;top: 50%;left: 30%;")
+            // eleFour.setAttribute("style","display:block;height:3%;width:5%;position: absolute;top: 38%;right: 22%;")
+            // eleFive.setAttribute("style","display:block;height:3%;width:5%;position: absolute;right: 22%;bottom: 47%;")
+            // eleSix.setAttribute("style","display:block;height:3%;width:5%;position: absolute;bottom: 31%;left: 47%;")
+           alert("FrontLeft Opened")
+   }
+   let isopenRearLeft =false;
+   function openRearLeft(){
+       isopenRearLeft=!isopenRearLeft;
+    let eleThree = document.querySelector(".left-two");
+    if(isopenFrontLeft){
+        eleThree.setAttribute("style", "display:none")
+
+    }else{
+        eleThree.setAttribute("style","display:block;height:3%;width: 7%;position: absolute;top: 50%;left: 30%;")
+    }
+    //    var eleOne = document.querySelector(".front");
+    //    let eleTwo = document.querySelector(".left-one");
+    //    let eleFour = document.querySelector(".right-one");
+    //    let eleFive = document.querySelector(".right-two");
+    //    let eleSix = document.querySelector(".bannet");
+            // eleOne.setAttribute("style","display:block;height:3%;width:5%;position: absolute;left: 48%;top: 15%;")
+            // eleTwo.setAttribute("style","display:block;height: 3%;width: 7%;position: absolute;top: 38%;left: 30%;")
+            // eleFour.setAttribute("style","display:block;height:3%;width:5%;position: absolute;top: 38%;right: 22%;")
+            // eleFive.setAttribute("style","display:block;height:3%;width:5%;position: absolute;right: 22%;bottom: 47%;")
+            // eleSix.setAttribute("style","display:block;height:3%;width:5%;position: absolute;bottom: 31%;left: 47%;")
+           alert("RearLeft Opened")
+   }
+   let isopenBannet=false
+   function openBannet(){
+       isopenBannet=!isopenBannet
+       let eleFour = document.querySelector(".right-one");
+       if(isopenBannet){
+           
+           eleFour.setAttribute("style", "display:none")
+       }else{
+        eleFour.setAttribute("style","display:block;height:3%;width:5%;position: absolute;top: 38%;right: 22%;")
+       }
+    //    var eleOne = document.querySelector(".front");
+    //    let eleTwo = document.querySelector(".left-one");
+    //    let eleThree = document.querySelector(".left-two");
+    //    let eleFive = document.querySelector(".right-two");
+    //    let eleSix = document.querySelector(".bannet");
+            // eleOne.setAttribute("style","display:block;height:3%;width:5%;position: absolute;left: 48%;top: 15%;")
+            // eleTwo.setAttribute("style","display:block;height: 3%;width: 7%;position: absolute;top: 38%;left: 30%;")
+            // eleThree.setAttribute("style","display:block;height:3%;width: 7%;position: absolute;top: 50%;left: 30%;")
+            // eleFive.setAttribute("style","display:block;height:3%;width:5%;position: absolute;right: 22%;bottom: 47%;")
+            // eleSix.setAttribute("style","display:block;height:3%;width:5%;position: absolute;bottom: 31%;left: 47%;")
+           alert("Bannet Opened")
+   }
+   let isopenFrontRight=false;
+
+   function openFrontRight(){
+       isopenFrontRight=!isopenFrontRight
+       let eleFive = document.querySelector(".right-two");
+       if(isopenFrontRight){
+
+           eleFive.setAttribute("style", "display:none")
+       }
+       else{
+        eleFive.setAttribute("style","display:block;height:3%;width:5%;position: absolute;right: 22%;bottom: 47%;")
+       }
+    //    var eleOne = document.querySelector(".front");
+    //    let eleTwo = document.querySelector(".left-one");
+    //    let eleThree = document.querySelector(".left-two");
+    //    let eleFour = document.querySelector(".right-one");
+    //    let eleSix = document.querySelector(".bannet");
+            // eleOne.setAttribute("style","display:block;height:3%;width:5%;position: absolute;left: 48%;top: 15%;")
+            // eleTwo.setAttribute("style","display:block;height: 3%;width: 7%;position: absolute;top: 38%;left: 30%;")
+            // eleThree.setAttribute("style","display:block;height:3%;width: 7%;position: absolute;top: 50%;left: 30%;")
+            // eleFour.setAttribute("style","display:block;height:3%;width:5%;position: absolute;top: 38%;right: 22%;")
+            // eleSix.setAttribute("style","display:block;height:3%;width:5%;position: absolute;bottom: 31%;left: 47%;")
+        
+   }
+   let isopenRearRight=false;
+   function openRearRight(){
+       isopenRearRight=!isopenRearRight;
+       let eleSix = document.querySelector(".bannet");
+       if(isopenRearRight){
+           
+           eleSix.setAttribute("style", "display:none")
+       }else{
+        eleSix.setAttribute("style","display:block;height:3%;width:5%;position: absolute;bottom: 31%;left: 47%;")
+       }
+    //    var eleOne = document.querySelector(".front");
+    //    let eleTwo = document.querySelector(".left-one");
+    //    let eleThree = document.querySelector(".left-two");
+    //    let eleFour = document.querySelector(".right-one");
+    //    let eleFive = document.querySelector(".right-two");
+            // eleOne.setAttribute("style","display:block;height:3%;width:5%;position: absolute;left: 48%;top: 15%;")
+            // eleTwo.setAttribute("style","display:block;height: 3%;width: 7%;position: absolute;top: 38%;left: 30%;")
+            // eleThree.setAttribute("style","display:block;height:3%;width: 7%;position: absolute;top: 50%;left: 30%;")
+            // eleFour.setAttribute("style","display:block;height:3%;width:5%;position: absolute;top: 38%;right: 22%;")
+            // eleFive.setAttribute("style","display:block;height:3%;width:5%;position: absolute;right: 22%;bottom: 47%;")
+        //    alert("RearRight Opened")
+   }
+  
+   function closeAll(){
+       
+          var eleOne = document.querySelector(".front");
+          let eleTwo = document.querySelector(".left-one");
+          let eleThree = document.querySelector(".left-two");
+          let eleFour = document.querySelector(".right-one");
+          let eleFive = document.querySelector(".right-two");
+          let eleSix = document.querySelector(".bannet");
+          eleSix.setAttribute("style", "display:none")
+          eleOne.setAttribute("style", "display:none")
+          eleTwo.setAttribute("style", "display:none")
+          eleThree.setAttribute("style", "display:none")
+          eleFour.setAttribute("style", "display:none")
+          eleFive.setAttribute("style", "display:none")
+           // eleOne.setAttribute("style","display:block;height:3%;width:5%;position: absolute;left: 48%;top: 15%;")
+               // eleTwo.setAttribute("style","display:block;height: 3%;width: 7%;position: absolute;top: 38%;left: 30%;")
+               // eleThree.setAttribute("style","display:block;height:3%;width: 7%;position: absolute;top: 50%;left: 30%;")
+               // eleFour.setAttribute("style","display:block;height:3%;width:5%;position: absolute;top: 38%;right: 22%;")
+               // eleFive.setAttribute("style","display:block;height:3%;width:5%;position: absolute;right: 22%;bottom: 47%;")
+              alert("CLosed")
+      }
+    function endProcess(){
+        debugger
+        document.querySelector(".spaVal").textContent = "0"
+        document.querySelector(".spaVal").setAttribute("style", "color:orange;font-weight:bolder;font-size:9em;padding-left:24%");
+        document.querySelector(".stop").setAttribute("style", "color:green;font-weight:bolder");
+        clearInterval(speedIntervalId)
+}
+function startAc(){
+ isStartAc= !isStartAc;
+ 
+ if(isStartAc){
+    acIntervalId=setInterval(setRandom, 5000);
+ }else{
+    clearInterval(acIntervalId)
+ }
+}
+ function setRandom() {
+        var val= Math.random() * 45;
+        console.log(val)
+        console.log(document.querySelector(".status"),"jiii")
+        document.querySelector(".status").textContent = Math.floor(val);
+        document.querySelector(".status-one").textContent = Math.floor(val-2);
+        // if(val<18){
+        //     document.getElementsByClassName("status-text").setAttribute("style", "color:red; background-color:#e1f0fe")
+        // }
+        // document.getElementsByClassName("status-text").textContent=val
+    // document.getElementById('out').innerHTML = Math.random() * 101 | 0;
+}
+// setRandom();
+// setInterval(setRandom, 5000);
+
+    </script>
+    
+   
+    <div class="row" style="margin-left: 2%;padding-top: 3%;padding-bottom: 1%;">
+        <div id="tools" class="col-md-6 mr-10" style="
+        height: 17em;
+    ">
+   <div class="container">
+    <div class="row" style="width: 37em;height: 11em;/* align-items: center; *//* justify-items: center; *//* text-align: justify; */background: rgb(233, 229, 236);height: 9em;color: antiquewhite;">
+      <div class="col" onclick="openFront()" style="width: 25em;height: 8em;margin-right:1em;margin-bottom:1em;/* padding-top: 3em; *//* padding-left: 3em; */padding: 3em;background: rgb(45, 3, 85);align-items: center;height: 8em;color: antiquewhite;cursor: pointer;">Front</div>
+      <div class="col" onclick="openFrontLeft()" style="width: 25em;height: 3em;background: rgb(45, 3, 85);padding: 3em;height: 8em;margin-right: 1em;color: antiquewhite;cursor: pointer;">Front Left</div>
+         <div class="col" onclick="openRearLeft()" style="width: 25em;height: 3em;padding: 3em;background: rgb(45, 3, 85);height: 8em;color: antiquewhite;cursor: pointer;margin-right:3%">Rear Left</div>
+         <div class="col" onclick="openAll()" style="width: 25em;height: 3em;padding: 3em;background: rgb(45, 3, 85);height: 8em;color: antiquewhite;cursor: pointer;">All Open</div>
+      <!-- <div class="w-100" style="background-color: whitesmoke;"></div> -->
+      
+      <!-- <div class="w-100" style="background-color: whitesmoke;"></div> -->
+    </div>
+    <div class="row" style="width: 37em;height: 11em;background: rgb(233, 229, 236);height: 9em;color: antiquewhite;">
+        <div class="col" onclick="openBannet()" style="width: 25em;height: 11em;margin-right:1em;margin-bottom:1em;background: rgb(45, 3, 85);padding: 3em;height: 8em;color: antiquewhite; cursor: pointer;">Bannet</div>
+        <div class="col" onclick="openFrontRight()" style="width: 25em;height: 11em;background: rgb(45, 3, 85);padding: 3em;margin-right: 1em;height: 8em;color: antiquewhite; cursor: pointer;">Front Right</div>
+        <div class="col" onclick="openRearRight()" style="width: 25em;height: 11em;background: rgb(45, 3, 85);padding: 3em;height: 8em;color: antiquewhite;cursor: pointer;">Rear Right</div>
+        <div class="col" onclick="closeAll()" style="width: 25em;height: 3em;padding: 3em;background: rgb(45, 3, 85);height: 8em;color: antiquewhite;cursor: pointer;margin-left: 4px;">All Close</div>
+    </div>
+      
+  </div>
+        <!-- <div style="line-height: 1.5em;text-align:center">
+          
+        
+           OFF <label class="switch">
+                <input onClick="startAc()" type="checkbox">
+                <span class="slider round"></span>
+              </label>ON
+        </div> -->
+      <!-- <input class="form__field" type="text" name="start" id="start" value="union square, NY" /> -->
+      <!-- <input class="form__field" type="text" name="start" id="start" value="Electronic city" >
+      <img src="https://cdn3.iconfinder.com/data/icons/modifiers-add-on-2/48/v-28-512.png" style="
+      width: 7%;
+    ">
+      <input  class="form__field" type="text" name="end" id="end" value="koramangala" />
+    
+      <img src="https://static.thenounproject.com/png/1851808-200.png" onclick="startProcess();" style="width: 4%;cursor:pointer;">
+      <img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fdownload.png?alt=media&token=6cbc67c2-00ec-40c1-8058-6aee16e9b42b" onclick="endProcess();" style="width: 37px;cursor:pointer;"> -->
+     
+    </div>
+<div id="tools" class="col-md-6 mr-10">
+    <!-- <input class="form__field" type="text" name="start" id="start" value="union square, NY" /> -->
+   
+  </div>
+</div>
+
+
+    <div class="col-md-6"  style="height:50%" id="" >
+        <div style="max-width: fit-content; margin: 0 auto; position: relative;">
+            <img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fxuv700%20%E2%80%93%201.png?alt=media&token=d57ade26-225d-4036-ab42-3b597d6319c7" style="height: 100%; width: 80%; object-fit: contain;">
+            
+            </div>
+    </div>
+    <div class="col-md-6" style="/* height: 78%; *//* position: absolute; *//* right: 0%; *//* width: 49%; *//* bottom: 26%; */" id=""> 
+        <div style="max-width: fit-content;margin: 0 auto;position: relative;margin: auto 0;bottom: 18em;height: 61em;">
+            <img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fvehicle_status_asset.png?alt=media&amp;token=0f9b503c-da94-4c50-beaf-7f2e1883ec9b" style="height: 77%;bottom: 83%;width: 100%;/* position: absolute; *//* object-fit: contain; */">
+            <div class="lock-one" style="position: absolute;color: white;font-family: 'Lato';width: 100%;height: 100%;bottom: 4%;box-sizing: border-box;padding-top: 40px;">
+            <img class="front" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fdoor_lock.png?alt=media&amp;token=4e7543a5-3b7f-4cea-a1cf-976f87beb4c2" style="height:3%;width: 7%;position: absolute;left: 48%;top: 15%;">
+            </div>
+            <div class="lock-two" style="position: absolute;color: white;font-family: 'Lato';width: 71%;height: 100%;bottom: 6em;box-sizing: border-box;">
+            <img class="left-one" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fdoor_lock.png?alt=media&amp;token=4e7543a5-3b7f-4cea-a1cf-976f87beb4c2" style="height: 3%;width: 10%;position: absolute;top: 38%;left: 30%;">
+            <!-- </div> -->
+            <!-- <div class="lock-three" style="position: absolute;color: white;font-family: 'Lato';width: 100%;top: 0;height: 100%;box-sizing: border-box;display: flex;justify-content: center;padding-top: 120px;"> -->
+            <img class="left-two" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fdoor_lock.png?alt=media&amp;token=4e7543a5-3b7f-4cea-a1cf-976f87beb4c2" style="height:3%;width: 10%;position: absolute;top: 50%;left: 30%;">
+            </div>
+            <div class="lock-four" style="position: absolute;color: white;font-family: 'Lato';width: 100%;height: 100%;bottom: 10%;box-sizing: border-box;">
+            <img class="right-one" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fdoor_lock.png?alt=media&amp;token=4e7543a5-3b7f-4cea-a1cf-976f87beb4c2" style="height:3%;width: 7%;position: absolute;top: 38%;right: 22%;">
+            <!-- </div> -->
+            <!-- <div class="lock-five" style="position: absolute;color: white;font-family: 'Lato';width: 100%;top: 0;height: 100%;box-sizing: border-box;display: flex;justify-content: center;padding-top: 200px;"> -->
+            <img class="right-two" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fdoor_lock.png?alt=media&amp;token=4e7543a5-3b7f-4cea-a1cf-976f87beb4c2" style="height:3%;width: 7%;position: absolute;right: 22%;bottom: 47%;">
+            </div>
+            <div class="lock-six" style="position: absolute;color: white;font-family: 'Lato';width: 100%;bottom: 9em;height: 100%;box-sizing: border-box;">
+            <img class="bannet" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fdoor_lock.png?alt=media&amp;token=4e7543a5-3b7f-4cea-a1cf-976f87beb4c2" style="height:3%;width: 8%;position: absolute;bottom: 31%;left: 47%;">
+            </div>
+        </div>
+        <!-- <div style="max-width: fit-content;margin: 0 auto;position: relative;margin: auto 0;height: 2%;width: 50%;">
+            <div class="" data-cell="speed-stat" style="color:#383c7f;font-weight:bolder;position: relative;top: 26em;left: 18em;"><strong>` </strong><span style="font-size: 3em;" class="status">0</span>C*<span class="stop" style="display:none">Reached Destination</span></div>
+    <div class="" data-cell="speed-stat" style="color:#383c7f;font-weight:bolder;position: relative;top: 22em;left: 2em;"><strong>` </strong>*C<span style="font-size: 3em;" class="status-one">0</span><span class="stop" style="display:none">Reached Destination</span></div>
+            <img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2FAC_Status_Asset.png?alt=media&amp;token=d1174d6f-df5c-4cdf-b305-698b2264c847" style="height: fit-content; width: 100%; object-fit: contain;">
+          
+            <div class="status-text" style="position: absolute;color: white;font-family: 'Lato';width: 43% !important;top: 0;height: 100%;box-sizing: border-box;display: flex;justify-content: center;padding-top: 10px;padding-right:20px"></div> -->
+        </div>
+        
+      </div>
+<script>
+
+</script>
+</body>
+</html>
