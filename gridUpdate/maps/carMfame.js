@@ -20,7 +20,7 @@ const plugin = ({widgets, simulator}) => {
 
     let boxGlobal = null
 
-    widgets.register("carinwframe", (box) => {
+    widgets.register("carmframe", (box) => {
         boxGlobal = box
         box.injectNode(container)
         return () => {
