@@ -45,7 +45,7 @@ const plugin = ({widgets, simulator}) => {
 
     let boxGlobal = null
 
-    widgets.register("carInput", (box) => {
+    widgets.register("carNwInput", (box) => {
         boxGlobal = box
         box.injectNode(container)
         return () => {
