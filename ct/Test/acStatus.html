@@ -252,6 +252,7 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
          // document.getElementById('simStart').disabled=true;
          // // simStBtn.disabled=false
          // debugger
+        
           
          var simElement = document.getElementById('simu-btn');  
          simElement.disabled=!turnAcOn;      
@@ -260,8 +261,11 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
          var leftBtn= document.querySelector('.status-one')
          turnOn()
          function turnOn() {
-            if(turnAcOn){
-                
+            if(turnAcOn){ 
+               document.querySelector(".state-one").setAttribute("style","color: #ecedf2;font-weight:bolder;display:block;position: relative;top: 215px;left: 132px;");
+               document.querySelector(".state-two").setAttribute("style","color: #eeeef4;font-weight: 600;display:block;position: relative;top: 195px;left: 12em;");
+               document.getElementById("on-status-val").textContent=true;
+              
                //  simElement.setAttribute("style","display:block;margin-left: 9%;text-align: -webkit-auto;padding-top: 3%;padding-bottom: 1%;color: whitesmoke;")
                 rightBtn.setAttribute("style","display:contents")
                 leftBtn.setAttribute("style","display:contents")
@@ -271,6 +275,9 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
                 actionLog("Ac ventilation initiated");
                 },2000)
             }else{
+               document.querySelector(".state-one").setAttribute("style","color: #ecedf2;font-weight:bolder;display:none;position: relative;top: 215px;left: 132px;");
+               document.querySelector(".state-two").setAttribute("style","color: #eeeef4;font-weight: 600;display:none;position: relative;top: 195px;left: 12em;");
+               document.getElementById("on-status-val").textContent=false;
                 rightBtn.disabled = true;
                 leftBtn.disabled = true;
                //  simElement.setAttribute("style","visibility: hidden;margin-left: 9%;text-align: -webkit-auto;padding-top: 3%;padding-bottom: 1%;color: whitesmoke;")
@@ -308,11 +315,14 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
  
          function pushVal(){
           let values = document.getElementsByClassName('onBySwitch');
-          var ventOne = document.querySelector("#driveOne");
+         //  document.querySelector(`[data-cell="speed-stat-ac"]span`).textCOntent = document.querySelector("#rightAc").innerHTML;
           var ventTwo = document.querySelector("#driveTwo");
+          var ventOne = document.querySelector("#driveOne")
         ventTwo.textContent = document.querySelector("#co-ac").innerHTML;
-        ventOne.textCOntent = document.querySelector("#rightAc").innerHTML;
-            console.log('values', values)
+        document.getElementById("drive-val").textContent=document.querySelector("#rightAc").innerHTML
+        document.getElementById("co-val").textContent=document.querySelector("#co-ac").innerHTML
+        ventOne.textContent = document.querySelector("#rightAc").innerHTML;
+         
             for(let i=0; i< values.length; i++){
               values[i].classList.toggle('onBySwitch')
             }
@@ -370,13 +380,17 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
                   margin-right: 11px;
                   margin-top: 0%;
                   ">
-                  <span style="position: absolute;bottom: 4em;left: 0em;font-size: 23px;font-weight: bolder;">Climate Control</span><span id="leftAc" style="position: absolute;bottom: 3em;left: 12em;font-size: 23px;font-weight: bolder;"> <label class="switchon">
+                  <span style="position: absolute;bottom: 4em;left: 0em;font-size: 23px;font-weight: bolder;">Climate Control</span><span id="leftAc" style="position: absolute;bottom: 3em;left: 12em;font-size: 23px;font-weight: bolder;"> 
+                     <label class="switchon">
                   <input onclick="startAc()" type="checkbox">
                   <span class="slideron roundon"></span>
-                    </label>ON</span>
-                  <div style="position: absolute;bottom: 1em;left: 0em;font-size: 23px;font-weight: bolder;">
+               </label><span style="
+               position: relative;
+               left: 22%;
+           ">ON</span></span>
+                  <div style="position: absolute;bottom: 1em;left: 0em;font-size: 20px;font-weight: bolder;">
                       Driver A/C Temperature 
-                      <span id="rightAc" style="margin-left: 2rem;">17</span> *C 
+                      <span id="rightAc" style="margin-left: 4em"></span> *C 
                   </div>
                   <!-- <label>Rear Left :</label> -->
                   <input id="driveAc" min="1" max="35" class="slider" onchange="changeSlide(this)" type="range" style="
@@ -409,9 +423,9 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
                margin-right: 11px;
                margin-top: 0%;
                ">
-               <div style="position: absolute;bottom: 2em;left: 0em;font-size: 23px;font-weight: bolder;"> 
+               <div style="position: absolute;bottom: 2em;left: 0em;font-size: 20px;font-weight: bolder;"> 
                     Co-Driver A/C Temperature 
-                    <span id="co-ac" style="margin-left: 1.5rem;">24</span>
+                    <span id="co-ac" style="margin-left: 5rem;"></span>
                     *C
                 </div>
                <!-- <label>Rear Left :</label> -->
@@ -442,11 +456,11 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
       </div>
       <div class="col-md-6" style="height: 100%;position: absolute;right: 8%;width: 49%;bottom: 0%;" id="">
          <div style="max-width: fit-content;margin: 0 auto;position: relative;margin: auto 0;height: 2%;width: 50%;">
-            <div class="" data-cell="speed-stat" style="color: #ecedf2;font-weight:bolder;position: relative;top: 215px;left: 132px;">
-                <span style="display:contents" id="driveOne" class="status">0</span>*C
+            <div class="state-one" data-cell="speed-stat" style="color: #ecedf2;font-weight:bolder;display:none;position: relative;top: 215px;left: 132px;">
+                <span style="display:contents" id="driveTwo" class="status">0</span>*C
             </div>
-            <div class="" data-cell="speed-stat" style="color: #eeeef4;font-weight: 600;position: relative;top: 195px;left: 12em;">
-                <span style="display:contents" id="driveTwo" class="status-one">0</span>*C
+            <div class="state-two" data-cell="speed-stat-ac"  style="color: #eeeef4;font-weight: 600;display:none;position: relative;top: 195px;left: 12em;">
+                <span style="display:contents" id="driveOne" class="status-one">0</span>*C
             </div>
             <img id="imageOne" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fac_off.png?alt=media&amp;token=865430bf-fd2e-4278-84e7-31735d0b5f7d" style="height: auto146%;width: 100%;object-fit: contain;">
             <!-- <div class="status-text" style="position: absolute;color: white;font-family: 'Lato';width: 100%;top: 0;height: 5%;box-sizing: border-box;display: flex;justify-content: center;padding-top: 10px;"></div>
@@ -495,19 +509,19 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
                 </thead>
                 <tbody>
                   <tr>
-                    <td>Vehicle.CurrentLocatio.Lat</td>
+                    <td>Vehicle.cabin.Ac.driver</td>
                   
-                    <td>49.1654567777</td>
+                    <td id="drive-val">---</td>
                    
                   </tr>
                 
                   <tr>
-                    <td>Vehicle.CurrentLocation.Long</td> 
-                    <td>9.7887878</td>
+                    <td>Vehicle.cabin.Ac.Co-driver</td> 
+                    <td id="co-val">---</td>
                   </tr>
                   <tr>
-                    <td>Vehicle.ificationNumber</td>
-                    <td>CTH78888999</td>
+                    <td>Vehicle.Cabin.HVAC.IsAirConditioningActive</td>
+                    <td id="on-status-val">true</td>
                   </tr>
                   <tr>
                     <td>Vehicle.Speed</td>
