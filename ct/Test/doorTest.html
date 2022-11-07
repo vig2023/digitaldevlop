@@ -17,9 +17,6 @@
          margin: 0px;
          font-family: Helvetica, Arial;
          }
-         /* .unlockBx{
-            pointer-events:none;
-         } */
          .gmnoprint,.gm-svpc{
          display: none !important;
          }
@@ -126,10 +123,6 @@
             margin: 10px 0 0;
             cursor: pointer;
          }
-         strong{
-            font-weight: 800;
-            font-size: 15px;
-         }
          .title-all{
             color: #005580;
             font-size: 18px;
@@ -141,19 +134,6 @@
    </head>
    <body>
       <script>
-
-             
-function actionLog(val) {  
-    var d = new Date();
-    var n = d.toLocaleTimeString();
-
-    var div = document.getElementById('divDoorlogger');
-
-div.innerHTML += `<p> ${n}:${val}</p>`;
-
-//   document.getElementById("myTextarea").value = document.getElementById("myTextarea").value +n+"---" +val+"\n";
-
-}
          var map;
          var isStartAc= false;
          
@@ -184,35 +164,16 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
          
          //     }
          let isFrontOpen=false;
-         function openFront(a){
-            let p = document.querySelector('.title-ofRight') 
-            let p2 = document.querySelector('.title-3ofRight') ;  
-            let titleClass = document.querySelector('.title-lock-ofRight');
-            // if(titleClass == 'title-unlock'){
-            //    p.innerHTML = 'LOCK'
-            //    p2.innerHTML = 'Tap to unlock'
-            //    p.classList.remove('title-unlock');
-            //    p.classList.add('title-lock');
-            // } else {
-            //    p.innerHTML = 'unLOCK'
-            //    p2.innerHTML = 'Tap to lock'
-            //    p.classList.remove('title-lock');
-            //    p.classList.add('title-unlock');
-            // }
-
+         function openFront(){
             isFrontOpen=!isFrontOpen;
             var eleOne = document.querySelector(".front");
             if(isFrontOpen){
-                  
+            
                 // let eleTwo = document.querySelector(".left-one");
                 // let eleThree = document.querySelector(".left-two");
                 // let eleFour = document.querySelector(".right-one");
                 // let eleFive = document.querySelector(".right-two");
                 // let eleSix = document.querySelector(".bannet");
-                // p.innerHTML = a
-                p2.innerHTML = 'Tap to unlock'
-                titleClass.innerHTML='LOCK';
-                actionLog("Locked Hood")
                 eleOne.setAttribute("style", "display:none")
                     // eleTwo.setAttribute("style","display:block;height: 3%;width: 7%;position: absolute;top: 38%;left: 30%;")
                     // eleThree.setAttribute("style","display:block;height:3%;width: 7%;position: absolute;top: 50%;left: 30%;")
@@ -221,30 +182,11 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
                     // eleSix.setAttribute("style","display:block;height:3%;width:5%;position: absolute;bottom: 31%;left: 47%;")
                   
             }else{
-                // p.innerHTML = a
-                p2.innerHTML = 'Tap to lock'
-                titleClass.innerHTML='UNLOCK'
-                actionLog("UnLocked Hood")
                 eleOne.setAttribute("style","display:block;height:3%;width:5%;position: absolute;left: 48%;top: 15%;")
             }
          }
          let isopenFrontLeft=false;
-         function openFrontLeft(a){
-            let p = document.querySelector('.title-FLRight') 
-            let p2 = document.querySelector('.title-3flRight') ;  
-            let titleClass = document.querySelector('.title-lock-flRight');
-            // if(titleClass == 'title-unlock'){
-            //    p.innerHTML = 'LOCK'
-            //    p2.innerHTML = 'Tap to unlock'
-            //    p.classList.remove('title-unlock');
-            //    p.classList.add('title-lock');
-            // } else {
-            //    p.innerHTML = 'unLOCK'
-            //    p2.innerHTML = 'Tap to lock'
-            //    p.classList.remove('title-lock');
-            //    p.classList.add('title-unlock');
-            // }
-
+         function openFrontLeft(){
          isopenFrontLeft=!isopenFrontLeft;
          let eleTwo = document.querySelector(".left-one");
          //    var eleOne = document.querySelector(".front");
@@ -253,18 +195,9 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
          //    let eleFive = document.querySelector(".right-two");
          //    let eleSix = document.querySelector(".bannet");
          if(isopenFrontLeft){
-            // p.innerHTML = a
-            p2.innerHTML = 'Tap to unlock'
-            titleClass.innerHTML='LOCK'
           eleTwo.setAttribute("style", "display:none")
-          actionLog("Locked FrontLeft Door")
          }else{
-            // p.innerHTML = a
-            p2.innerHTML = 'Tap to lock'
-            titleClass.innerHTML='UNLOCK'
-            actionLog("UnLocked FrontLeft Door")
           eleTwo.setAttribute("style","display:block;height: 3%;width: 7%;position: absolute;top: 38%;left: 30%;")
-          
          
          }
              // eleOne.setAttribute("style","display:block;height:3%;width:5%;position: absolute;left: 48%;top: 15%;")
@@ -272,27 +205,16 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
              // eleFour.setAttribute("style","display:block;height:3%;width:5%;position: absolute;top: 38%;right: 22%;")
              // eleFive.setAttribute("style","display:block;height:3%;width:5%;position: absolute;right: 22%;bottom: 47%;")
              // eleSix.setAttribute("style","display:block;height:3%;width:5%;position: absolute;bottom: 31%;left: 47%;")
-            // alert("FrontLeft Opened")
+            alert("FrontLeft Opened")
          }
          let isopenRearLeft =false;
-         function openRearLeft(a){
-            let p = document.querySelector('.title-rlRight') 
-            let p2 = document.querySelector('.title-3-rlRight') ;  
-            let titleClass = document.querySelector('.title-lock-rlRight');
+         function openRearLeft(){
          isopenRearLeft=!isopenRearLeft;
          let eleThree = document.querySelector(".left-two");
-         if(isopenRearLeft){
-            // p.innerHTML = a
-            p2.innerHTML = 'Tap to unlock';
-            titleClass.innerHTML='LOCK';
-            actionLog("Locked RearLeft Door");
-         eleThree.setAttribute("style", "display:none");
+         if(isopenFrontLeft){
+         eleThree.setAttribute("style", "display:none")
          
          }else{
-            // p.innerHTML = a
-            p2.innerHTML = 'Tap to lock'
-            titleClass.innerHTML='UNLOCK'
-            actionLog("UnLocked RearLeft Door")
          eleThree.setAttribute("style","display:block;height:3%;width: 7%;position: absolute;top: 50%;left: 30%;")
          }
          //    var eleOne = document.querySelector(".front");
@@ -305,37 +227,16 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
              // eleFour.setAttribute("style","display:block;height:3%;width:5%;position: absolute;top: 38%;right: 22%;")
              // eleFive.setAttribute("style","display:block;height:3%;width:5%;position: absolute;right: 22%;bottom: 47%;")
              // eleSix.setAttribute("style","display:block;height:3%;width:5%;position: absolute;bottom: 31%;left: 47%;")
-            // alert("RearLeft Opened")
+            alert("RearLeft Opened")
          }
          let isopenBannet=false
-         function openBannet(a){
-            let p = document.querySelector('.title-btRight') 
-            let p2 = document.querySelector('.title-3btRight') ;  
-            let titleClass = document.querySelector('.title-lock-btRight');
-            // if(titleClass == 'title-unlock'){
-            //    p.innerHTML = 'LOCK'
-            //    p2.innerHTML = 'Tap to unlock'
-            //    p.classList.remove('title-unlock');
-            //    p.classList.add('title-lock');
-            // } else {
-            //    p.innerHTML = 'unLOCK'
-            //    p2.innerHTML = 'Tap to lock'
-            //    p.classList.remove('title-lock');
-            //    p.classList.add('title-unlock');
-            // }
+         function openBannet(){
          isopenBannet=!isopenBannet
          let eleFour = document.querySelector(".right-one");
          if(isopenBannet){
-            // p.innerHTML = a
-            p2.innerHTML = 'Tap to unlock'
-            titleClass.innerHTML='LOCK'
-            actionLog("Locked Bannet")
+            
             eleFour.setAttribute("style", "display:none")
          }else{
-            // p.innerHTML = a
-            p2.innerHTML = 'Tap to lock'
-            titleClass.innerHTML='UNLOCK'
-            actionLog("UnLocked Bannet")
          eleFour.setAttribute("style","display:block;height:3%;width:5%;position: absolute;top: 38%;right: 22%;")
          }
          //    var eleOne = document.querySelector(".front");
@@ -348,40 +249,19 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
              // eleThree.setAttribute("style","display:block;height:3%;width: 7%;position: absolute;top: 50%;left: 30%;")
              // eleFive.setAttribute("style","display:block;height:3%;width:5%;position: absolute;right: 22%;bottom: 47%;")
              // eleSix.setAttribute("style","display:block;height:3%;width:5%;position: absolute;bottom: 31%;left: 47%;")
-            // alert("Bannet Opened")
+            alert("Bannet Opened")
          }
          let isopenFrontRight=false;
          
-         function openFrontRight(a){
-            let p = document.querySelector('.title-frRight') 
-            let p2 = document.querySelector('.title-3-frRight') ;  
-            let titleClass = document.querySelector('.title-lock-frRight');
-            // if(titleClass == 'title-unlock'){
-            //    p.innerHTML = 'LOCK'
-            //    p2.innerHTML = 'Tap to unlock'
-            //    p.classList.remove('title-unlock');
-            //    p.classList.add('title-lock');
-            // } else {
-            //    p.innerHTML = 'unLOCK'
-            //    p2.innerHTML = 'Tap to lock'
-            //    p.classList.remove('title-lock');
-            //    p.classList.add('title-unlock');
-            // }
+         function openFrontRight(){
          isopenFrontRight=!isopenFrontRight
-         let eleFour = document.querySelector(".right-one");
+         let eleFive = document.querySelector(".right-two");
          if(isopenFrontRight){
-            // p.innerHTML = a
-            p2.innerHTML = 'Tap to unlock'
-            titleClass.innerHTML='LOCK'
-            actionLog("Front Right Door locked")
-            eleFour.setAttribute("style", "display:none")
+         
+            eleFive.setAttribute("style", "display:none")
          }
          else{
-            // p.innerHTML = a
-            p2.innerHTML = 'Tap to lock'
-            titleClass.innerHTML='UNLOCK'
-            actionLog("Unlocked Front Right Door")
-         eleFour.setAttribute("style","display:block;height:3%;width:7%;position: absolute;top: 38%;right: 22%;")
+         eleFive.setAttribute("style","display:block;height:3%;width:5%;position: absolute;right: 22%;bottom: 47%;")
          }
          //    var eleOne = document.querySelector(".front");
          //    let eleTwo = document.querySelector(".left-one");
@@ -395,136 +275,31 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
              // eleSix.setAttribute("style","display:block;height:3%;width:5%;position: absolute;bottom: 31%;left: 47%;")
          
          }
-         let isopenBannetNw=false;
-         function openBannet(a){
-            let p = document.querySelector('.title-btRight') 
-            let p2 = document.querySelector('.title-3btRight') ;  
-            let titleClass = document.querySelector('.title-lock-btRight');
-            // if(titleClass == 'title-unlock'){
-            //    p.innerHTML = 'LOCK'
-            //    p2.innerHTML = 'Tap to unlock'
-            //    p.classList.remove('title-unlock');
-            //    p.classList.add('title-lock');
-            // } else {
-            //    p.innerHTML = 'unLOCK'
-            //    p2.innerHTML = 'Tap to lock'
-            //    p.classList.remove('title-lock');
-            //    p.classList.add('title-unlock');
-            // }
-            isopenBannetNw=!isopenBannetNw;
+         let isopenRearRight=false;
+         function openRearRight(){
+         isopenRearRight=!isopenRearRight;
          let eleSix = document.querySelector(".bannet");
-         if(isopenBannetNw){
-            // p.innerHTML = a
-            p2.innerHTML = 'Tap to unlock'
-            titleClass.innerHTML='LOCK'
-            eleSix.setAttribute("style", "display:none")
-            actionLog("Boot locked")
-         }else{
-            // p.innerHTML = a
-            p2.innerHTML = 'Tap to lock'
-            titleClass.innerHTML='UNLOCK'
-            actionLog("Boot Unlocked")
-         eleSix.setAttribute("style","display:block;height:3%;width:7%;position: absolute;bottom: 31%;left: 47%;")
-         }
-
-        
-         }
-           //RearRight
-           let isRearRightNw=false;
-         function openRearRightNw(a){
-            let p = document.querySelector('.title-rrRight') 
-            let p2 = document.querySelector('.title-3-rrRight') ;  
-            let titleClass = document.querySelector('.title-lock-rrRight');
-            isRearRightNw=!isRearRightNw;
-         let eleSix = document.querySelector(".right-two");
-         if(isRearRightNw){
-            // p.innerHTML = a
-            p2.innerHTML = 'Tap to unlock'
-            titleClass.innerHTML='LOCK'
-            actionLog("Locked  Rear Right door ")
+         if(isopenRearRight){
+            
             eleSix.setAttribute("style", "display:none")
          }else{
-            // p.innerHTML = a
-            p2.innerHTML = 'Tap to lock'
-            titleClass.innerHTML='UNLOCK'
-            actionLog("Unlocked Rear RIght door")
-            eleSix.setAttribute("style","display:block;height:3%;width:7%;position: absolute;right: 22%;bottom: 47%;")
-         }}
-         //eod RearRight
-         let openAllDoor =false;
-         function openAll(event){
-            let p = event.getElementsByTagName('p')[0];
-            let titleClass = event.getElementsByTagName('p')[0].className;
-            let text = event.getElementsByTagName('p')[0].innerHTML;
-            // let unlockDoors= document.getElementsByClassName("unlockBx")
-
-            // unlockDoors.setAttribute("style","pointer-events:none;")
-            // console.log(unlockDoors.ariaDisabled,"HEYYYYYYYYYYY")
-            // debugger
-            // unlockDoors.setAttribute("style","display:flex");
-            actionLog("All doors opened")
-            openAllDoor = !openAllDoor;
-            if(closeAllDoor){
-                openRearRightNw("LOCK");
-                openFrontRight("LOCK");
-                openRearLeft("LOCK");
-                openBannet("LOCK");
-                openFrontLeft("LOCK");
-                openFront("LOCK")
-
-            }
-            // openRearRight()
-            if(text == 'Lock All'){
-               p.innerHTML = 'Unlock All'
-            } else {
-               p.innerHTML = 'Lock All'
-            }
-           var eleOne = document.querySelector(".front");
-           let eleTwo = document.querySelector(".left-one");
-           let eleThree = document.querySelector(".left-two");
-           let eleFour = document.querySelector(".right-one");
-           let eleFive = document.querySelector(".right-two");
-           let eleSix = document.querySelector(".bannet");
-        //    eleSix.setAttribute("style", "display:none")
-        //    eleOne.setAttribute("style", "display:none")
-        //    eleTwo.setAttribute("style", "display:none")
-        //    eleThree.setAttribute("style", "display:none")
-        //    eleFour.setAttribute("style", "display:none")
-        //    eleFive.setAttribute("style", "display:none")
-            eleOne.setAttribute("style","display:block;height:3%;width:5%;position: absolute;left: 48%;top: 15%;")
-                eleTwo.setAttribute("style","display:block;height: 3%;width: 7%;position: absolute;top: 38%;left: 30%;")
-                eleThree.setAttribute("style","display:block;height:3%;width: 7%;position: absolute;top: 50%;left: 30%;")
-                eleFour.setAttribute("style","display:block;height:3%;width:7%;position: absolute;top: 38%;right: 22%;")
-                eleFive.setAttribute("style","display:block;height:3%;width:7%;position: absolute;right: 22%;bottom: 47%;")
-                eleSix.setAttribute("style","display:block;height:3%;width:5%;position: absolute;bottom: 31%;left: 47%;")
-            //    alert("CLosed")
+         eleSix.setAttribute("style","display:block;height:3%;width:5%;position: absolute;bottom: 31%;left: 47%;")
          }
-         let closeAllDoor=false
-         function closeAll(event){
-
-            let p = event.getElementsByTagName('p')[0];
-            let titleClass = event.getElementsByTagName('p')[0].className;
-            let text = event.getElementsByTagName('p')[0].innerHTML;
-            // let unlockDoors= document.querySelector(".unlockBx")
-            // unlockDoors.setAttribute("style","display:flex");
-            // let lockDoors=document.querySelector(".lockBx").setAttribute("style","display:none");
-            closeAllDoor = !closeAllDoor
-            actionLog("All door closed..")
-            if(closeAllDoor){
-                openRearRightNw("UNLOCK");
-                openFrontRight("UNLOCK");
-                openRearLeft("UNLOCK");
-                openBannet("UNLOCK");
-                openFrontLeft("UNLOCK");
-                openFront("UNLOCK")
-
-            }
-            // openRearRight()
-            if(text == 'Lock All'){
-               p.innerHTML = 'Unlock All'
-            } else {
-               p.innerHTML = 'Lock All'
-            }
+         //    var eleOne = document.querySelector(".front");
+         //    let eleTwo = document.querySelector(".left-one");
+         //    let eleThree = document.querySelector(".left-two");
+         //    let eleFour = document.querySelector(".right-one");
+         //    let eleFive = document.querySelector(".right-two");
+             // eleOne.setAttribute("style","display:block;height:3%;width:5%;position: absolute;left: 48%;top: 15%;")
+             // eleTwo.setAttribute("style","display:block;height: 3%;width: 7%;position: absolute;top: 38%;left: 30%;")
+             // eleThree.setAttribute("style","display:block;height:3%;width: 7%;position: absolute;top: 50%;left: 30%;")
+             // eleFour.setAttribute("style","display:block;height:3%;width:5%;position: absolute;top: 38%;right: 22%;")
+             // eleFive.setAttribute("style","display:block;height:3%;width:5%;position: absolute;right: 22%;bottom: 47%;")
+         //    alert("RearRight Opened")
+         }
+         
+         function closeAll(){
+         
            var eleOne = document.querySelector(".front");
            let eleTwo = document.querySelector(".left-one");
            let eleThree = document.querySelector(".left-two");
@@ -542,9 +317,10 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
                 // eleThree.setAttribute("style","display:block;height:3%;width: 7%;position: absolute;top: 50%;left: 30%;")
                 // eleFour.setAttribute("style","display:block;height:3%;width:5%;position: absolute;top: 38%;right: 22%;")
                 // eleFive.setAttribute("style","display:block;height:3%;width:5%;position: absolute;right: 22%;bottom: 47%;")
-            //    alert("CLosed")
+               alert("CLosed")
          }
          function endProcess(){
+         debugger
          document.querySelector(".spaVal").textContent = "0"
          document.querySelector(".spaVal").setAttribute("style", "color:orange;font-weight:bolder;font-size:9em;padding-left:24%");
          document.querySelector(".stop").setAttribute("style", "color:green;font-weight:bolder");
@@ -581,46 +357,45 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
             ">
             <div class="container">
                <div class="row" style="width: 560px;height: 140px; margin-bottom: 10px;">
-                  <div class="col switch-box" onclick="openFront(``)" >
-                      <p class="title-ofRight"><strong>Hood</strong></p>
-                      <p class="title-lock-ofRight" style="color: #33cc33; font-weight: bolder;">UNLOCK</p>
-                      <p class="title-3ofRight"style="color:#0e577c;font-weight: 600;">Tap to lock</p>
+                  <div class="col switch-box" onclick="openFront()" >
+                      <p class="title-1">Front</p>
+                      <p class="title-unlock">UNLOCK</p>
+                      <p class="title-3">Tap to Lock</p>
                   </div>
-                  <div class="col switch-box" onclick="openFrontLeft(``)" >
-                      <p class="title-FLRight"><strong>Front Left</strong></p>
-                      <p class="title-lock-flRight"style="color: #33cc33; font-weight: bolder;">UNLOCK</p>
-                      <p class="title-3flRight"style="color:#0e577c;font-weight: 600;">Tap to lock</p>
-                  </div>                         
-                  <div class="col switch-box" onclick="openFrontRight(``)" >
-                    <p class="title-frRight"><strong>Front Right</strong></p>
-                    <p class="title-lock-frRight"style="color: #33cc33; font-weight: bolder;">UNLOCK</p>
-                    <p class="title-3-frRight"style="color:#0e577c;font-weight: 600;">Tap to lock</p>
-                </div>
-                
-                  <div class="col switch-box unlockBx"   onclick="openAll(this)">
+                  <div class="col switch-box" onclick="openFrontLeft()" >
+                      <p class="title-1">Front Left</p>
+                      <p class="title-lock">LOCK</p>
+                      <p class="title-3">Tap to unlock</p>
+                  </div>
+                  <div class="col switch-box" onclick="openRearLeft()" >
+                      <p class="title-1">Rear Left</p>
+                      <p class="title-unlock">unLOCK</p>
+                      <p class="title-3">Tap to Lock</p>
+                  </div>
+                  <div class="col switch-box" onclick="openAll()">
                       <p class="title-all">Unlock All</p>
                   </div>
                   <!-- <div class="w-100" style="background-color: whitesmoke;"></div> -->
                   <!-- <div class="w-100" style="background-color: whitesmoke;"></div> -->
                </div>
                <div class="row" style="width: 560px;height: 140px;">
-                  <div class="col switch-box" onclick="openBannet(``)" >
-                      <p class="title-btRight"><strong>Boot</strong></p>
-                      <p class="title-lock-btRight"style="color: #33cc33; font-weight: bolder;">UNLOCK</p>
-                      <p class="title-3btRight"style="color:#0e577c;font-weight: 600;">Tap to lock</p>
+                  <div class="col switch-box" onclick="openBannet()" >
+                      <p class="title-1">Bannet</p>
+                      <p class="title-lock">LOCK</p>
+                      <p class="title-3">Tap to unlock</p>
                   </div>
-                  <div class="col switch-box" onclick="openRearLeft(``)" >
-                    <p class="title-rlRight"><strong>Rear Left</strong></p>
-                    <p class="title-lock-rlRight"style="color: #33cc33; font-weight: bolder;">UNLOCK</p>
-                    <p class="title-3-rlRight"style="color:#0e577c;font-weight: 600;">Tap to lock</p>
-                </div>  
-                  <div class="col switch-box" onclick="openRearRightNw(``)" >
-                      <p class="title-rrRight"><strong>Rear Right</strong></p>
-                      <p class="title-lock-rrRight"style="color: #33cc33; font-weight: bolder;">UNLOCK</p>
-                      <p class="title-3-rrRight" style="color:#0e577c;font-weight: 600;">Tap to lock</p>
+                  <div class="col switch-box" onclick="openFrontRight()" >
+                      <p class="title-1">Front Right</p>
+                      <p class="title-unlock">unLOCK</p>
+                      <p class="title-3">Tap to Lock</p>
                   </div>
-                  <div class="col switch-box lockBx" aria-disabled="false"  onclick="closeAll(this)" >
-                      <p class="title-all">LOCK All</p>
+                  <div class="col switch-box" onclick="openRearRight()" >
+                      <p class="title-1">Rear Right</p>
+                      <p class="title-lock">LOCK</p>
+                      <p class="title-3">Tap to unlock</p>
+                  </div>
+                  <div class="col switch-box" onclick="closeAll()" >
+                      <p class="title-all">Lock All</p>
                   </div>
                </div>
             </div>
@@ -645,13 +420,13 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
          </div>
       </div>
       <div class="col-md-6"  style="height:50%" id="" >
-         <div style="max-width: fit-content; margin: 0 auto; position: relative;height: 28em;">
-            <img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fxuv700.png?alt=media&amp;token=86231881-cf2d-4e28-8c02-2160fcfe77e4" style="height: 100%; width: 80%; object-fit: contain;">
+         <div style="max-width: fit-content; margin: 0 auto; position: relative;">
+            <img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fxuv700%20%E2%80%93%201.png?alt=media&token=d57ade26-225d-4036-ab42-3b597d6319c7" style="height: 100%; width: 80%; object-fit: contain;">
          </div>
       </div>
       <div class="col-md-6" style="/* height: 78%; *//* position: absolute; *//* right: 0%; *//* width: 49%; *//* bottom: 26%; */" id="">
-         <div style="max-width: fit-content;margin: 0 auto;position: relative;margin: auto 0;right:9em;bottom: 21em;height: 61em;">
-            <img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fac_off.png?alt=media&amp;token=865430bf-fd2e-4278-84e7-31735d0b5f7d" style="height: 77%;bottom: 83%;width: 100%;/* position: absolute; *//* object-fit: contain; */">
+         <div style="max-width: fit-content;margin: 0 auto;position: relative;margin: auto 0;bottom: 18em;height: 61em;">
+            <img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fvehicle_status_asset.png?alt=media&amp;token=0f9b503c-da94-4c50-beaf-7f2e1883ec9b" style="height: 77%;bottom: 83%;width: 100%;/* position: absolute; *//* object-fit: contain; */">
             <div class="lock-one" style="position: absolute;color: white;font-family: 'Lato';width: 100%;height: 100%;bottom: 4%;box-sizing: border-box;padding-top: 40px;">
                <img class="front" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fdoor_lock.png?alt=media&amp;token=4e7543a5-3b7f-4cea-a1cf-976f87beb4c2" style="height:3%;width: 7%;position: absolute;left: 48%;top: 15%;">
             </div>
@@ -678,70 +453,6 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
             
             <div class="status-text" style="position: absolute;color: white;font-family: 'Lato';width: 43% !important;top: 0;height: 100%;box-sizing: border-box;display: flex;justify-content: center;padding-top: 10px;padding-right:20px"></div> -->
       </div>
-      <div class="col-md-6" style="
-      position: absolute;
-      right: 20px;
-      bottom: 53%;
-      width: 369px;
-      font-size: 17px;
-      border: 1px solid grey;
-      height: 15em;
-      overflow-y: auto;
-      background: #ece9e9;
-      ">
-    <h3  style="
-    font-size: 16px;
-    font-weight: 600;
-">Vehicle Log:</h3>
-    <!-- <textarea id="myTextarea" style="
-    height: 20em;
-    width: 20em;
-"></textarea> -->
-  <div id="divDoorlogger"></div>
-    
-  
-
- </div>
-      <div class="col-md-6" style="position: absolute;right: 3em;bottom: 9em;width: 24%;">
-         <table class="table" style="
-             background: #e7e7eb;
-             font-size: 16px;
-             font-weight: 600;
-         ">
-             <thead class="" style="
-         background: #545494;
-         color: white;
-         ">
-               <tr>
-                 <th scope="col">VSS API</th>
-                 <th scope="col">Value</th>
-               
-               </tr>
-             </thead>
-             <tbody>
-               <tr>
-                 <td>Vehicle.CurrentLocatio.Lat</td>
-               
-                 <td>49.1654567777</td>
-                
-               </tr>
-             
-               <tr>
-                 <td>Vehicle.CurrentLocation.Long</td> 
-                 <td>9.7887878</td>
-               </tr>
-               <tr>
-                 <td>Vehicle.ificationNumber</td>
-                 <td>CTH78888999</td>
-               </tr>
-               <tr>
-                 <td>Vehicle.Speed</td>
-                 <td>0</td>
-               </tr>
-               
-             </tbody>
-           </table>
-         </div>
       </div>
       <script></script>
    </body>

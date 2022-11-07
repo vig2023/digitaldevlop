@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=geometry&key=AIzaSyCQd4f14bPr1ediLmgEQGK-ZrepsQKQQ6Y"></script>
+    <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>  
+    <style>
+        html {
+  height: 100%;
+}
+body {
+  height: 100%;
+  margin: 0px;
+  font-family: Helvetica, Arial;
+}
+.gmnoprint,.gm-svpc{
+  display: none !important;
+}
+.speedVal >span{
+    font-size: 24px !important;
+}
+.table td,th{
+    height: 4em !important;
+}
+.form__field {
+  font-family: 'Lato', sans-serif;
+    width: 40%;
+    border: 1px solid;
+    padding-left: 2%;
+    /* border-bottom: 2px solid #9b9b9b; */
+    outline: 0;
+    font-size: 2rem;
+    color: rgb(44, 42, 42);
+    /* padding: 7px 0; */
+    transition: border-color 0.2s;
+}
+    </style>
+</head>
+<body>
+    <script>
+        var map;
+var directionDisplay;
+var directionsService;
+var stepDisplay;
+var markerArray = [];
+var position;
+var marker = null;
+var polyline = null;
+var poly2 = null;
+var jk =0;
+var newCt=0;
+var speedOvalMin;
+var foldStatus="Fold"
+var speedOvalMax;
+var speed = 0.000005,
+  wait = 1;
+var infowindow = null;
+var timerHandle = null;
+
+
+function createMarker(latlng, label, html) {
+  var contentString = '<b>' + label + '</b><br>' + html;
+  var marker = new google.maps.Marker({
+    position: latlng,
+    map: map,
+    title: label,
+    zIndex: Math.round(latlng.lat() * -100000) << 5
+  });
+  marker.myname = label;
+  google.maps.event.addListener(marker, 'click', function() {
+    infowindow.setContent(contentString);
+    infowindow.open(map, marker);
+  });
+  return marker;
+}
+
+function initialize() {
+  infowindow = new google.maps.InfoWindow({
+    size: new google.maps.Size(150, 50)
+  });
+  // Instantiate a directions service.
+  directionsService = new google.maps.DirectionsService();
+
+  // Create a map and center it on Manhattan.
+  var myOptions = {
+    zoom: 13,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  };
+  map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+
+  address = 'berlin';
+  geocoder = new google.maps.Geocoder();
+  geocoder.geocode({
+    'address': address
+  }, function(results, status) {
+    map.setCenter(results[0].geometry.location);
+  });
+
+  // Create a renderer for directions and bind it to the map.
+  var rendererOptions = {
+    map: map
+  };
+  directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
+
+  // Instantiate an info window to hold step text.
+  stepDisplay = new google.maps.InfoWindow();
+
+  polyline = new google.maps.Polyline({
+    path: [],
+    strokeColor: '#FF0000',
+    strokeWeight: 3
+  });
+  poly2 = new google.maps.Polyline({
+    path: [],
+    strokeColor: '#FF0000',
+    strokeWeight: 3
+  });
+}
+
+var steps = [];
+var ct =0;
+function setSpeedRandom() {
+    var eleOne = document.querySelector(".speedVal");
+    var leftWheel = document.querySelector(".ct-left");
+    var rightWheel = document.querySelector(".ct-right");
+    // if(ct>=90){
+    //     ct=0;
+    //     endProcess()
+    // }
+    // if(ct<90){
+    //     ct+=10;
+
+    // }
+       console.log(speedOvalMin,"kkk",speedOvalMax)
+        // var val= Math.random() * 90;
+       var newSpeed = Math.floor(Math.random() * (speedOvalMax - speedOvalMin + 1)) + speedOvalMin;
+        // var trVal= Math.round(val);
+        // var element=container.querySelector(".status-text");
+        document.querySelector(".spaVal").textContent = newSpeed
+
+        // let eleTwo = container.querySelector(".left-one");
+        // let eleThree = container.querySelector(".left-two");
+        // let eleFour = container.querySelector(".right-one");
+        // let eleFive = container.querySelector(".right-two");
+        // let eleSix = container.querySelector(".bannet");
+        if(newSpeed<=30){
+        //    element.setAttribute("style", "color:red; background-color:#e1f0fe")
+            eleOne.setAttribute("style", "color:orange;font-weight:bolder;position: absolute;top: 8em;left: 9em;");
+            leftWheel.setAttribute("style", "position: absolute;left:4%;top: 20%;");
+            rightWheel.setAttribute("style", "position: absolute;top: 20%;right:57%")
+        }else if(newSpeed>30){
+            eleOne.setAttribute("style", "color:#383c7f;font-weight:bolder;position: absolute;top: 8em;left: 9em;")
+            leftWheel.setAttribute("style", "position: absolute;left:0%;top: 20%;");
+            rightWheel.setAttribute("style", "position: absolute;top: 20%;right:53%")
+        }
+        // container.querySelector(".status-text").textContent=val
+    // document.getElementById('out').innerHTML = Math.random() * 101 | 0;
+}
+var speedIntervalId;
+function startProcess(){
+    speedOvalMin=5;
+    speedOvalMax=30;
+    myFunction("Trip initiated - STATION Berlin to Robert Bosch GmbH")
+    // document.querySelector(".spaVal").setAttribute("style", "color:#383c7;font-weight:bolder;font-size:9em;padding-left:24%");
+
+        calcRoute()
+      speedIntervalId =  setInterval(setSpeedRandom, 1000);
+  
+      
+    }
+    function endProcess(){
+        debugger
+        document.querySelector(".spaVal").textContent = "0"
+        document.querySelector(".spaVal").setAttribute("style", "color:orange;font-weight:bolder;font-size:9em;padding-left:24%");
+        document.querySelector(".stop").setAttribute("style", "color:green;font-weight:bolder");
+        clearInterval(speedIntervalId)
+}
+
+// textArea
+ 
+function myFunction(val) {  
+    var d = new Date();
+    var n = d.toLocaleTimeString();
+
+    var div = document.getElementById('divlogger');
+
+div.innerHTML += `<p> ${n}": " +${val}</p>`;
+
+//   document.getElementById("myTextarea").value = document.getElementById("myTextarea").value +n+"---" +val+"\n";
+
+}
+
+//eof
+
+
+
+
+function calcRoute() {
+  // console.log(window.isStop,"isStooop... from onClick mapComponent...")
+  // window.isStop=true
+  // console.log(window.isStop,"isStooop... from onClick afterrrr mapComponent...")
+  // console.log(localStorage.getItem("startVal"),"Beforee...from..iFrame")
+  // localStorage.setItem("startVal","start");
+  // console.log(localStorage.getItem("startVal"),"After...from..iFrame")
+  if (timerHandle) {
+    clearTimeout(timerHandle);
+  }
+  if (marker) {
+    marker.setMap(null);
+  }
+  polyline.setMap(null);
+  poly2.setMap(null);
+  directionsDisplay.setMap(null);
+  polyline = new google.maps.Polyline({
+    path: [],
+    strokeColor: '#FF0000',
+    strokeWeight: 3
+  });
+  poly2 = new google.maps.Polyline({
+    path: [],
+    strokeColor: '#FF0000',
+    strokeWeight: 3
+  });
+  
+  // Create a renderer for directions and bind it to the map.
+  var rendererOptions = {
+    map: map
+  };
+  directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
+
+  var start = document.getElementById("start").value;
+  var end = document.getElementById("end").value;
+  var travelMode = google.maps.DirectionsTravelMode.DRIVING;
+
+  var request = {
+    origin: start,
+    destination: end,
+    travelMode: travelMode
+  };
+
+  // Route the directions and pass the response to a
+  // function to create markers for each step.
+  directionsService.route(request, function(response, status) {
+    if (status == google.maps.DirectionsStatus.OK) {
+      directionsDisplay.setDirections(response);
+
+      var bounds = new google.maps.LatLngBounds();
+      var route = response.routes[0];
+      startLocation = new Object();
+      endLocation = new Object();
+
+      // For each route, display summary information.
+      console.log(response,"valuesss")
+      var path = response.routes[0].overview_path;
+      var legs = response.routes[0].legs;
+      
+      console.log(legs,"LEGGGSSAS")
+      for (i = 0; i < legs.length; i++) {
+        if (i === 0) {
+          startLocation.latlng = legs[i].start_location;
+          startLocation.address = legs[i].start_address;
+          //   marker = createMarker(legs[i].start_location, "start", legs[i].start_address, "green");
+        }
+        endLocation.latlng = legs[i].end_location;
+        endLocation.address = legs[i].end_address;
+        
+        var steps = legs[i].steps;
+        console.log(steps,"Steppsss..") //direction to turn i.e maneuver
+
+       // var tar1 = 15*step; //start 0-30sec param=1
+    //    function findRound (val){
+    //     //    let perct=(val/steps.length)*100;
+    //        let perct =(steps.length*(val/100))
+    //        return Math.round(perct);
+    //     }
+        // var tar1 = findRound(15);
+        // var tar3 = findRound(85); //70% of steps + tar1 value = 85% of total val
+        // var tar2 = Math.round(steps.length/2) //half of total steps
+        // console.log(tar1,"jjjjjjjjjj",tar2,"tar2222",tar3,"tar33333");
+        // debugger
+        function generateRandom(maxLimit = 100){
+            let rand = Math.random() * maxLimit;
+            console.log(rand); // say 99.81321410836433
+
+            rand = Math.floor(rand); // 99
+
+            return rand;
+          }
+          function randomInteger(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+    //  15, 85,50
+    //  0----->15
+    //  15----> 50
+    //  50 ---> 100
+        console.log(steps,"length",steps.length)
+        for (j = 0; j < steps.length; j++) {
+          var nextSegment = steps[j].path;
+        //   function findRound (val){
+        // //    let perct=(val/steps.length)*100;
+        //    let perct =(nextSegment.length*(val/100))
+        //    return Math.round(perct);
+        // }
+        //   var tar1 = findRound(15);
+        // var tar3 = findRound(85); //70% of steps + tar1 value = 85% of total val
+        // var tar2 = Math.round(nextSegment.length/2) //half of total steps
+        
+          for (k = 0; k < nextSegment.length; k++) {  //6
+            newCt++;
+              console.log("kkNEWWWWWWW",k)
+            polyline.getPath().push(nextSegment[k]);
+            bounds.extend(nextSegment[k]);
+          }
+          console.log(newCt,"TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT")
+        }
+      }
+      polyline.setMap(map);
+      map.fitBounds(bounds);
+      map.setZoom(18);
+      console.log("TESTTTKORR")
+      startAnimation();
+    }
+  });
+}
+
+
+
+var step = 50; // 5; // metres
+var tick = 100; // milliseconds
+var eol;
+var k = 0;
+var stepnum = 0;
+var speed = "";
+var lastVertex = 1;
+
+//=============== animation functions ======================
+function updatePoly(d) {
+    
+
+  // Spawn a new polyline every 20 vertices, because updating a 100-vertex poly is too slow
+  if (poly2.getPath().getLength() > 20) {
+    poly2 = new google.maps.Polyline([polyline.getPath().getAt(lastVertex - 1)]);
+    // map.addOverlay(poly2)
+  }
+
+  if (polyline.GetIndexAtDistance(d) < lastVertex + 2) {
+    if (poly2.getPath().getLength() > 1) {
+      poly2.getPath().removeAt(poly2.getPath().getLength() - 1);
+    }
+    poly2.getPath().insertAt(poly2.getPath().getLength(), polyline.GetPointAtDistance(d));
+  } else {
+    poly2.getPath().insertAt(poly2.getPath().getLength(), endLocation.latlng);
+  }
+}
+
+function animate(d) {
+    jk++
+  
+    // function findRound (val){
+    //     //    let perct=(val/steps.length)*100;
+    //        let perct =(newDist*(val/100))
+    //        return Math.round(perct);
+    //     }
+    //     var tar1 = findRound(15);
+    //     var tar3 = findRound(85); //70% of steps + tar1 value = 85% of total val
+    //     var tar2 = Math.round(newDist/2) //half of total steps
+    //     console.log(jk,"newJKKKKK",tar1,"tarrr111111",tar2,"22222222",tar3,"33333333333")
+    var totDist= Math.round(eol);
+    // console.log()
+      // var tar1 = 15*step; //start 0-30sec param=1
+       function findRound (val){
+        //    let perct=(val/steps.length)*100;
+           let perct =(totDist*(val/100))
+           return Math.round(perct);
+        }
+        var tar1 = Math.ceil(findRound(15)/50);
+        
+        var tar3 = Math.ceil(findRound(85)/50); //70% of steps + tar1 value = 85% of total val
+        var tar2 = Math.ceil(Math.round(totDist/2)/50) //half of total steps
+        var tar11 = Math.ceil(findRound(40)/50); // 40%
+        var tar21 = Math.ceil(findRound(65)/50);
+        var tarEnd= Math.ceil(findRound(100)/50);
+        // console.log(jk,"singleeejkkk",tar1,"jjjjjjjjjjnewww",tar2,"tar2222",tar3,"tar33333");
+       
+        if((jk)==tar1){
+
+            myFunction("30KM Reached and Unfold initated");
+            // console.log(tar1,"TARGETONEEE")
+        //    randomInteger(0,tar1)
+        //    docum.wq.val()
+        
+        speedOvalMin = 30;
+        foldStatus="UNFOLD"
+        speedOvalMax=45
+          }  else if((jk)==tar11){
+            myFunction("In Driving Mode");
+        //    randomInteger(0,tar1)
+        //    docum.wq.val()
+        speedOvalMin = 46;
+        foldStatus="UNFOLD"
+        speedOvalMax=70;
+          }
+          else if((jk)==tar2){  
+            myFunction("In Driving Mode");
+            //  make speedo revers Math.Reverse  // 80 to 30
+              speedOvalMin = 70;
+              speedOvalMax=46
+              foldStatus="UNFOLD"
+          }
+          else if((jk)==tar21){  
+            myFunction("Nearing Target.. In driving mode");
+            //  make speedo revers Math.Reverse  // 80 to 30
+              speedOvalMin = 46;
+              speedOvalMax=31;
+              foldStatus="UNFOLD"
+          }
+          else if((jk)==tar3){  
+            // console.log(tar3,"TARGET3333")
+            myFunction("speed limited croosed below 30KM, Fold Initiated");
+             // make speedo revers Math.Reverse  // 30 to 0
+              speedOvalMin = 30;
+              speedOvalMax=5
+              foldStatus="FOLD"
+          }
+          else if((jk)==tarEnd){
+            myFunction("Vechicle stopped & Trip Ended");
+            //reset to 0
+            speedOvalMin = 0;
+              speedOvalMax=0
+            endProcess()
+          }
+     
+  if (d > eol) {
+    map.panTo(endLocation.latlng);
+    marker.setPosition(endLocation.latlng);
+    speedOvalMin = 0;
+    speedOvalMax=0
+    return;
+  }
+
+  var p = polyline.GetPointAtDistance(d);
+  map.panTo(p);
+  var lastPosn = marker.getPosition();
+  marker.setPosition(p);
+  var heading = google.maps.geometry.spherical.computeHeading(lastPosn, p);
+  icon.rotation = heading;
+  marker.setIcon(icon);
+  updatePoly(d);
+  timerHandle = setTimeout("animate(" + (d + step) + ")", tick);
+}
+
+function startAnimation() {
+  eol = polyline.Distance();
+  map.setCenter(polyline.getPath().getAt(0));
+  marker = new google.maps.Marker({
+    position: polyline.getPath().getAt(0),
+    map: map,
+    icon: icon
+  });
+
+  poly2 = new google.maps.Polyline({
+    path: [polyline.getPath().getAt(0)],
+    strokeColor: "#0000FF",
+    strokeWeight: 10
+  });
+  // map.addOverlay(poly2);
+  setTimeout("animate(50)", 2000); // Allow time for the initial map display
+}
+google.maps.event.addDomListener(window, 'load', initialize);
+
+//=============== ~animation funcitons =====================
+
+var car = "M17.402,0H5.643C2.526,0,0,3.467,0,6.584v34.804c0,3.116,2.526,5.644,5.643,5.644h11.759c3.116,0,5.644-2.527,5.644-5.644 V6.584C23.044,3.467,20.518,0,17.402,0z M22.057,14.188v11.665l-2.729,0.351v-4.806L22.057,14.188z M20.625,10.773 c-1.016,3.9-2.219,8.51-2.219,8.51H4.638l-2.222-8.51C2.417,10.773,11.3,7.755,20.625,10.773z M3.748,21.713v4.492l-2.73-0.349 V14.502L3.748,21.713z M1.018,37.938V27.579l2.73,0.343v8.196L1.018,37.938z M2.575,40.882l2.218-3.336h13.771l2.219,3.336H2.575z M19.328,35.805v-7.872l2.729-0.355v10.048L19.328,35.805z";
+var icon = {
+  path: car,
+  scale: .7,
+  strokeColor: 'white',
+  strokeWeight: .10,
+  fillOpacity: 1,
+  fillColor: '#404040',
+  offset: '5%',
+  // rotation: parseInt(heading[i]),
+  anchor: new google.maps.Point(10, 25) // orig 10,50 back of car, 10,0 front of car, 10,25 center of car
+};
+
+
+// === first support methods that don't (yet) exist in v3
+google.maps.LatLng.prototype.distanceFrom = function(newLatLng) {
+  var EarthRadiusMeters = 6378137.0; // meters
+  var lat1 = this.lat();
+  var lon1 = this.lng();
+  var lat2 = newLatLng.lat();
+  var lon2 = newLatLng.lng();
+  var dLat = (lat2 - lat1) * Math.PI / 180;
+  var dLon = (lon2 - lon1) * Math.PI / 180;
+  var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+  var d = EarthRadiusMeters * c;
+//   console.log("CHECKKKKKKK")
+  return d;
+}
+
+google.maps.LatLng.prototype.latRadians = function() {
+  return this.lat() * Math.PI / 180;
+}
+
+google.maps.LatLng.prototype.lngRadians = function() {
+  return this.lng() * Math.PI / 180;
+}
+
+// === A method which returns the length of a path in metres ===
+google.maps.Polygon.prototype.Distance = function() {
+  var dist = 0;
+  
+  for (var i = 1; i < this.getPath().getLength(); i++) {
+      console.log(i,"animate....")
+    dist += this.getPath().getAt(i).distanceFrom(this.getPath().getAt(i - 1));
+  }
+  return dist;
+}
+
+// === A method which returns a GLatLng of a point a given distance along the path ===
+// === Returns null if the path is shorter than the specified distance ===
+google.maps.Polygon.prototype.GetPointAtDistance = function(metres) {
+  // some awkward special cases
+  if (metres == 0) return this.getPath().getAt(0);
+  if (metres < 0) return null;
+  if (this.getPath().getLength() < 2) return null;
+  var dist = 0;
+  var olddist = 0;
+  for (var i = 1;
+    (i < this.getPath().getLength() && dist < metres); i++) {
+    olddist = dist;
+    dist += this.getPath().getAt(i).distanceFrom(this.getPath().getAt(i - 1));
+  }
+  if (dist < metres) {
+    return null;
+  }
+  var p1 = this.getPath().getAt(i - 2);
+  var p2 = this.getPath().getAt(i - 1);
+  var m = (metres - olddist) / (dist - olddist);
+  return new google.maps.LatLng(p1.lat() + (p2.lat() - p1.lat()) * m, p1.lng() + (p2.lng() - p1.lng()) * m);
+}
+
+// === A method which returns an array of GLatLngs of points a given interval along the path ===
+google.maps.Polygon.prototype.GetPointsAtDistance = function(metres) {
+  var next = metres;
+  var points = [];
+  // some awkward special cases
+  if (metres <= 0) return points;
+  var dist = 0;
+  var olddist = 0;
+  for (var i = 1;
+    (i < this.getPath().getLength()); i++) {
+    olddist = dist;
+    dist += this.getPath().getAt(i).distanceFrom(this.getPath().getAt(i - 1));
+    while (dist > next) {
+      var p1 = this.getPath().getAt(i - 1);
+      var p2 = this.getPath().getAt(i);
+      var m = (next - olddist) / (dist - olddist);
+      points.push(new google.maps.LatLng(p1.lat() + (p2.lat() - p1.lat()) * m, p1.lng() + (p2.lng() - p1.lng()) * m));
+      next += metres;
+    }
+  }
+  console.log(points,"PPPPPPPPPPPPPPPPPPPPP")
+  return points;
+}
+
+// === A method which returns the Vertex number at a given distance along the path ===
+// === Returns null if the path is shorter than the specified distance ===
+google.maps.Polygon.prototype.GetIndexAtDistance = function(metres) {
+    // some awkward special cases
+    if (metres == 0) return this.getPath().getAt(0);
+    if (metres < 0) return null;
+    var dist = 0;
+    var olddist = 0;
+    for (var i = 1;
+      (i < this.getPath().getLength() && dist < metres); i++) {
+      olddist = dist;
+      dist += this.getPath().getAt(i).distanceFrom(this.getPath().getAt(i - 1));
+    }
+    if (dist < metres) {
+      return null;
+    }
+    return i;
+  }
+  // === Copy all the above functions to GPolyline ===
+google.maps.Polyline.prototype.Distance = google.maps.Polygon.prototype.Distance;
+google.maps.Polyline.prototype.GetPointAtDistance = google.maps.Polygon.prototype.GetPointAtDistance;
+google.maps.Polyline.prototype.GetPointsAtDistance = google.maps.Polygon.prototype.GetPointsAtDistance;
+google.maps.Polyline.prototype.GetIndexAtDistance = google.maps.Polygon.prototype.GetIndexAtDistance;
+    </script>
+    
+   
+    <div class="row" style="margin-left: 2%;padding-top: 3%;padding-bottom: 1%;">
+        <div id="tools" class="col-md-6 mr-10">
+            <!-- <div style="line-height: 1.5em;text-align:center">
+                <div class="speedVal" data-cell="speed-stat" style="color:#383c7f;font-weight:bolder;position: relative;right: 39%;"><strong>` </strong><span style="font-size: 9em;" class="spaVal">0</span>km/hr<span class="stop" style="display:none">Reached Destination</span></div>
+              
+            </div> -->
+          <!-- <input class="form__field" type="text" name="start" id="start" value="union square, NY" /> -->
+          <input class="form__field" type="text" name="start" id="start" value="STATION Berlin, Luckenwalder Str. 4-6, 10963 Berlin, Germany" style="
+            position: relative;
+            top: 0em;
+            left: 2em;
+            z-index: 1;
+        ">
+       
+       <img src="https://cdn3.iconfinder.com/data/icons/modifiers-add-on-2/48/v-28-512.png" style="
+       width: 7%;
+       position: relative;
+       left: 10%;
+     ">
+          <input class="form__field" type="text" name="end" id="end" value="Bismarckstraße" style="
+            position: relative;
+            top: 0em;
+            left: 5em;
+            z-index: 1;
+        ">
+       <button class="btn btn-primary" onclick="startProcess();" style="
+       position: absolute;
+       top: 28em;
+       left: 11em;
+       font-size: 20px;
+       z-index: 1;
+       height: 3em;
+       background: #005072;
+       width: 16em;
+   ">Simulate</button>
+        
+          <!-- <img src="https://static.thenounproject.com/png/1851808-200.png"  style="width: 4%;cursor:pointer;"> -->
+          <!-- <img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fdownload.png?alt=media&amp;token=6cbc67c2-00ec-40c1-8058-6aee16e9b42b" onclick="endProcess();" style="width: 37px;cursor:pointer;"> -->
+         
+        </div>
+      <div id="tools" class="col-md-6 mr-10">
+          <!-- <input class="form__field" type="text" name="start" id="start" value="union square, NY" /> -->
+         
+        </div>
+      </div>
+
+
+      <div class="col-md-6" style="height: 77%;position: relative;overflow: hidden;width: 46%;margin-left: 6em;" id="map_canvas"></div>
+    <div class="col-md-6" style="top: 10%;height: 100%;position: absolute;right: 0%;width: 49%;" id=""> 
+        <!-- <img  src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2FMobile_view.png?alt=media&amp;token=f4ec950a-72d6-4218-b440-08f6af307600" style="
+      height: 100%;
+      width: 45%;
+  "> -->
+      <img class="ct-left" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fleft_wheel.png?alt=media&amp;token=49e1b2c8-a832-4d5a-9fb9-a3ab51e8f269" style="
+      position: absolute;
+      left: 0%;
+      top: 20%;
+  ">
+        
+        <img class="ct-right" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fright_wheel.png?alt=media&amp;token=5585a090-61b1-42e8-8d0a-edb97b5cfcf7" style="
+      position: absolute;
+      top: 20%;
+      right: 53%;
+  "><img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fmid_body.png?alt=media&amp;token=99619916-1333-406e-b31f-9fd779e8e468" style="
+      position: absolute;
+      left: 0%;
+      top: 20%;
+      /* align-items: center; */
+  ">
+    <div style="line-height: 1.5em;text-align:center">
+        <div style="
+        position: relative;
+        top: 5em;
+        right: 15em;
+        font-weight: 900;
+    ">Speed</div>
+        <div class="speedVal" data-cell="speed-stat" style="color:#02030c;font-weight:bolder;position: absolute;top: 8em;left: 9em;"><strong>` </strong><span style="font-size: 9em;" class="spaVal">0</span>km/hr<span class="stop" style="display:none">Reached Destination</span></div>
+      
+    </div>
+    <div>
+        <h3 style="
+  position: relative;
+  top: 19em;
+  left: 3em;
+">Wheel Status</h3>
+         
+     </div>
+     <div style="
+     position: absolute;
+     top: 39em;
+     background: #d3dada;
+     left: 8em;
+     padding: 15px;
+     height: 4em;
+     width: 6em;
+     font-weight: 900;
+     border: 1px solid;
+ "><span class="foldSt">UnFold</span></div>
+ <div class="col-md-6" style="
+ position: absolute;
+ right: 2em;
+ bottom: 30em;
+ width: 49%;
+ font-size: 17px;
+ border: 1px solid grey;
+ height: 15em;
+ overflow-y: auto;
+ background: #ece9e9;
+ ">
+    <h3>Vehicle Log:</h3>
+    <!-- <textarea id="myTextarea" style="
+    height: 20em;
+    width: 20em;
+"></textarea> -->
+  <div id="divlogger"></div>
+       <!-- <p>[12:32]: Started new route</p> 
+
+        <p>[12:33]: Unfolded wheels at 30 km/h</p>
+        
+        <p>[12:45]: 500m to target location</p>
+        
+        <p>[12:48]: Slowed down to 20 km/h</p>
+        
+        <p>[12:46]: Initiated wheel folding at 20km/h</p>
+        
+       <p>[12:46]: Completed wheel folding procedure</p> 
+        
+        <p>[12:47]: In parking position</p> -->
+  
+
+ </div>
+ <div class="col-md-6" style="position: absolute;right: 3em;bottom: 9em;">
+    <table class="table" style="
+        background: #e7e7eb;
+        font-size: 16px;
+        font-weight: 600;
+    ">
+        <thead class="thead-dark" style="
+    background: #545494;
+    color: white;
+    ">
+          <tr>
+            <th scope="col">VSS API</th>
+            <th scope="col">Value</th>
+          
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Vehicle.CurrentLocatio.Lat</td>
+          
+            <td>49.1654567777</td>
+           
+          </tr>
+        
+          <tr>
+            <td>Vehicle.CurrentLocation.Long</td> 
+            <td>9.7887878</td>
+          </tr>
+          <tr>
+            <td>Vehicle.ificationNumber</td>
+            <td>CTH78888999</td>
+          </tr>
+          <tr>
+            <td>Vehicle.Speed</td>
+            <td>0</td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+        
+      </div>
+
+</body>
+</html>
