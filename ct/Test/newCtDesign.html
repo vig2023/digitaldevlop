@@ -174,8 +174,8 @@ function startProcess(){
     function endProcess(){
         debugger
         document.querySelector(".spaVal").textContent = "0"
-        document.querySelector(".spaVal").setAttribute("style", "color:orange;font-weight:bolder;font-size:9em;padding-left:24%");
-        document.querySelector(".stop").setAttribute("style", "color:green;font-weight:bolder");
+        // document.querySelector(".spaVal").setAttribute("style", "color:orange;font-weight:bolder;font-size:9em;padding-left:24%");
+        // document.querySelector(".stop").setAttribute("style", "color:green;font-weight:bolder");
         clearInterval(speedIntervalId)
 }
 
@@ -622,7 +622,7 @@ google.maps.Polyline.prototype.GetIndexAtDistance = google.maps.Polygon.prototyp
         ">
        <button class="btn btn-primary" onclick="startProcess();" style="
        position: absolute;
-       top: 28em;
+       top: 20em;
        left: 11em;
        font-size: 20px;
        z-index: 1;
@@ -671,7 +671,7 @@ google.maps.Polyline.prototype.GetIndexAtDistance = google.maps.Polygon.prototyp
         right: 15em;
         font-weight: 900;
     ">Speed</div>
-        <div class="speedVal" data-cell="speed-stat" style="color:#02030c;font-weight:bolder;position: absolute;top: 8em;left: 9em;"><strong>` </strong><span style="font-size: 9em;" class="spaVal">0</span>km/hr<span class="stop" style="display:none">Reached Destination</span></div>
+        <div class="speedVal" data-cell="speed-stat" style="color:#02030c;font-weight:bolder;position: absolute;top: 8em;left: 9em;"><strong>` </strong><span style="font-size: 9em;" class="spaVal">0</span>km/hr<span class="stop" style="display:none"></span></div>
       
     </div>
     <div>
@@ -695,9 +695,9 @@ google.maps.Polyline.prototype.GetIndexAtDistance = google.maps.Polygon.prototyp
  "><span class="foldSt">UnFold</span></div>
  <div class="col-md-6" style="
  position: absolute;
- right: 2em;
- bottom: 30em;
- width: 49%;
+ right: 1em;
+ bottom: 18em;
+ width: 50%;
  font-size: 17px;
  border: 1px solid grey;
  height: 15em;
@@ -726,7 +726,7 @@ google.maps.Polyline.prototype.GetIndexAtDistance = google.maps.Polygon.prototyp
   
 
  </div>
- <div class="col-md-6" style="position: absolute;right: 8em;width: 24%;top: 28em;">
+ <div class="col-md-6"style="position: absolute;right: 20em;width: 16%;top: 16em;/* overflow-x: auto; *//* overflow-y: auto; */">
     <table class="table" style="
         background: #e7e7eb;
         font-size: 16px;
@@ -736,7 +736,7 @@ google.maps.Polyline.prototype.GetIndexAtDistance = google.maps.Polygon.prototyp
     background: #545494;
     color: white;
     ">
-          <tr>
+          <tr>Simulate
             <th scope="col">VSS API</th>
             <th scope="col">Value</th>
           
