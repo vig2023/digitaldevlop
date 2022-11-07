@@ -172,7 +172,6 @@ function startProcess(){
       
     }
     function endProcess(){
-        debugger
         document.querySelector(".spaVal").textContent = "0"
         // document.querySelector(".spaVal").setAttribute("style", "color:orange;font-weight:bolder;font-size:9em;padding-left:24%");
         // document.querySelector(".stop").setAttribute("style", "color:green;font-weight:bolder");
@@ -392,14 +391,16 @@ function animate(d) {
         //    docum.wq.val()
         
         speedOvalMin = 30;
-        foldStatus="UNFOLD"
+        // foldStatus="UNFOLD"
+        document.getElementById("foldSt").innerHTML="Unfold"
         speedOvalMax=45
           }  else if((jk)==tar11){
             myFunction("In Driving Mode");
         //    randomInteger(0,tar1)
         //    docum.wq.val()
         speedOvalMin = 46;
-        foldStatus="UNFOLD"
+        // foldStatus="UNFOLD"
+        document.getElementById("foldSt").innerHTML="Unfold"
         speedOvalMax=70;
           }
           else if((jk)==tar2){  
@@ -407,14 +408,16 @@ function animate(d) {
             //  make speedo revers Math.Reverse  // 80 to 30
               speedOvalMin = 70;
               speedOvalMax=46
-              foldStatus="UNFOLD"
+              // foldStatus="UNFOLD"
+              document.getElementById("foldSt").innerHTML="Unfold"
           }
           else if((jk)==tar21){  
             myFunction("Nearing Target.. In driving mode");
             //  make speedo revers Math.Reverse  // 80 to 30
               speedOvalMin = 46;
               speedOvalMax=31;
-              foldStatus="UNFOLD"
+              // foldStatus="UNFOLD"\
+              document.getElementById("foldSt").innerHTML="Unfold"
           }
           else if((jk)==tar3){  
             // console.log(tar3,"TARGET3333")
@@ -422,7 +425,8 @@ function animate(d) {
              // make speedo revers Math.Reverse  // 30 to 0
               speedOvalMin = 30;
               speedOvalMax=5
-              foldStatus="FOLD"
+              // foldStatus="FOLD";
+              document.getElementById("foldSt").innerHTML="Fold"
           }
           else if((jk)==tarEnd){
             myFunction("Vechicle stopped & Trip Ended");
@@ -668,7 +672,7 @@ google.maps.Polyline.prototype.GetIndexAtDistance = google.maps.Polygon.prototyp
         <div style="
         position: relative;
         top: 5em;
-        right: 15em;
+        right: 13em;
         font-weight: 900;
     ">Speed</div>
         <div class="speedVal" data-cell="speed-stat" style="color:#02030c;font-weight:bolder;position: absolute;top: 8em;left: 9em;"><strong>` </strong><span style="font-size: 9em;" class="spaVal">0</span>km/hr<span class="stop" style="display:none"></span></div>
@@ -684,15 +688,15 @@ google.maps.Polyline.prototype.GetIndexAtDistance = google.maps.Polygon.prototyp
      </div>
      <div style="
      position: absolute;
-     top: 39em;
+     top: 31em;
      background: #d3dada;
-     left: 8em;
-     padding: 15px;
-     height: 4em;
-     width: 6em;
+     left: 9em;
+     padding: 8px;
+     height: 3em;
+     width: 5em;
      font-weight: 900;
      border: 1px solid;
- "><span class="foldSt">UnFold</span></div>
+ "><span id="foldSt">Unfold</span></div>
  <div class="col-md-6" style="
  position: absolute;
  right: 1em;
@@ -739,7 +743,7 @@ google.maps.Polyline.prototype.GetIndexAtDistance = google.maps.Polygon.prototyp
     background: #545494;
     color: white;
     ">
-          <tr>Simulate
+          <tr>
             <th scope="col">VSS API</th>
             <th scope="col">Value</th>
           
@@ -749,7 +753,8 @@ google.maps.Polyline.prototype.GetIndexAtDistance = google.maps.Polygon.prototyp
           <tr>
             <td>Vehicle.CurrentLocatio.Lat</td>
           
-            <td>49.1654567777</td>
+            <td>49.1654567777</td>Fold
+            
            
           </tr>
         
