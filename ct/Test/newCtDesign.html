@@ -310,11 +310,10 @@ function calcRoute() {
         
           for (k = 0; k < nextSegment.length; k++) {  //6
             newCt++;
-              console.log("kkNEWWWWWWW",k)
             polyline.getPath().push(nextSegment[k]);
             bounds.extend(nextSegment[k]);
           }
-          console.log(newCt,"TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT")
+          
         }
       }
       polyline.setMap(map);
@@ -727,7 +726,7 @@ google.maps.Polyline.prototype.GetIndexAtDistance = google.maps.Polygon.prototyp
   
 
  </div>
- <div class="col-md-6" style="position: absolute;right: 3em;bottom: 9em;">
+ <div class="col-md-6" style="position: absolute;right: 8em;width: 24%;top: 28em;">
     <table class="table" style="
         background: #e7e7eb;
         font-size: 16px;
