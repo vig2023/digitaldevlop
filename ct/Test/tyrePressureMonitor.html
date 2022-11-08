@@ -166,7 +166,7 @@ input:checked + .slider:before {
 /* eof toggle */
     </style>
 </head>
-<body>
+<body >
     <script>
         var map;
 var isStartAc= false;
@@ -208,6 +208,10 @@ div.innerHTML += `<p> ${n}:  ${val}</p>`;
 //   document.getElementById("myTextarea").value = document.getElementById("myTextarea").value +n+"---" +val+"\n";
 
 }
+
+  // function initialRender(){
+  //   debugger
+  // }
     function pushVal(){
        
         // console.log(document.getElementById("frontleft").value)
@@ -306,8 +310,8 @@ function startAc(){
             text-align: center;
             font-weight: bold;
         ">FRONT</h3>
-        <span>Left</span> <span id="frontlf-span" style="float: right;font-weight: 800;"><strong>0</strong></span></div>
-                   <input onchange="handleChange(1)"  id="frontleft" class="slider" min="1" max="35" value="0" type="range" style="
+        <span>Left</span> <span id="frontlf-span" style="float: right;font-weight: 800;"><strong>25</strong></span></div>
+                   <input onchange="handleChange(1)"  id="frontleft" class="slider" min="1" max="35" value="25" type="range" style="
   position: absolute;
   top: 3em;
 ">
@@ -320,10 +324,10 @@ function startAc(){
         ">REAR</h3></div>
         <span >Left</span> <span id="frontrt-span" style="
             float: right;font-weight:800 ;
-        "><strong>15</strong> psi</span>
+        "><strong>25</strong> psi</span>
       
                  <!-- <label> Front Right : </label> -->
-               <input onchange="handleChange(2)" id="frontright" class="slider" min="1" max="35" value="15" type="range" style="
+               <input onchange="handleChange(2)" id="frontright" class="slider" min="1" max="35" value="25" type="range" style="
   position: absolute;
   top: 3em;
 ">
@@ -357,10 +361,10 @@ function startAc(){
             margin-right: 11px;
             margin-top: 0%;
         ">
-            <span  style="position: absolute;bottom: 2em;">Right</span> <span id="right-lt-span" style="float: right;position: absolute;bottom: 2em;right: 1em;font-weight: 800;"><strong>15</strong> psi</span>
+            <span  style="position: absolute;bottom: 2em;">Right</span> <span id="right-lt-span" style="float: right;position: absolute;bottom: 2em;right: 1em;font-weight: 800;"><strong>25</strong> psi</span>
              
             <!-- <label>Rear Left :</label> -->
-           <input onchange="handleChange(3)"  id="rear-lt" min="1" max="35" class="slider" value="15" type="range" style="
+           <input onchange="handleChange(3)"  id="rear-lt" min="1" max="35" class="slider" value="25" type="range" style="
   /* bottom: 1!important; */
   position: absolute;
   top: 1%;
@@ -371,10 +375,10 @@ function startAc(){
         "><span style="
             position: absolute;
             bottom: 2em;
-        ">Right</span> <span id="right-rt-span" style="float: right;position: absolute;bottom: 2em;padding-top:1em;right: 1em;font-weight: 800;"><strong>15</strong> psi</span>
+        ">Right</span> <span id="right-rt-span" style="float: right;position: absolute;bottom: 2em;padding-top:1em;right: 1em;font-weight: 800;"><strong>25</strong> psi</span>
             
             <!-- <label>  Rear Right :</label> -->
-          <input onchange="handleChange(4)"  id="rear-rt" min="1" max="35" class="slider" value="15" type="range" style="
+          <input onchange="handleChange(4)"  id="rear-rt" min="1" max="35" class="slider" value="25" type="range" style="
   position: absolute;
   top: 1%;
 ">
@@ -402,44 +406,44 @@ function startAc(){
   <div class="col-md-6" style="height: 100%;position: absolute;right: 8%;width: 49%;bottom: 19%;" id=""> 
     <div style="max-width: fit-content;margin: 0 auto;position: relative;margin: auto 0;height: 2%;width: 50%;">
         <div class="" data-cell="speed-stat" style="color:#000;font-weight:bolder;position: relative;top: 31em;left: 17em;">
-        <div id="fr-indicator" style="display:block;color: #eabc4f">
+        <div id="fr-indicator" style="visibility: hidden;color: #eabc4f">
         <img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Ftire_pressure_ic.png?alt=media&amp;token=d833fd72-bfec-4c23-a47a-a650f3fe80ee" style="
           width: 15px;
           margin-left: 2%;
           margin-right: 2%;
-      ">Low</div><strong> </strong><span style="font-size: 19px;margin-left: 6%;" class="one">4</span>
+      ">Low</div><strong> </strong><span style="font-size: 19px;margin-left: 6%;" class="one">25</span>
       <div style="
   margin-left: 5%;
 ">Psi*</div></div>
 <div class="" data-cell="speed-stat" style="color:#000;font-weight:bolder;position: relative;top: 26em;left: 16%;">
-<div id="fl-indicator" style="display:block;color: #eabc4f"><img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Ftire_pressure_ic.png?alt=media&amp;token=d833fd72-bfec-4c23-a47a-a650f3fe80ee" style="
+<div id="fl-indicator" style="visibility: hidden;color: #eabc4f"><img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Ftire_pressure_ic.png?alt=media&amp;token=d833fd72-bfec-4c23-a47a-a650f3fe80ee" style="
   width: 15px;
   margin-left: 2%;
   margin-right: 2%;
 ">Low</div>
-<strong> </strong><span style="font-size: 19px;margin-left: 7%;" class="twoval">2</span>
+<strong> </strong><span style="font-size: 19px;margin-left: 7%;" class="twoval">25</span>
 <div style="
   /* text-align: center; */
   margin-left: 4%;
 ">*Psi</div>
 </div>
 <div class="" data-cell="speed-stat" style="color:#000;font-weight:bolder;position: relative;top: 31em;left: 18em;">
-<div id="rr-indicator" style="display:block;color: #eabc4f;margin-left: -5%;">
+<div id="rr-indicator" style="visibility: hidden;color: #eabc4f;margin-left: -5%;">
 <img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Ftire_pressure_ic.png?alt=media&amp;token=d833fd72-bfec-4c23-a47a-a650f3fe80ee" style="
   width: 15px;
   margin-left: 2%;
   margin-right: 2%;
-">Low</div><strong> </strong><span style="font-size: 19px;" class="three">6</span>
+">Low</div><strong> </strong><span style="font-size: 19px;" class="three">25</span>
 <div>Psi*</div>
 </div>
 <div class="" data-cell="speed-stat" style="color:#000;font-weight:bolder;position: relative;top: 26em;left: 4em;">
-<div id="rl-indicator" style="display:block;color: #eabc4f">
+<div id="rl-indicator" style="visibility: hidden;color: #eabc4f">
 <img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Ftire_pressure_ic.png?alt=media&amp;token=d833fd72-bfec-4c23-a47a-a650f3fe80ee" style="
   width: 15px;
   margin-left: 2%;
   margin-right: 2%;
 ">Low</div><strong>` </strong>
-<span style="font-size: 19px;margin-left: 4%;" class="four">2</span>
+<span style="font-size: 19px;margin-left: 4%;" class="four">25</span>
 <div style="
   margin-left: 4%;
 ">*Psi</div>
@@ -460,15 +464,25 @@ function startAc(){
     overflow-y: auto;
     background: #ece9e9;
     ">
-  <h3 style="
-  font-size: 16px;
-  font-weight: 600;
-">Vehicle Log:</h3>
+   <table class="table" style="background: #e7e7eb;font-size: 16px;font-weight: 600;position: absolute;width: 369px;top: 4px;left: right;right: 20px;">
+        
+    <thead class="" style="
+    background: #005072;
+    color: white;
+    ">
+      <tr>
+        <th scope="col">Vehicle Log:</th>
+       
+      
+      </tr>
+    </thead>
+    
+    </table>
   <!-- <textarea id="myTextarea" style="
   height: 20em;
   width: 20em;
 "></textarea> -->
-<div id="divDoorlogger"><p> 3:49:58 PM:  Simulation initiated for tyre pressure</p><p> 3:50:01 PM:  Simulation completed.</p><p> 3:50:07 PM:  Simulation initiated for tyre pressure</p><p> 3:50:09 PM:  Simulation completed.</p></div>
+<div id="divDoorlogger"></div>
   
 
 
@@ -480,7 +494,7 @@ function startAc(){
     font-weight: 600;
 ">
     <thead class="" style="
-background: #545494;
+background: #005072;
 color: white;
 ">
       <tr>
@@ -493,21 +507,21 @@ color: white;
       <tr>
         <td>VehicleRow1.Wheel.Left.Tire.Pressure</td>
       
-        <td id="fl-vss">2</td>
+        <td id="fl-vss">25</td>
        
       </tr>
     
       <tr>
         <td>Vehicle.Row1.Wheel.Right.Tire.Pressure</td> 
-        <td id="fr-vss">4</td>
+        <td id="fr-vss">25</td>
       </tr>
       <tr>
         <td>Vehicle.Row2.Wheel.Left.Tire.Pressure</td> 
-        <td id="rl-vss">2</td>
+        <td id="rl-vss">25</td>
       </tr>
       <tr>
         <td>Vehicle.Row2.Wheel.Right.Tire.Pressure</td> 
-        <td id="rr-vss">6</td>
+        <td id="rr-vss">25</td>
       </tr>
       
     </tbody>

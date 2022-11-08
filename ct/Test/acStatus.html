@@ -253,7 +253,7 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
          // // simStBtn.disabled=false
          // debugger
         
-          
+         pushVal();
          var simElement = document.getElementById('simu-btn');  
          simElement.disabled=!turnAcOn;      
          var image = document.querySelector('#imageOne');
@@ -390,10 +390,10 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
            ">ON</span></span>
                   <div style="position: absolute;bottom: 1em;left: 0em;font-size: 20px;font-weight: bolder;">
                       Driver A/C Temperature 
-                      <span id="rightAc" style="margin-left: 4em"></span> *C 
+                      <span id="rightAc" style="margin-left: 4em">15</span> *C 
                   </div>
                   <!-- <label>Rear Left :</label> -->
-                  <input id="driveAc" min="1" max="35" class="slider" onchange="changeSlide(this)" type="range" style="
+                  <input id="driveAc" min="1" max="35" value="15" class="slider" onchange="changeSlide(this)" type="range" style="
                      /* bottom: 1!important; */
                      position: absolute;
                      top: 1%;
@@ -425,11 +425,11 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
                ">
                <div style="position: absolute;bottom: 2em;left: 0em;font-size: 20px;font-weight: bolder;"> 
                     Co-Driver A/C Temperature 
-                    <span id="co-ac" style="margin-left: 5rem;"></span>
+                    <span id="co-ac" style="margin-left: 5rem;">15</span>
                     *C
                 </div>
                <!-- <label>Rear Left :</label> -->
-               <input id="coDriveAc" min="1" max="35" class="slider" type="range" onchange="changeSlideTwo(this)" style="
+               <input id="coDriveAc" min="1" max="35" value="15" class="slider" type="range" onchange="changeSlideTwo(this)" style="
                width: 27em;
            ">
             </div>
@@ -478,10 +478,20 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
          overflow-y: auto;
          background: #ece9e9;
          ">
-       <h3 style="
-       font-size: 16px;
-       font-weight: 600;
-   ">Vehicle Log:</h3>
+       <table class="table" style="background: #e7e7eb;font-size: 16px;font-weight: 600;position: absolute;width: 369px;top: 4px;left: right;right: 20px;">
+        
+         <thead class="" style="
+         background: #005072;
+         color: white;
+         ">
+           <tr>
+             <th scope="col">Vehicle Log:</th>
+            
+           
+           </tr>
+         </thead>
+         
+         </table>
        <!-- <textarea id="myTextarea" style="
        height: 20em;
        width: 20em;
@@ -498,7 +508,7 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
                 font-weight: 600;
             ">
                 <thead class="" style="
-            background: #545494;
+            background: #005072;
             color: white;
             ">
                   <tr>
