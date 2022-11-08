@@ -293,120 +293,119 @@ function startAc(){
 // setInterval(setRandom, 5000);
 
     </script>
-    <div col-md-6="" style="border: 1px solid;background: #c4c4c45e;width: 41%;margin-top: 3%;height: 24em;margin-left: 1em;">
-      <div class="col-md-6" style="margin-left: 4%;padding-top: 7%;padding-bottom: 1%;/* background: #dddddd; */">
-          <div style="
-            background: black !important;
-            width: 73em;
-        ">
-              
-               <div class="col-md-3" style="
-            width: 23%;
-            margin-right: 2%;
-        ">
-                   <!-- <label for="">Front Left : </label> -->
-                     <div><h3 style="
-            margin-top: -32px;
-            text-align: center;
-            font-weight: bold;
-        ">FRONT</h3>
-        <span>Left</span> <span id="frontlf-span" style="float: right;font-weight: 800;"><strong>25</strong></span></div>
-                   <input onchange="handleChange(1)"  id="frontleft" class="slider" min="1" max="35" value="25" type="range" style="
-  position: absolute;
-  top: 3em;
-">
-               </div>
-                
-               <div class="col-md-3">
-                <div style="text-align: center;"><h3 style="
-            margin-top: -28px;
-            font-weight: bold;
-        ">REAR</h3></div>
-        <span >Left</span> <span id="frontrt-span" style="
-            float: right;font-weight:800 ;
-        "><strong>25</strong> psi</span>
-      
-                 <!-- <label> Front Right : </label> -->
-               <input onchange="handleChange(2)" id="frontright" class="slider" min="1" max="35" value="25" type="range" style="
-  position: absolute;
-  top: 3em;
-">
-            </div>
-        
-           
-              
-          
-            <!-- <div class="col-md-3" style="
-            position: absolute;
-            top: bottom;
-            top: 111px;
-            right: 20%;
-        ">
-        
-               <button type="button" onclick="pushVal()"class="btn btn-primary">Push </button>
-           </div> -->
-          </div>
-          <hr style="
-          position: relative;
-          top: 3em;
-          right: 2em;
-          border-top: 1px solid #ada4a4;
-          width: 39em;
+   <div col-md-6="" style="border: 1px solid;background: #c4c4c45e;width: 41%;margin-top: 3%;height: 24em;padding-top: 1%;margin-left: 1em;">
+    <div class="col-md-6" style="margin-left: 4%;padding-top: 7%;padding-bottom: 3%;/* background: #dddddd; */">
+        <div style="
+          background: black !important;
+          width: 73em;
       ">
-           
-        </div>
-        <div id="tools" class="col-md-6 mr-10" style="margin-left: 4%;padding-top: 12%;width: 54em;padding-bottom: 1%;">
-        <div class="col-md-3" style="
-            width: 33%;
-            margin-right: 11px;
-            margin-top: 0%;
-        ">
-            <span  style="position: absolute;bottom: 2em;">Right</span> <span id="right-lt-span" style="float: right;position: absolute;bottom: 2em;right: 1em;font-weight: 800;"><strong>25</strong> psi</span>
-             
-            <!-- <label>Rear Left :</label> -->
-           <input onchange="handleChange(3)"  id="rear-lt" min="1" max="35" class="slider" value="25" type="range" style="
-  /* bottom: 1!important; */
-  position: absolute;
-  top: 1%;
-">
-        </div>
-        <div class="col-md-3" style="
-            width: 35%;
-        "><span style="
-            position: absolute;
-            bottom: 2em;
-        ">Right</span> <span id="right-rt-span" style="float: right;position: absolute;bottom: 2em;padding-top:1em;right: 1em;font-weight: 800;"><strong>25</strong> psi</span>
             
-            <!-- <label>  Rear Right :</label> -->
-          <input onchange="handleChange(4)"  id="rear-rt" min="1" max="35" class="slider" value="25" type="range" style="
-  position: absolute;
-  top: 1%;
+             <div class="col-md-3" style="
+          width: 23%;
+          margin-right: 2%;
+      ">
+                 <!-- <label for="">Front Left : </label> -->
+                   <div><h3 style="
+          margin-top: -32px;
+          text-align: center;
+          font-weight: bold;
+      ">FRONT</h3>
+      <span>Left</span> <span id="frontlf-span" style="float: right;font-weight: 800;">25psi</span></div>
+                 <input onchange="handleChange(1)" id="frontleft" class="slider" min="1" max="35" value="25" type="range" style="
+position: absolute;
+top: 3em;
 ">
+             </div>
+              
+             <div class="col-md-3">
+              <div style="text-align: center;"><h3 style="
+          margin-top: -28px;
+          font-weight: bold;
+      ">REAR</h3></div>
+      <span>Left</span> <span id="frontrt-span" style="
+          float: right;font-weight:800 ;
+      ">25 Psi</span>
+    
+               <!-- <label> Front Right : </label> -->
+             <input onchange="handleChange(2)" id="frontright" class="slider" min="1" max="35" value="25" type="range" style="
+position: absolute;
+top: 3em;
+">
+          </div>
+      
+         
+            
+        
+          <!-- <div class="col-md-3" style="
+          position: absolute;
+          top: bottom;
+          top: 111px;
+          right: 20%;
+      ">
+      
+             <button type="button" onclick="pushVal()"class="btn btn-primary">Push </button>
+         </div> -->
         </div>
-        </div>
-        <div id="tools" class="col-md-6 mr-10" style="margin-left: 9%;text-align: -webkit-auto;padding-top: 3%;padding-bottom: 1%;color: whitesmoke;">
-            <button type="button" onclick="pushVal()" class="btn" style="
-            width: 125%;
-            font-size: 25px;
-            height: 51px;
-            margin-top: 2em;
-            margin-left: 2em;
-            border-radius: 2px;
-            background-color: #005072;
-        ">Simulate </button>
-        </div>
+        <hr style="
+        position: relative;
+        top: 3em;
+        right: 2em;
+        border-top: 1px solid #ada4a4;
+        width: 39em;
+    ">
+         
       </div>
-
+      <div id="tools" class="col-md-6 mr-10" style="margin-left: 4%;padding-top: 12%;width: 54em;padding-bottom: 1%;">
+      <div class="col-md-3" style="
+          width: 33%;
+          margin-right: 11px;
+          margin-top: 0%;
+      ">
+          <span style="position: absolute;bottom: 2em;">Right</span> <span id="right-lt-span" style="float: right;position: absolute;bottom: 2em;right: 1em;font-weight: 800;">25 Psi</span>
+           
+          <!-- <label>Rear Left :</label> -->
+         <input onchange="handleChange(3)" id="rear-lt" min="1" max="35" class="slider" value="25" type="range" style="
+/* bottom: 1!important; */
+position: absolute;
+top: 1%;
+">
+      </div>
+      <div class="col-md-3" style="
+          width: 35%;
+      "><span style="
+          position: absolute;
+          bottom: 2em;
+      ">Right</span> <span id="right-rt-span" style="float: right;position: absolute;bottom: 2em;padding-top:1em;right: 1em;font-weight: 800;">25 Psi</span>
+          
+          <!-- <label>  Rear Right :</label> -->
+        <input onchange="handleChange(4)" id="rear-rt" min="1" max="35" class="slider" value="25" type="range" style="
+position: absolute;
+top: 1%;
+">
+      </div>
+      </div>
+      <div id="tools" class="col-md-6 mr-10" style="margin-left: 9%;text-align: -webkit-auto;padding-top: 3%;padding-bottom: 1%;color: whitesmoke;">
+          <button type="button" onclick="pushVal()" class="btn" style="
+          width: 125%;
+          font-size: 25px;
+          height: 51px;
+          margin-top: 2em;
+          margin-left: 2em;
+          border-radius: 2px;
+          background-color: #005072;
+      ">Simulate </button>
+      </div>
+    </div>
   <div class="col-md-6" style="height:50%" id="">
       <div style="max-width: fit-content; margin: 0 auto; position: relative;">
           <img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fxuv700.png?alt=media&amp;token=86231881-cf2d-4e28-8c02-2160fcfe77e4" style="height: 21em;width: 100%;object-fit: contain;">
              
           </div>
   </div>
-  <div class="col-md-6" style="height: 100%;position: absolute;right: 8%;width: 49%;bottom: 19%;" id=""> 
+  <div class="col-md-6" style="height: 100%;position: absolute;right: 8%;width: 49%;bottom: 51%;" id=""> 
     <div style="max-width: fit-content;margin: 0 auto;position: relative;margin: auto 0;height: 2%;width: 50%;">
-        <div class="" data-cell="speed-stat" style="color:#000;font-weight:bolder;position: relative;top: 31em;left: 17em;">
-        <div id="fr-indicator" style="visibility: hidden;color: #eabc4f">
+        <div class="" data-cell="speed-stat" style="color:#000;font-weight:bolder;position: relative;top: 43rem;left: 16em;">
+        <div id="fr-indicator" style="visibility:hidden">
         <img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Ftire_pressure_ic.png?alt=media&amp;token=d833fd72-bfec-4c23-a47a-a650f3fe80ee" style="
           width: 15px;
           margin-left: 2%;
@@ -416,7 +415,7 @@ function startAc(){
   margin-left: 5%;
 ">Psi*</div></div>
 <div class="" data-cell="speed-stat" style="color:#000;font-weight:bolder;position: relative;top: 26em;left: 16%;">
-<div id="fl-indicator" style="visibility: hidden;color: #eabc4f"><img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Ftire_pressure_ic.png?alt=media&amp;token=d833fd72-bfec-4c23-a47a-a650f3fe80ee" style="
+<div id="fl-indicator" style="visibility:hidden"><img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Ftire_pressure_ic.png?alt=media&amp;token=d833fd72-bfec-4c23-a47a-a650f3fe80ee" style="
   width: 15px;
   margin-left: 2%;
   margin-right: 2%;
@@ -427,17 +426,19 @@ function startAc(){
   margin-left: 4%;
 ">*Psi</div>
 </div>
-<div class="" data-cell="speed-stat" style="color:#000;font-weight:bolder;position: relative;top: 31em;left: 18em;">
-<div id="rr-indicator" style="visibility: hidden;color: #eabc4f;margin-left: -5%;">
+<div class="" data-cell="speed-stat" style="color:#000;font-weight:bolder;position: relative;top: 31em;left: 16em;">
+<div id="rr-indicator" style="display:block;color: #eabc4f">
 <img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Ftire_pressure_ic.png?alt=media&amp;token=d833fd72-bfec-4c23-a47a-a650f3fe80ee" style="
   width: 15px;
   margin-left: 2%;
   margin-right: 2%;
-">Low</div><strong> </strong><span style="font-size: 19px;" class="three">25</span>
-<div>Psi*</div>
+">Low</div><strong> </strong><span style="font-size: 19px;margin-left: 3%;" class="three">25</span>
+<div style="
+    margin-left: 4%;
+">Psi*</div>
 </div>
 <div class="" data-cell="speed-stat" style="color:#000;font-weight:bolder;position: relative;top: 26em;left: 4em;">
-<div id="rl-indicator" style="visibility: hidden;color: #eabc4f">
+<div id="rl-indicator" style="visibility:hidden">
 <img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Ftire_pressure_ic.png?alt=media&amp;token=d833fd72-bfec-4c23-a47a-a650f3fe80ee" style="
   width: 15px;
   margin-left: 2%;
@@ -455,8 +456,9 @@ function startAc(){
 
     <div class="col-md-6" style="
     position: absolute;
-    bottom: 35%;
-    left: 25em;
+    bottom: top;
+    left: 23em;
+    top: 19em;
     width: 369px;
     font-size: 17px;
     border: 1px solid grey;
@@ -464,7 +466,7 @@ function startAc(){
     overflow-y: auto;
     background: #ece9e9;
     ">
-   <table class="table" style="background: #e7e7eb;font-size: 16px;font-weight: 600;position: absolute;width: 369px;top: 4px;left: right;right: 20px;">
+   <table class="table" style="background: #e7e7eb;font-size: 16px;font-weight: 600;position: absolute;width: 369px;top: 0em;left: right;right: 0em;">
         
     <thead class="" style="
     background: #005072;
@@ -482,12 +484,14 @@ function startAc(){
   height: 20em;
   width: 20em;
 "></textarea> -->
-<div id="divDoorlogger"></div>
+<div id="divDoorlogger" style="
+    margin-top: 3em;
+"></div>
   
 
 
 </div>
-<div class="col-md-6" style="position: absolute;right: 8em;width: 24%;top: 28em;">
+<div class="col-md-6" style="position: absolute;right: 10em;width: 24%;top: 44em;">
 <table class="table" style="
     background: #e7e7eb;
     font-size: 16px;
