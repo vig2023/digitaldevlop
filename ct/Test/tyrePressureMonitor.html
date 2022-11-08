@@ -110,7 +110,9 @@ body {
   width: 60px;
   height: 34px;
 }
-
+.sim-btnNw:hover{
+  color: white;
+}
 .switch input { 
   opacity: 0;
   width: 0;
@@ -158,6 +160,10 @@ input:checked + .slider:before {
 /* Rounded sliders */
 .slider.round {
   border-radius: 34px;
+}
+
+.psi-size{
+  font-size: 12px;
 }
 
 .slider.round:before {
@@ -268,13 +274,13 @@ function startAc(){
 }
  function handleChange(val){
    if(val==1){
-     document.querySelector("#frontlf-span").innerHTML=document.querySelector("#frontleft").value +" Psi";
+     document.querySelector("#frontlf-span").innerHTML=document.querySelector("#frontleft").value +" psi";
    }else if(val ==2){
-    document.querySelector("#frontrt-span").innerHTML=document.querySelector("#frontright").value +" Psi";
+    document.querySelector("#frontrt-span").innerHTML=document.querySelector("#frontright").value +" psi";
    }else if(val ==3){
-    document.querySelector("#right-lt-span").innerHTML=document.querySelector("#rear-lt").value +" Psi";
+    document.querySelector("#right-lt-span").innerHTML=document.querySelector("#rear-lt").value +" psi";
    }else if(val==4){
-    document.querySelector("#right-rt-span").innerHTML=document.querySelector("#rear-rt").value +" Psi";
+    document.querySelector("#right-rt-span").innerHTML=document.querySelector("#rear-rt").value +" psi";
    }
  }
  function setRandom() {
@@ -310,7 +316,7 @@ function startAc(){
           text-align: center;
           font-weight: bold;
       ">FRONT</h3>
-      <span>Left</span> <span id="frontlf-span" style="float: right;font-weight: 800;">25psi</span></div>
+      <span>Left</span> <span id="frontlf-span"  style="float: right;font-weight: 800;">psi</span></div>
                  <input onchange="handleChange(1)" id="frontleft" class="slider" min="1" max="35" value="25" type="range" style="
 position: absolute;
 top: 3em;
@@ -322,9 +328,9 @@ top: 3em;
           margin-top: -28px;
           font-weight: bold;
       ">REAR</h3></div>
-      <span>Left</span> <span id="frontrt-span" style="
+      <span>Left</span> <span id="frontrt-span"  style="
           float: right;font-weight:800 ;
-      ">25 Psi</span>
+      ">25 si</span>
     
                <!-- <label> Front Right : </label> -->
              <input onchange="handleChange(2)" id="frontright" class="slider" min="1" max="35" value="25" type="range" style="
@@ -385,7 +391,7 @@ top: 1%;
       </div>
       </div>
       <div id="tools" class="col-md-6 mr-10" style="margin-left: 9%;text-align: -webkit-auto;padding-top: 3%;padding-bottom: 1%;color: whitesmoke;">
-          <button type="button" onclick="pushVal()" class="btn" style="
+          <button type="button"class="sim-btnNw" onclick="pushVal()" class="btn" style="
           width: 125%;
           font-size: 25px;
           height: 51px;
@@ -402,7 +408,7 @@ top: 1%;
              
           </div>
   </div>
-  <div class="col-md-6" style="height: 100%;position: absolute;right: 8%;width: 49%;bottom: 51%;" id=""> 
+  <div class="col-md-6" style="height: 100%;position: absolute;right: 8%;width: 49%;bottom: 43%;" id=""> 
     <div style="max-width: fit-content;margin: 0 auto;position: relative;margin: auto 0;height: 2%;width: 50%;">
         <div class="" data-cell="speed-stat" style="color:#000;font-weight:bolder;position: relative;top: 43rem;left: 16em;">
         <div id="fr-indicator" style="visibility:hidden">
@@ -411,9 +417,9 @@ top: 1%;
           margin-left: 2%;
           margin-right: 2%;
       ">Low</div><strong> </strong><span style="font-size: 19px;margin-left: 6%;" class="one">25</span>
-      <div style="
+      <div class="psi-size" style="
   margin-left: 5%;
-">Psi*</div></div>
+">psi</div></div>
 <div class="" data-cell="speed-stat" style="color:#000;font-weight:bolder;position: relative;top: 26em;left: 16%;">
 <div id="fl-indicator" style="visibility:hidden"><img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Ftire_pressure_ic.png?alt=media&amp;token=d833fd72-bfec-4c23-a47a-a650f3fe80ee" style="
   width: 15px;
@@ -421,21 +427,21 @@ top: 1%;
   margin-right: 2%;
 ">Low</div>
 <strong> </strong><span style="font-size: 19px;margin-left: 7%;" class="twoval">25</span>
-<div style="
+<div class="psi-size" style="
   /* text-align: center; */
   margin-left: 4%;
-">*Psi</div>
+">psi</div>
 </div>
 <div class="" data-cell="speed-stat" style="color:#000;font-weight:bolder;position: relative;top: 31em;left: 16em;">
-<div id="rr-indicator" style="display:block;color: #eabc4f">
+<div id="rr-indicator" style="visibility: hidden;color: #eabc4f">
 <img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Ftire_pressure_ic.png?alt=media&amp;token=d833fd72-bfec-4c23-a47a-a650f3fe80ee" style="
   width: 15px;
   margin-left: 2%;
   margin-right: 2%;
 ">Low</div><strong> </strong><span style="font-size: 19px;margin-left: 3%;" class="three">25</span>
-<div style="
+<div class="psi-size" style="
     margin-left: 4%;
-">Psi*</div>
+">psi</div>
 </div>
 <div class="" data-cell="speed-stat" style="color:#000;font-weight:bolder;position: relative;top: 26em;left: 4em;">
 <div id="rl-indicator" style="visibility:hidden">
@@ -445,9 +451,9 @@ top: 1%;
   margin-right: 2%;
 ">Low</div><strong>` </strong>
 <span style="font-size: 19px;margin-left: 4%;" class="four">25</span>
-<div style="
+<div class="psi-size" style="
   margin-left: 4%;
-">*Psi</div>
+">psi</div>
 </div>
         <img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fac_off.png?alt=media&amp;token=865430bf-fd2e-4278-84e7-31735d0b5f7d" style="height: fit-content; width: 100%; object-fit: contain;">
         <!-- <div class="status-text" style="position: absolute;color: white;font-family: 'Lato';width: 100%;top: 0;height: 5%;box-sizing: border-box;display: flex;justify-content: center;padding-top: 10px;"></div>
