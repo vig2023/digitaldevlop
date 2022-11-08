@@ -212,6 +212,7 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
                 // p.innerHTML = a
                 p2.innerHTML = 'Tap to unlock'
                 titleClass.innerHTML='LOCK';
+                titleClass.setAttribute("style","color:orange")
                 actionLog("Locked Hood")
                 eleOne.setAttribute("style", "display:none")
                 document.getElementById("hood-vss").innerText=false;
@@ -226,6 +227,7 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
                 p2.innerHTML = 'Tap to lock'
                 document.getElementById("hood-vss").innerText=true
                 titleClass.innerHTML='UNLOCK'
+                titleClass.setAttribute("style","color:#33cc33;font-weight:bolder")
                 actionLog("UnLocked Hood")
                 eleOne.setAttribute("style","display:block;height:3%;width:7%;position: absolute;left: 48%;top: 15%;")
             }
@@ -258,7 +260,8 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
          if(isopenFrontLeft){
             // p.innerHTML = a
             p2.innerHTML = 'Tap to unlock'
-            titleClass.innerHTML='LOCK'
+            titleClass.innerHTML='LOCK';
+            titleClass.setAttribute("style","font-weight:bolder;color:orange;")
           eleTwo.setAttribute("style", "display:none");
           document.getElementById("fl-vss").innerText=false;
           actionLog("Locked FrontLeft Door")
@@ -266,7 +269,8 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
          }else{
             // p.innerHTML = a
             p2.innerHTML = 'Tap to lock'
-            titleClass.innerHTML='UNLOCK'
+            titleClass.innerHTML='UNLOCK';
+            titleClass.setAttribute("style","color:#33cc33;font-weight:bolder")
             document.getElementById("fl-vss").innerText=true;
             actionLog("UnLocked FrontLeft Door")
           eleTwo.setAttribute("style","display:block;height: 3%;width: 7%;position: absolute;top: 38%;left: 30%;")
@@ -292,6 +296,7 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
             p2.innerHTML = 'Tap to unlock';
             titleClass.innerHTML='LOCK';
             document.getElementById("rl-vss").innerText=false;
+            titleClass.setAttribute("style","font-weight:bolder;color:orange;")
             actionLog("Locked RearLeft Door");
          eleThree.setAttribute("style", "display:none");
          
@@ -299,6 +304,7 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
             // p.innerHTML = a
             p2.innerHTML = 'Tap to lock'
             titleClass.innerHTML='UNLOCK';
+            titleClass.setAttribute("style","color:#33cc33;font-weight:bolder")
             document.getElementById("rl-vss").innerText=true;
             actionLog("UnLocked RearLeft Door")
          eleThree.setAttribute("style","display:block;height:3%;width: 7%;position: absolute;top: 50%;left: 30%;")
@@ -336,13 +342,16 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
          if(isopenBannet){
             // p.innerHTML = a
             p2.innerHTML = 'Tap to unlock'
-            titleClass.innerHTML='LOCK'
+            titleClass.innerHTML='LOCK';
+            titleClass.setAttribute("style","font-weight:bolder;color:orange")
             actionLog("Locked Bannet")
             eleFour.setAttribute("style", "display:none")
          }else{
             // p.innerHTML = a
+            debugger
             p2.innerHTML = 'Tap to lock'
             titleClass.innerHTML='UNLOCK'
+            titleClass.setAttribute("style","color:#33cc33;font-weight:bolder")
             actionLog("UnLocked Bannet")
          eleFour.setAttribute("style","display:block;height:3%;width:7%;position: absolute;top: 38%;right: 22%;")
          }
@@ -381,6 +390,8 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
             // p.innerHTML = a
             p2.innerHTML = 'Tap to unlock'
             titleClass.innerHTML='LOCK';
+            debugger
+            titleClass.setAttribute("style","font-weight:bolder;color: orange;")
             document.getElementById("fr-vss").innerText=false;
             actionLog("Front Right Door locked");
 
@@ -390,6 +401,7 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
             // p.innerHTML = a
             p2.innerHTML = 'Tap to lock'
             titleClass.innerHTML='UNLOCK';
+            titleClass.setAttribute("style","color:#33cc33;font-weight:bolder")
             document.getElementById("fr-vss").innerText=true;
             actionLog("Unlocked Front Right Door")
          eleFour.setAttribute("style","display:block;height:3%;width:7%;position: absolute;top: 38%;right: 22%;")
@@ -428,12 +440,14 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
             // p.innerHTML = a
             p2.innerHTML = 'Tap to unlock'
             titleClass.innerHTML='LOCK'
+            titleClass.setAttribute("style","font-weight:bolder;color:color: orange;")
             eleSix.setAttribute("style", "display:none")
             actionLog("Boot locked")
          }else{
             // p.innerHTML = a
             p2.innerHTML = 'Tap to lock'
             titleClass.innerHTML='UNLOCK'
+            titleClass.setAttribute("style","color:#33cc33;font-weight:bolder")
             actionLog("Boot Unlocked")
          eleSix.setAttribute("style","display:block;height:3%;width:7%;position: absolute;bottom: 31%;left: 47%;")
          }
@@ -452,6 +466,7 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
             // p.innerHTML = a
             p2.innerHTML = 'Tap to unlock'
             titleClass.innerHTML='LOCK';
+            titleClass.setAttribute("style","font-weight:bolder;color:orange;")
             document.getElementById("rr-vss").innerText=false;
             actionLog("Locked  Rear Right door ")
             eleSix.setAttribute("style", "display:none")
@@ -459,6 +474,7 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
             // p.innerHTML = a
             p2.innerHTML = 'Tap to lock'
             titleClass.innerHTML='UNLOCK';
+            titleClass.setAttribute("style","color: #33cc33;font-weight:bolder")
             document.getElementById("rr-vss").innerText=true;
             actionLog("Unlocked Rear RIght door")
             eleSix.setAttribute("style","display:block;height:3%;width:7%;position: absolute;right: 22%;bottom: 47%;")
@@ -506,7 +522,7 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
            let UnLckBtnBx = document.querySelector(".unlockBx");
            let lckBtnBx = document.querySelector(".lockBx");
            lckBtnBx.setAttribute("style", "pointer-events:visible")
-           UnLckBtnBx.setAttribute("style", "pointer-events:none")
+           UnLckBtnBx.setAttribute("style", "pointer-events:none;background-color:#cdc9c9;")
         //    eleSix.setAttribute("style", "display:none")
         //    eleOne.setAttribute("style", "display:none")
         //    eleTwo.setAttribute("style", "display:none")
@@ -561,7 +577,7 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
            let eleSix = document.querySelector(".bannet");
            let UnLckBtnBx = document.querySelector(".unlockBx");
            let lckBtnBx = document.querySelector(".lockBx");
-           lckBtnBx.setAttribute("style", "pointer-events:none")
+           lckBtnBx.setAttribute("style", "pointer-events:none;background-color: #cdc9c9;")
            UnLckBtnBx.setAttribute("style", "pointer-events:visible")
            eleSix.setAttribute("style", "display:none")
            eleOne.setAttribute("style", "display:none")
@@ -629,7 +645,7 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
                     <p class="title-3-frRight"style="color:#0e577c;font-weight: 600;">Tap to lock</p>
                 </div>
                 
-                  <div class="col switch-box unlockBx" style="pointer-events:none" onclick="openAll(this)">
+                  <div class="col switch-box unlockBx" style="pointer-events:none;background-color: #cdc9c9;" onclick="openAll(this)">
                       <p class="title-all" style="color: rgb(222, 153, 27);">Unlock All</p>
                   </div>
                   <!-- <div class="w-100" style="background-color: whitesmoke;"></div> -->
@@ -785,10 +801,7 @@ background: #ece9e9;
                   <td>Vehicle.Cabin.Door.Row2.Right.IsOpen</td>
                   <td id="rr-vss">true</td>
                 </tr>
-               <tr>
-                 <td>Vehicle.Speed</td>
-                 <td>0</td>
-               </tr>
+               
                
              </tbody>
            </table>
