@@ -393,6 +393,7 @@ function animate(d) {
         speedOvalMin = 30;
         // foldStatus="UNFOLD"
         document.getElementById("foldSt").innerHTML="Unfold"
+        document.getElementById("fold-vss").innerHTML="Unfold"
         speedOvalMax=45
           }  else if((jk)==tar11){
             myFunction("In Driving Mode");
@@ -401,6 +402,7 @@ function animate(d) {
         speedOvalMin = 46;
         // foldStatus="UNFOLD"
         document.getElementById("foldSt").innerHTML="Unfold"
+        document.getElementById("fold-vss").innerHTML="Unfold"
         speedOvalMax=70;
           }
           else if((jk)==tar2){  
@@ -410,6 +412,7 @@ function animate(d) {
               speedOvalMax=46
               // foldStatus="UNFOLD"
               document.getElementById("foldSt").innerHTML="Unfold"
+              document.getElementById("fold-vss").innerHTML="Unfold"
           }
           else if((jk)==tar21){  
             myFunction("Nearing Target.. In driving mode");
@@ -427,6 +430,7 @@ function animate(d) {
               speedOvalMax=5
               // foldStatus="FOLD";
               document.getElementById("foldSt").innerHTML="Fold"
+              document.getElementById("fold-vss").innerHTML="Fold"
           }
           else if((jk)==tarEnd){
             myFunction("Vechicle stopped & Trip Ended");
@@ -600,7 +604,7 @@ google.maps.Polyline.prototype.GetIndexAtDistance = google.maps.Polygon.prototyp
     
    
     <div class="row" style="margin-left: 2%;padding-top: 3%;padding-bottom: 1%;">
-        <div id="tools" class="col-md-6 mr-10">
+        <div id="tools" class="col-md-6 mr-10" style="margin-left:-3em">
             <!-- <div style="line-height: 1.5em;text-align:center">
                 <div class="speedVal" data-cell="speed-stat" style="color:#383c7f;font-weight:bolder;position: relative;right: 39%;"><strong>` </strong><span style="font-size: 9em;" class="spaVal">0</span>km/hr<span class="stop" style="display:none">Reached Destination</span></div>
               
@@ -646,8 +650,8 @@ google.maps.Polyline.prototype.GetIndexAtDistance = google.maps.Polygon.prototyp
       </div>
 
 
-      <div class="col-md-6" style="height: 77%;position: relative;overflow: hidden;width: 46%;margin-left: 6em;" id="map_canvas"></div>
-    <div class="col-md-6" style="top: 10%;height: 100%;position: absolute;right: 0%;width: 49%;" id=""> 
+      <div class="col-md-6" style="height: 77%;position: relative;overflow: hidden;width: 46%;margin-left: 3em;" id="map_canvas"></div>
+      <div class="col-md-6" style="height: 100%;bottom: 2em;position: absolute;right: 0%;width: 49%;" id=""> 
         <!-- <img  src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2FMobile_view.png?alt=media&amp;token=f4ec950a-72d6-4218-b440-08f6af307600" style="
       height: 100%;
       width: 45%;
@@ -698,10 +702,24 @@ google.maps.Polyline.prototype.GetIndexAtDistance = google.maps.Polygon.prototyp
      font-weight: 900;
      border: 1px solid;
  "><span id="foldSt">Unfold</span></div>
+  <table class="table" style="background: #e7e7eb;font-size: 16px;font-weight: 600;position: absolute;width: 369px;top: 4px;left: right;right: 20px;">
+        
+    <thead class="" style="
+    background: #545494;
+    color: white;
+    ">
+      <tr>
+        <th scope="col">Vehicle Log:</th>
+       
+      
+      </tr>
+    </thead>
+    
+    </table>
  <div class="col-md-6" style="
  position: absolute;
  right: 1em;
- bottom: 18em;
+ bottom: 14em;
  width: 50%;
  font-size: 17px;
  border: 1px solid grey;
@@ -734,7 +752,7 @@ google.maps.Polyline.prototype.GetIndexAtDistance = google.maps.Polygon.prototyp
   
 
  </div>
- <div class="col-md-6"style="position: absolute;right: 20em;width: 16%;top: 16em;/* overflow-x: auto; *//* overflow-y: auto; */">
+ <div class="col-md-6"style="position: absolute;right: 20em;width: 16%;top: 22em;/* overflow-x: auto; *//* overflow-y: auto; */">
     <table class="table" style="
         background: #e7e7eb;
         font-size: 16px;
@@ -754,22 +772,18 @@ google.maps.Polyline.prototype.GetIndexAtDistance = google.maps.Polygon.prototyp
           <tr>
             <td>Vehicle.CurrentLocatio.Lat</td>
           
-            <td>49.1654567777</td>
+            <td>52.5075449</td>
             
            
           </tr>
         
           <tr>
             <td>Vehicle.CurrentLocation.Long</td> 
-            <td>9.7887878</td>
+            <td>13.3079517</td>
           </tr>
           <tr>
-            <td>Vehicle.ificationNumber</td>
-            <td>CTH78888999</td>
-          </tr>
-          <tr>
-            <td>Vehicle.Speed</td>
-            <td>0</td>
+            <td>Vehicle.wheelStatus</td>
+            <td id="fold-vss">Fold</td>
           </tr>
           
         </tbody>
