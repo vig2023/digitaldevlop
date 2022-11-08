@@ -27,13 +27,13 @@ body {
     height: 4em !important;
 } */
 .form__field {
-    font-family: 'Lato', sans-serif;
+  font-family: 'Lato', sans-serif;
     width: 40%;
     border: 1px solid;
     padding-left: 2%;
     /* border-bottom: 2px solid #9b9b9b; */
     outline: 0;
-    font-size: 14px;
+    font-size: 2rem;
     color: rgb(44, 42, 42);
     /* padding: 7px 0; */
     transition: border-color 0.2s;
@@ -43,10 +43,10 @@ body {
     vertical-align: top;
     box-sizing: border-box;
     color: #fff;
-    background-color: #eeeeee;
+    background-color: #aea0a0;
     position: relative;
     width: 32em;
-    height: 44em;
+    height: 26em;
     padding: 0;
     font-size: 10px;
     line-height: 1;
@@ -404,8 +404,6 @@ function animate(d) {
         if((jk)==tar1){
 
             myFunction("30KM Reached and Unfold initated");
-             document.getElementById('source_video').src = '/DigitalDevelop/digitaldevlop/ct/video/CT_UnFold.mp4';
-            document.getElementById("my-video").play();
             // console.log(tar1,"TARGETONEEE")
         //    randomInteger(0,tar1)
         //    docum.wq.val()
@@ -444,11 +442,6 @@ function animate(d) {
           }
           else if((jk)==tar3){  
             // console.log(tar3,"TARGET3333")
-            document.getElementById('source_video').src = '/DigitalDevelop/digitaldevlop/ct/video/CT_Fold.mp4';
-
-            document.getElementById("my-video").load()
-            document.getElementById("my-video").play();
-
             myFunction("speed limited croosed below 30KM, Fold Initiated");
              // make speedo revers Math.Reverse  // 30 to 0
               speedOvalMin = 30;
@@ -629,7 +622,7 @@ google.maps.Polyline.prototype.GetIndexAtDistance = google.maps.Polygon.prototyp
     
    
     <div class="row" style="margin-left: 2%;padding-top: 3%;padding-bottom: 1%;">
-        <div id="tools" class="col-md-6 mr-10" style="margin-left: -2em;width: 44%;">
+        <div id="tools" class="col-md-6 mr-10" style="margin-left:-3em">
             <!-- <div style="line-height: 1.5em;text-align:center">
                 <div class="speedVal" data-cell="speed-stat" style="color:#383c7f;font-weight:bolder;position: relative;right: 39%;"><strong>` </strong><span style="font-size: 9em;" class="spaVal">0</span>km/hr<span class="stop" style="display:none">Reached Destination</span></div>
               
@@ -655,8 +648,8 @@ google.maps.Polyline.prototype.GetIndexAtDistance = google.maps.Polygon.prototyp
         ">
        <button class="btn btn-primary" onclick="startProcess();" style="
        position: absolute;
-       top: 25em;
-       left: 7em;
+       top: 20em;
+       left: 11em;
        font-size: 20px;
        z-index: 1;
        height: 3em;
@@ -675,42 +668,51 @@ google.maps.Polyline.prototype.GetIndexAtDistance = google.maps.Polygon.prototyp
       </div>
 
 
-      <div class="col-md-6" style="height: 77%;position: relative;overflow: hidden;width: 40%;margin-left: 3em;" id="map_canvas"></div>
+      <div class="col-md-6" style="height: 77%;position: relative;overflow: hidden;width: 46%;margin-left: 3em;" id="map_canvas"></div>
       <div class="col-md-6" style="height: 100%;bottom: 2em;position: absolute;right: 0%;width: 49%;" id=""> 
         
     
-        <div style="position: relative;left: -6em;top: 9em;">
-         <!-- video -->
-         <video id="my-video" class="video-js" controls="" preload="auto" width="800" height="400" poster="MY_VIDEO_POSTER.jpg" data-setup="{}">
-         <source id="source_video" src="/DigitalDevelop/digitaldevlop/ct/video/CT_UnFold.mp4" type="video/mp4">
-         <!-- <source src="MY_VIDEO.webm" type="video/webm" /> -->
-        
-       </video>
-         <!-- eod -->
+        <div style="position: relative;left: -3em;top: 6em;">
+          <img class="ct-left" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fleft_wheel.png?alt=media&amp;token=49e1b2c8-a832-4d5a-9fb9-a3ab51e8f269" style="
+          position: absolute;
+          left: 0%;
+          top: 20%;
+      ">
+            
+            <img class="ct-right" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fright_wheel.png?alt=media&amp;token=5585a090-61b1-42e8-8d0a-edb97b5cfcf7" style="
+          position: absolute;
+          top: 20%;
+          right: 53%;
+      "><img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fmid_body.png?alt=media&amp;token=99619916-1333-406e-b31f-9fd779e8e468" style="
+          position: absolute;
+          left: 0%;
+          top: 20%;
+          /* align-items: center; */
+      ">
         <div style="line-height: 1.5em;text-align:center;position: absolute;top: -9em;">
             <div style="
             position: relative;
-            top: 6em;
-            right: -5em;
+            top: 5em;
+            right: -9em;
             font-weight: 900;
         ">Speed</div>
-         <div class="speedVal" data-cell="speed-stat" style="color:orange;font-weight:bolder;position: absolute;top: 6em;left: 11em;"><strong></strong><span style="font-size: 9em;" class="spaVal">0</span>km/hr<span class="stop" style="display:none"></span></div>
+           <div class="speedVal" data-cell="speed-stat" style="color:#02030c;font-weight:bolder;position: absolute;font-size: 20px;top: 5em;left: 6em;"><strong></strong><span style="font-size: 9em;" class="spaVal">0</span>km/hr<span class="stop" style="display:none"></span></div>
           
         </div>
         <div>
             <h3 style="
-            font-size: 17px;
-            position: relative;
-            top: 1rem;
-            left: 3rem;
-          ">Wheel Status</h3>
+      font-size: 17px;
+      position: relative;
+      top: 35rem;
+      left: 7em;
+    ">Wheel Status</h3>
              
          </div>
          <div style="
          position: absolute;
-         top: 33em;
+         top: 28em;
          background: #d3dada;
-         left: 11em;
+         left: 9em;
          padding: 8px;
          text-align: center;
          height: 3em;
@@ -722,13 +724,26 @@ google.maps.Polyline.prototype.GetIndexAtDistance = google.maps.Polygon.prototyp
       <!-- <video>
         <source src="/DigitalDevelop/digitaldevlop/ct/video/CT_Fold.mp4">
       </video> -->
-     
+      <video
+    id="my-video"
+    class="video-js"
+    controls
+    preload="auto"
+    width="640"
+    height="264"
+    poster="MY_VIDEO_POSTER.jpg"
+    data-setup="{}"
+  >
+    <source src="/DigitalDevelop/digitaldevlop/ct/video/CT_Fold.mp4" type="video/mp4" />
+    <!-- <source src="MY_VIDEO.webm" type="video/webm" /> -->
+   
+  </video>
      </div>
         </div>
  
    
  
-    <div class="col-md-6" style="position: absolute;right: 2em;width: 55%;top: 9em;">
+    <div class="col-md-6" style="position: absolute;right: 2em;width: 55%;top: 3em;">
       <table class="table" style="
       background: #e7e7eb;
       font-size: 16px;
@@ -749,7 +764,7 @@ google.maps.Polyline.prototype.GetIndexAtDistance = google.maps.Polygon.prototyp
           <td> <div id="divlogger" style="
              height: 200px;
              overflow-y: scroll;
-         "></div></td>
+         "></td>
         
          
         </tr>
