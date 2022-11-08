@@ -221,24 +221,24 @@ div.innerHTML += `<p> ${n}:  ${val}</p>`;
         document.querySelector("#rr-vss").textContent= document.querySelector("#rear-rt").value;
 
         if(document.querySelector("#frontright").value<15){
-          document.getElementById("fr-indicator").setAttribute("style","display:block")
+          document.getElementById("fr-indicator").setAttribute("style","display:block;color: #eabc4f")
         }else{
-          document.getElementById("fr-indicator").setAttribute("style","display:none")
+          document.getElementById("fr-indicator").setAttribute("style","visibility:hidden")
         }
         if(document.querySelector("#frontleft").value<15){
-          document.getElementById("fl-indicator").setAttribute("style","display:block")
+          document.getElementById("fl-indicator").setAttribute("style","display:block;color: #eabc4f")
         }else{
-          document.getElementById("fl-indicator").setAttribute("style","display:none")
+          document.getElementById("fl-indicator").setAttribute("style","visibility:hidden")
         }
         if(document.querySelector("#rear-rt").value<15){
-          document.getElementById("rr-indicator").setAttribute("style","display:block")
+          document.getElementById("rr-indicator").setAttribute("style","display:block;color: #eabc4f")
         }else{
-          document.getElementById("rr-indicator").setAttribute("style","display:none")
+          document.getElementById("rr-indicator").setAttribute("style","visibility:hidden")
         }
         if(document.querySelector("#rear-lt").value<15){
-          document.getElementById("rl-indicator").setAttribute("style","display:block")
+          document.getElementById("rl-indicator").setAttribute("style","display:block;color: #eabc4f")
         }else{
-          document.getElementById("rl-indicator").setAttribute("style","display:none")
+          document.getElementById("rl-indicator").setAttribute("style","visibility:hidden")
         }
         document.querySelector(".twoval").textContent = document.getElementById("frontleft").value;
         actionLog("Simulation initiated for tyre pressure");
@@ -306,8 +306,8 @@ function startAc(){
             text-align: center;
             font-weight: bold;
         ">FRONT</h3>
-        <span>Left</span> <span id="frontlf-span" style="float: right;font-weight: 800;"><strong>20</strong> psi</span></div>
-                   <input onchange="handleChange(1)"  id="frontleft" class="slider" min="1" max="35" value="35" type="range" style="
+        <span>Left</span> <span id="frontlf-span" style="float: right;font-weight: 800;"><strong>0</strong></span></div>
+                   <input onchange="handleChange(1)"  id="frontleft" class="slider" min="1" max="35" value="0" type="range" style="
   position: absolute;
   top: 3em;
 ">
@@ -320,9 +320,10 @@ function startAc(){
         ">REAR</h3></div>
         <span >Left</span> <span id="frontrt-span" style="
             float: right;font-weight:800 ;
-        "><strong>20</strong> psi</span>
+        "><strong>15</strong> psi</span>
+      
                  <!-- <label> Front Right : </label> -->
-               <input onchange="handleChange(2)" id="frontright" class="slider" min="1" max="35" value="35" type="range" style="
+               <input onchange="handleChange(2)" id="frontright" class="slider" min="1" max="35" value="15" type="range" style="
   position: absolute;
   top: 3em;
 ">
@@ -356,10 +357,10 @@ function startAc(){
             margin-right: 11px;
             margin-top: 0%;
         ">
-            <span  style="position: absolute;bottom: 2em;">Right</span> <span id="right-lt-span" style="float: right;position: absolute;bottom: 2em;right: 1em;font-weight: 800;"><strong>20</strong> psi</span>
+            <span  style="position: absolute;bottom: 2em;">Right</span> <span id="right-lt-span" style="float: right;position: absolute;bottom: 2em;right: 1em;font-weight: 800;"><strong>15</strong> psi</span>
              
             <!-- <label>Rear Left :</label> -->
-           <input onchange="handleChange(3)"  id="rear-lt" min="1" max="35" class="slider" value="35" type="range" style="
+           <input onchange="handleChange(3)"  id="rear-lt" min="1" max="35" class="slider" value="15" type="range" style="
   /* bottom: 1!important; */
   position: absolute;
   top: 1%;
@@ -370,10 +371,10 @@ function startAc(){
         "><span style="
             position: absolute;
             bottom: 2em;
-        ">Right</span> <span id="right-rt-span" style="float: right;position: absolute;bottom: 2em;padding-top:1em;right: 1em;font-weight: 800;"><strong>20</strong> psi</span>
+        ">Right</span> <span id="right-rt-span" style="float: right;position: absolute;bottom: 2em;padding-top:1em;right: 1em;font-weight: 800;"><strong>15</strong> psi</span>
             
             <!-- <label>  Rear Right :</label> -->
-          <input onchange="handleChange(4)"  id="rear-rt" min="1" max="35" class="slider" value="35" type="range" style="
+          <input onchange="handleChange(4)"  id="rear-rt" min="1" max="35" class="slider" value="15" type="range" style="
   position: absolute;
   top: 1%;
 ">
@@ -399,98 +400,121 @@ function startAc(){
           </div>
   </div>
   <div class="col-md-6" style="height: 100%;position: absolute;right: 8%;width: 49%;bottom: 19%;" id=""> 
-      <div style="max-width: fit-content;margin: 0 auto;position: relative;margin: auto 0;height: 2%;width: 50%;">
-          <div class="" data-cell="speed-stat" style="color:#000;font-weight:bolder;position: relative;top: 22em;left: 16em;"><div id="fr-indicator" style="color: #908a8a; display: none;"><img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Ftire_pressure_ic.png?alt=media&amp;token=d833fd72-bfec-4c23-a47a-a650f3fe80ee" style="
-            width: 15px;
-            margin-left: 2%;
-            margin-right: 2%;
-        ">Low</div><strong>` </strong><span style="font-size: 19px;" class="one"></span>Psi*<span class="stop" style="display:none">Reached Destination</span></div>
-  <div class="" data-cell="speed-stat" style="color:#000;font-weight:bolder;position: relative;top: 20em;left: 12%;"><div id="fl-indicator" style="color: #908a8a;display:none"><img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Ftire_pressure_ic.png?alt=media&amp;token=d833fd72-bfec-4c23-a47a-a650f3fe80ee" style="
-    width: 15px;
-    margin-left: 2%;
-    margin-right: 2%;
-">Low</div><strong>` </strong>*Psi<span style="font-size: 19px;" class="twoval"></span><span class="stop" style="display:none">Reached Destination</span></div>
-  <div class="" data-cell="speed-stat" style="color:#000;font-weight:bolder;position: relative;top: 27em;left: 16em;"><div id="rr-indicator"style="color: #908a8a;display:none;"><img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Ftire_pressure_ic.png?alt=media&amp;token=d833fd72-bfec-4c23-a47a-a650f3fe80ee" style="
-    width: 15px;
-    margin-left: 2%;
-    margin-right: 2%;
-">Low</div><strong>` </strong><span style="font-size: 19px;" class="three"></span>Psi*<span class="stop" style="display:none">Reached Destination</span></div>
-  <div class="" data-cell="speed-stat" style="color:#000;font-weight:bolder;position: relative;top: 25em;left: 3em;"><div id="rl-indicator"style="color: #908a8a;display:none;"><img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Ftire_pressure_ic.png?alt=media&amp;token=d833fd72-bfec-4c23-a47a-a650f3fe80ee" style="
-    width: 15px;
-    margin-left: 2%;
-    margin-right: 2%;
-">Low</div><strong>` </strong>*Psi<span style="font-size: 19px;" class="four"></span><span class="stop" style="display:none">Reached Destination</span></div>
-          <img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fac_off.png?alt=media&amp;token=865430bf-fd2e-4278-84e7-31735d0b5f7d" style="height: fit-content; width: 100%; object-fit: contain;">
-          <!-- <div class="status-text" style="position: absolute;color: white;font-family: 'Lato';width: 100%;top: 0;height: 5%;box-sizing: border-box;display: flex;justify-content: center;padding-top: 10px;"></div>
-          <div class="status-text" style="position: absolute;color: white;font-family: 'Lato';width: 43% !important;top: 0;height: 100%;box-sizing: border-box;display: flex;justify-content: center;padding-top: 10px;padding-right:20px"></div> -->
-      </div>
+    <div style="max-width: fit-content;margin: 0 auto;position: relative;margin: auto 0;height: 2%;width: 50%;">
+        <div class="" data-cell="speed-stat" style="color:#000;font-weight:bolder;position: relative;top: 31em;left: 17em;">
+        <div id="fr-indicator" style="display:block;color: #eabc4f">
+        <img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Ftire_pressure_ic.png?alt=media&amp;token=d833fd72-bfec-4c23-a47a-a650f3fe80ee" style="
+          width: 15px;
+          margin-left: 2%;
+          margin-right: 2%;
+      ">Low</div><strong> </strong><span style="font-size: 19px;margin-left: 6%;" class="one">4</span>
+      <div style="
+  margin-left: 5%;
+">Psi*</div></div>
+<div class="" data-cell="speed-stat" style="color:#000;font-weight:bolder;position: relative;top: 26em;left: 16%;">
+<div id="fl-indicator" style="display:block;color: #eabc4f"><img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Ftire_pressure_ic.png?alt=media&amp;token=d833fd72-bfec-4c23-a47a-a650f3fe80ee" style="
+  width: 15px;
+  margin-left: 2%;
+  margin-right: 2%;
+">Low</div>
+<strong> </strong><span style="font-size: 19px;margin-left: 7%;" class="twoval">2</span>
+<div style="
+  /* text-align: center; */
+  margin-left: 4%;
+">*Psi</div>
+</div>
+<div class="" data-cell="speed-stat" style="color:#000;font-weight:bolder;position: relative;top: 31em;left: 18em;">
+<div id="rr-indicator" style="display:block;color: #eabc4f;margin-left: -5%;">
+<img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Ftire_pressure_ic.png?alt=media&amp;token=d833fd72-bfec-4c23-a47a-a650f3fe80ee" style="
+  width: 15px;
+  margin-left: 2%;
+  margin-right: 2%;
+">Low</div><strong> </strong><span style="font-size: 19px;" class="three">6</span>
+<div>Psi*</div>
+</div>
+<div class="" data-cell="speed-stat" style="color:#000;font-weight:bolder;position: relative;top: 26em;left: 4em;">
+<div id="rl-indicator" style="display:block;color: #eabc4f">
+<img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Ftire_pressure_ic.png?alt=media&amp;token=d833fd72-bfec-4c23-a47a-a650f3fe80ee" style="
+  width: 15px;
+  margin-left: 2%;
+  margin-right: 2%;
+">Low</div><strong>` </strong>
+<span style="font-size: 19px;margin-left: 4%;" class="four">2</span>
+<div style="
+  margin-left: 4%;
+">*Psi</div>
+</div>
+        <img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fac_off.png?alt=media&amp;token=865430bf-fd2e-4278-84e7-31735d0b5f7d" style="height: fit-content; width: 100%; object-fit: contain;">
+        <!-- <div class="status-text" style="position: absolute;color: white;font-family: 'Lato';width: 100%;top: 0;height: 5%;box-sizing: border-box;display: flex;justify-content: center;padding-top: 10px;"></div>
+        <div class="status-text" style="position: absolute;color: white;font-family: 'Lato';width: 43% !important;top: 0;height: 100%;box-sizing: border-box;display: flex;justify-content: center;padding-top: 10px;padding-right:20px"></div> -->
+    </div>
 
-      <div class="col-md-6" style="
-      position: absolute;
-      bottom: 35%;
-      left: 25em;
-      width: 369px;
-      font-size: 17px;
-      border: 1px solid grey;
-      height: 15em;
-      overflow-y: auto;
-      background: #ece9e9;
-      ">
-    <h3  style="
-    font-size: 16px;
-    font-weight: 600;
+    <div class="col-md-6" style="
+    position: absolute;
+    bottom: 35%;
+    left: 25em;
+    width: 369px;
+    font-size: 17px;
+    border: 1px solid grey;
+    height: 15em;
+    overflow-y: auto;
+    background: #ece9e9;
+    ">
+  <h3 style="
+  font-size: 16px;
+  font-weight: 600;
 ">Vehicle Log:</h3>
-    <!-- <textarea id="myTextarea" style="
-    height: 20em;
-    width: 20em;
+  <!-- <textarea id="myTextarea" style="
+  height: 20em;
+  width: 20em;
 "></textarea> -->
-  <div id="divDoorlogger"></div>
-    
+<div id="divDoorlogger"><p> 3:49:58 PM:  Simulation initiated for tyre pressure</p><p> 3:50:01 PM:  Simulation completed.</p><p> 3:50:07 PM:  Simulation initiated for tyre pressure</p><p> 3:50:09 PM:  Simulation completed.</p></div>
   
 
- </div>
- <div class="col-md-6" style="position: absolute;right: 8em;width: 24%;top: 28em;">
-  <table class="table" style="
-      background: #e7e7eb;
-      font-size: 16px;
-      font-weight: 600;
-  ">
-      <thead class="" style="
-  background: #545494;
-  color: white;
-  ">
-        <tr>
-          <th scope="col">VSS API</th>
-          <th scope="col">Value</th>
-        
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>VehicleRow1.Wheel.Left.Tire.Pressure</td>
-        
-          <td id="fl-vss">27</td>
-         
-        </tr>
+
+</div>
+<div class="col-md-6" style="position: absolute;right: 8em;width: 24%;top: 28em;">
+<table class="table" style="
+    background: #e7e7eb;
+    font-size: 16px;
+    font-weight: 600;
+">
+    <thead class="" style="
+background: #545494;
+color: white;
+">
+      <tr>
+        <th scope="col">VSS API</th>
+        <th scope="col">Value</th>
       
-        <tr>
-          <td>Vehicle.Row1.Wheel.Right.Tire.Pressure</td> 
-          <td id="fr-vss">28</td>
-        </tr>
-        <tr>
-          <td>Vehicle.Row2.Wheel.Left.Tire.Pressure</td> 
-          <td id="rl-vss">12</td>
-        </tr>
-        <tr>
-          <td>Vehicle.Row2.Wheel.Right.Tire.Pressure</td> 
-          <td id="rr-vss">22</td>
-        </tr>
-        
-      </tbody>
-    </table>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>VehicleRow1.Wheel.Left.Tire.Pressure</td>
+      
+        <td id="fl-vss">2</td>
+       
+      </tr>
+    
+      <tr>
+        <td>Vehicle.Row1.Wheel.Right.Tire.Pressure</td> 
+        <td id="fr-vss">4</td>
+      </tr>
+      <tr>
+        <td>Vehicle.Row2.Wheel.Left.Tire.Pressure</td> 
+        <td id="rl-vss">2</td>
+      </tr>
+      <tr>
+        <td>Vehicle.Row2.Wheel.Right.Tire.Pressure</td> 
+        <td id="rr-vss">6</td>
+      </tr>
+      
+    </tbody>
+  </table>
+</div>
+    
   </div>
-      
-    </div>
 <script>
 
 </script>
