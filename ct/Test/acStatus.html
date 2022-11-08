@@ -255,7 +255,7 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
          // document.getElementById('simStart').disabled=true;
          // // simStBtn.disabled=false
          // debugger
-        
+         
          pushVal();
          var simElement = document.getElementById('simu-btn');  
          simElement.disabled=!turnAcOn;      
@@ -265,6 +265,7 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
          turnOn()
          function turnOn() {
             if(turnAcOn){ 
+               document.querySelector("#main-block").setAttribute("style","height: 100%;position: absolute;right: 8%;width: 49%;bottom: 1%;")
                document.querySelector(".state-one").setAttribute("style","color: #ecedf2;font-weight:bolder;display:block;position: relative;top: 215px;left: 132px;");
                document.querySelector(".state-two").setAttribute("style","color: #eeeef4;font-weight: 600;display:block;position: relative;top: 195px;left: 12em;");
                document.getElementById("on-status-val").textContent=true;
@@ -278,6 +279,7 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
                 actionLog("Ac ventilation initiated");
                 },2000)
             }else{
+               document.querySelector("#main-block").setAttribute("style","height: 100%;position: absolute;right: 8%;width: 49%;bottom: -5%;")
                document.querySelector(".state-one").setAttribute("style","color: #ecedf2;font-weight:bolder;display:none;position: relative;top: 215px;left: 132px;");
                document.querySelector(".state-two").setAttribute("style","color: #eeeef4;font-weight: 600;display:none;position: relative;top: 195px;left: 12em;");
                document.getElementById("on-status-val").textContent=false;
@@ -317,6 +319,8 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
          }
  
          function pushVal(){
+          
+            actionLog("AC temperature changed")
           let values = document.getElementsByClassName('onBySwitch');
          //  document.querySelector(`[data-cell="speed-stat-ac"]span`).textCOntent = document.querySelector("#rightAc").innerHTML;
           var ventTwo = document.querySelector("#driveTwo");
@@ -457,7 +461,7 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
             <img src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fxuv700.png?alt=media&amp;token=86231881-cf2d-4e28-8c02-2160fcfe77e4" style="height: 21em;width: 100%;object-fit: contain;">
          </div>
       </div>
-      <div class="col-md-6" style="height: 100%;position: absolute;right: 8%;width: 49%;bottom: 0%;" id="">
+      <div class="col-md-6" style="height: 100%;position: absolute;right: 8%;width: 49%;bottom: -5%" id="main-block">
          <div style="max-width: fit-content;margin: 0 auto;position: relative;margin: auto 0;height: 2%;width: 50%;">
             <div class="state-one" data-cell="speed-stat" style="color: #ecedf2;font-weight:bolder;display:none;position: relative;top: 215px;left: 132px;">
                 <span style="display:contents" id="driveTwo" class="status">0</span>*C
