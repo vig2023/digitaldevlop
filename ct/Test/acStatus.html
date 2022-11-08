@@ -501,41 +501,91 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
      
    
     </div>
-    <div class="col-md-6" style="position: absolute;right: 130px;width: 24%;top: 24em;">
-            <table class="table" style="
-                background: #e7e7eb;
-                font-size: 16px;
-                font-weight: 600;
-            ">
-                <thead class="" style="
-            background: #005072;
-            color: white;
-            ">
-                  <tr>
-                    <th scope="col">VSS API</th>
-                    <th scope="col">Value</th>
-                  
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Vehicle.cabin.Ac.driver</td>
-                  
-                    <td id="drive-val">---</td>
-                   
-                  </tr>
+    <div class="col-md-6" style="height: 100%;position: absolute;right: 8%;width: 49%;bottom: 0%;" id="">
+      <div style="max-width: fit-content;margin: 0 auto;position: relative;margin: auto 0;height: 2%;width: 50%;">
+         <div class="state-one" data-cell="speed-stat" style="color: #ecedf2;font-weight:bolder;display:block;position: relative;top: 215px;left: 132px;">
+             <span style="display:contents" id="driveTwo" class="status">15</span>*C
+         </div>
+         <div class="state-two" data-cell="speed-stat-ac" style="color: #eeeef4;font-weight: 600;display:block;position: relative;top: 195px;left: 12em;">
+             <span style="display:contents" id="driveOne" class="status-one">15</span>*C
+         </div>
+         <img id="imageOne" src="https://firebasestorage.googleapis.com/v0/b/digital-auto.appspot.com/o/media%2Fac_on.png?alt=media&amp;token=e90deef6-8e3d-486e-877a-b90a2b2101e6" style="height: auto146%;width: 100%;object-fit: contain;">
+         <!-- <div class="status-text" style="position: absolute;color: white;font-family: 'Lato';width: 100%;top: 0;height: 5%;box-sizing: border-box;display: flex;justify-content: center;padding-top: 10px;"></div>
+            <div class="status-text" style="position: absolute;color: white;font-family: 'Lato';width: 43% !important;top: 0;height: 100%;box-sizing: border-box;display: flex;justify-content: center;padding-top: 10px;padding-right:20px"></div> -->
+      </div>
+      <div class="col-md-6" style="
+      position: absolute;
+      /* right: -47px; */
+      left: 22em;
+      bottom: 44%;
+      width: 393px;
+      font-size: 17px;
+      border: 1px solid grey;
+      height: 15em;
+      overflow-y: auto;
+      background: #ece9e9;
+      ">
+    <table class="table" style="background: #e7e7eb;font-size: 16px;font-weight: 600;position: absolute;width: 392px;top: 0em;left: right;right: 0em;">
+     
+      <thead class="" style="
+      background: #005072;
+      color: white;
+      ">
+        <tr>
+          <th scope="col">Vehicle Log:</th>
+         
+        
+        </tr>
+      </thead>
+      
+      </table>
+    <!-- <textarea id="myTextarea" style="
+    height: 20em;
+    width: 20em;
+"></textarea> -->
+  <div id="divDoorlogger" style="
+ margin-top: 3em;
+"></div>
+    
+  
+
+ </div>
+ <div class="col-md-6" style="position: absolute;right: 197px;width: 19%;top: 24em;">
+         <table class="table" style="
+             background: #e7e7eb;
+             font-size: 16px;
+             font-weight: 600;
+         ">
+             <thead class="" style="
+         background: #005072;
+         color: white;
+         ">
+               <tr>
+                 <th scope="col">VSS API</th>
+                 <th scope="col">Value</th>
+               
+               </tr>
+             </thead>
+             <tbody>
+               <tr>
+                 <td>Vehicle.cabin.Ac.driver</td>
+               
+                 <td id="drive-val">15</td>
                 
-                  <tr>
-                    <td>Vehicle.cabin.Ac.Co-driver</td> 
-                    <td id="co-val">---</td>
-                  </tr>
-                  <tr>
-                    <td>Vehicle.Cabin.HVAC.IsAirConditioningActive</td>
-                    <td id="on-status-val">true</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+               </tr>
+             
+               <tr>
+                 <td>Vehicle.cabin.Ac.Co-driver</td> 
+                 <td id="co-val">15</td>
+               </tr>
+               <tr>
+                 <td>Vehicle.Cabin.HVAC.IsAirConditioningActive</td>
+                 <td id="on-status-val">true</td>
+               </tr>
+             </tbody>
+           </table>
+         </div>
+   </div>
       </div>
       <script></script>
    </body>
