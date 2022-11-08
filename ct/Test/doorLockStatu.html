@@ -214,6 +214,7 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
                 titleClass.innerHTML='LOCK';
                 actionLog("Locked Hood")
                 eleOne.setAttribute("style", "display:none")
+                document.getElementById("hood-vss").innerText=false;
                     // eleTwo.setAttribute("style","display:block;height: 3%;width: 7%;position: absolute;top: 38%;left: 30%;")
                     // eleThree.setAttribute("style","display:block;height:3%;width: 7%;position: absolute;top: 50%;left: 30%;")
                     // eleFour.setAttribute("style","display:block;height:3%;width:5%;position: absolute;top: 38%;right: 22%;")
@@ -223,9 +224,10 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
             }else{
                 // p.innerHTML = a
                 p2.innerHTML = 'Tap to lock'
+                document.getElementById("hood-vss").innerText=true
                 titleClass.innerHTML='UNLOCK'
                 actionLog("UnLocked Hood")
-                eleOne.setAttribute("style","display:block;height:3%;width:5%;position: absolute;left: 48%;top: 15%;")
+                eleOne.setAttribute("style","display:block;height:3%;width:7%;position: absolute;left: 48%;top: 15%;")
             }
          }
          let isopenFrontLeft=false;
@@ -233,6 +235,7 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
             let p = document.querySelector('.title-FLRight') 
             let p2 = document.querySelector('.title-3flRight') ;  
             let titleClass = document.querySelector('.title-lock-flRight');
+
             // if(titleClass == 'title-unlock'){
             //    p.innerHTML = 'LOCK'
             //    p2.innerHTML = 'Tap to unlock'
@@ -256,12 +259,15 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
             // p.innerHTML = a
             p2.innerHTML = 'Tap to unlock'
             titleClass.innerHTML='LOCK'
-          eleTwo.setAttribute("style", "display:none")
+          eleTwo.setAttribute("style", "display:none");
+          document.getElementById("fl-vss").innerText=false;
           actionLog("Locked FrontLeft Door")
+
          }else{
             // p.innerHTML = a
             p2.innerHTML = 'Tap to lock'
             titleClass.innerHTML='UNLOCK'
+            document.getElementById("fl-vss").innerText=true;
             actionLog("UnLocked FrontLeft Door")
           eleTwo.setAttribute("style","display:block;height: 3%;width: 7%;position: absolute;top: 38%;left: 30%;")
           
@@ -285,13 +291,15 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
             // p.innerHTML = a
             p2.innerHTML = 'Tap to unlock';
             titleClass.innerHTML='LOCK';
+            document.getElementById("rl-vss").innerText=false;
             actionLog("Locked RearLeft Door");
          eleThree.setAttribute("style", "display:none");
          
          }else{
             // p.innerHTML = a
             p2.innerHTML = 'Tap to lock'
-            titleClass.innerHTML='UNLOCK'
+            titleClass.innerHTML='UNLOCK';
+            document.getElementById("rl-vss").innerText=true;
             actionLog("UnLocked RearLeft Door")
          eleThree.setAttribute("style","display:block;height:3%;width: 7%;position: absolute;top: 50%;left: 30%;")
          }
@@ -336,7 +344,7 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
             p2.innerHTML = 'Tap to lock'
             titleClass.innerHTML='UNLOCK'
             actionLog("UnLocked Bannet")
-         eleFour.setAttribute("style","display:block;height:3%;width:5%;position: absolute;top: 38%;right: 22%;")
+         eleFour.setAttribute("style","display:block;height:3%;width:7%;position: absolute;top: 38%;right: 22%;")
          }
          //    var eleOne = document.querySelector(".front");
          //    let eleTwo = document.querySelector(".left-one");
@@ -372,14 +380,17 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
          if(isopenFrontRight){
             // p.innerHTML = a
             p2.innerHTML = 'Tap to unlock'
-            titleClass.innerHTML='LOCK'
-            actionLog("Front Right Door locked")
+            titleClass.innerHTML='LOCK';
+            document.getElementById("fr-vss").innerText=false;
+            actionLog("Front Right Door locked");
+
             eleFour.setAttribute("style", "display:none")
          }
          else{
             // p.innerHTML = a
             p2.innerHTML = 'Tap to lock'
-            titleClass.innerHTML='UNLOCK'
+            titleClass.innerHTML='UNLOCK';
+            document.getElementById("fr-vss").innerText=true;
             actionLog("Unlocked Front Right Door")
          eleFour.setAttribute("style","display:block;height:3%;width:7%;position: absolute;top: 38%;right: 22%;")
          }
@@ -440,13 +451,15 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
          if(isRearRightNw){
             // p.innerHTML = a
             p2.innerHTML = 'Tap to unlock'
-            titleClass.innerHTML='LOCK'
+            titleClass.innerHTML='LOCK';
+            document.getElementById("rr-vss").innerText=false;
             actionLog("Locked  Rear Right door ")
             eleSix.setAttribute("style", "display:none")
          }else{
             // p.innerHTML = a
             p2.innerHTML = 'Tap to lock'
-            titleClass.innerHTML='UNLOCK'
+            titleClass.innerHTML='UNLOCK';
+            document.getElementById("rr-vss").innerText=true;
             actionLog("Unlocked Rear RIght door")
             eleSix.setAttribute("style","display:block;height:3%;width:7%;position: absolute;right: 22%;bottom: 47%;")
          }}
@@ -461,6 +474,11 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
             // unlockDoors.setAttribute("style","pointer-events:none;")
             // console.log(unlockDoors.ariaDisabled,"HEYYYYYYYYYYY")
             // debugger
+            document.getElementById("rr-vss").innerText=false;
+            document.getElementById("rl-vss").innerText=false;
+            document.getElementById("fl-vss").innerText=false;
+            document.getElementById("fr-vss").innerText=false;
+            document.getElementById("hood-vss").innerText=false;
             // unlockDoors.setAttribute("style","display:flex");
             actionLog("All doors opened")
             openAllDoor = !openAllDoor;
@@ -474,29 +492,33 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
 
             }
             // openRearRight()
-            if(text == 'Lock All'){
-               p.innerHTML = 'Unlock All'
-            } else {
-               p.innerHTML = 'Lock All'
-            }
+            // if(text == 'Lock All'){
+            //    p.innerHTML = 'Unlock All'
+            // } else {
+            //    p.innerHTML = 'Lock All'
+            // }
            var eleOne = document.querySelector(".front");
            let eleTwo = document.querySelector(".left-one");
            let eleThree = document.querySelector(".left-two");
            let eleFour = document.querySelector(".right-one");
            let eleFive = document.querySelector(".right-two");
            let eleSix = document.querySelector(".bannet");
+           let UnLckBtnBx = document.querySelector(".unlockBx");
+           let lckBtnBx = document.querySelector(".lockBx");
+           lckBtnBx.setAttribute("style", "pointer-events:visible")
+           UnLckBtnBx.setAttribute("style", "pointer-events:none")
         //    eleSix.setAttribute("style", "display:none")
         //    eleOne.setAttribute("style", "display:none")
         //    eleTwo.setAttribute("style", "display:none")
         //    eleThree.setAttribute("style", "display:none")
         //    eleFour.setAttribute("style", "display:none")
         //    eleFive.setAttribute("style", "display:none")
-            eleOne.setAttribute("style","display:block;height:3%;width:5%;position: absolute;left: 48%;top: 15%;")
+            eleOne.setAttribute("style","display:block;height:3%;width:7%;position: absolute;left: 48%;top: 15%;")
                 eleTwo.setAttribute("style","display:block;height: 3%;width: 7%;position: absolute;top: 38%;left: 30%;")
                 eleThree.setAttribute("style","display:block;height:3%;width: 7%;position: absolute;top: 50%;left: 30%;")
                 eleFour.setAttribute("style","display:block;height:3%;width:7%;position: absolute;top: 38%;right: 22%;")
                 eleFive.setAttribute("style","display:block;height:3%;width:7%;position: absolute;right: 22%;bottom: 47%;")
-                eleSix.setAttribute("style","display:block;height:3%;width:5%;position: absolute;bottom: 31%;left: 47%;")
+                eleSix.setAttribute("style","display:block;height:3%;width:7%;position: absolute;bottom: 31%;left: 47%;")
             //    alert("CLosed")
          }
          let closeAllDoor=false
@@ -509,6 +531,11 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
             // unlockDoors.setAttribute("style","display:flex");
             // let lockDoors=document.querySelector(".lockBx").setAttribute("style","display:none");
             closeAllDoor = !closeAllDoor
+            document.getElementById("rr-vss").innerText=true;
+            document.getElementById("rl-vss").innerText=true;
+            document.getElementById("fl-vss").innerText=true;
+            document.getElementById("fr-vss").innerText=true;
+            document.getElementById("hood-vss").innerText=true;
             actionLog("All door closed..")
             if(closeAllDoor){
                 openRearRightNw("UNLOCK");
@@ -520,17 +547,22 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
 
             }
             // openRearRight()
-            if(text == 'Lock All'){
-               p.innerHTML = 'Unlock All'
-            } else {
-               p.innerHTML = 'Lock All'
-            }
+            // if(text == 'Lock All'){
+            //    p.innerHTML = 'Unlock All'
+            // } else {
+            //    p.innerHTML = 'Lock All'
+            // }
+           
            var eleOne = document.querySelector(".front");
            let eleTwo = document.querySelector(".left-one");
            let eleThree = document.querySelector(".left-two");
            let eleFour = document.querySelector(".right-one");
            let eleFive = document.querySelector(".right-two");
            let eleSix = document.querySelector(".bannet");
+           let UnLckBtnBx = document.querySelector(".unlockBx");
+           let lckBtnBx = document.querySelector(".lockBx");
+           lckBtnBx.setAttribute("style", "pointer-events:none")
+           UnLckBtnBx.setAttribute("style", "pointer-events:visible")
            eleSix.setAttribute("style", "display:none")
            eleOne.setAttribute("style", "display:none")
            eleTwo.setAttribute("style", "display:none")
@@ -597,8 +629,8 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
                     <p class="title-3-frRight"style="color:#0e577c;font-weight: 600;">Tap to lock</p>
                 </div>
                 
-                  <div class="col switch-box unlockBx"   onclick="openAll(this)">
-                      <p class="title-all">Unlock All</p>
+                  <div class="col switch-box unlockBx" style="pointer-events:none" onclick="openAll(this)">
+                      <p class="title-all" style="color: rgb(222, 153, 27);">Unlock All</p>
                   </div>
                   <!-- <div class="w-100" style="background-color: whitesmoke;"></div> -->
                   <!-- <div class="w-100" style="background-color: whitesmoke;"></div> -->
@@ -620,7 +652,7 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
                       <p class="title-3-rrRight" style="color:#0e577c;font-weight: 600;">Tap to lock</p>
                   </div>
                   <div class="col switch-box lockBx" aria-disabled="false"  onclick="closeAll(this)" >
-                      <p class="title-all">LOCK All</p>
+                      <p class="title-all" style="color: #33cc33;">LOCK All</p>
                   </div>
                </div>
             </div>
@@ -720,20 +752,28 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
              </thead>
              <tbody>
                <tr>
-                 <td>Vehicle.CurrentLocatio.Lat</td>
+                 <td>Vehicle.Body.Hood.IsOpen</td>
                
-                 <td>49.1654567777</td>
+                 <td id="hood-vss">true</td>
                 
                </tr>
              
                <tr>
-                 <td>Vehicle.CurrentLocation.Long</td> 
-                 <td>9.7887878</td>
+                 <td >Vehicle.Cabin.Door.Row1.Left.IsOpen</td> 
+                 <td id="fl-vss">true</td>
                </tr>
                <tr>
-                 <td>Vehicle.ificationNumber</td>
-                 <td>CTH78888999</td>
+                 <td>Vehicle.Cabin.Door.Row2.Left.IsOpen</td>
+                 <td id="rl-vss">true</td>
                </tr>
+               <tr>
+                  <td >Vehicle.Cabin.Door.Row1.Right.IsOpen</td> 
+                  <td id="fr-vss">true</td>
+                </tr>
+                <tr>
+                  <td>Vehicle.Cabin.Door.Row2.Right.IsOpen</td>
+                  <td id="rr-vss">true</td>
+                </tr>
                <tr>
                  <td>Vehicle.Speed</td>
                  <td>0</td>
