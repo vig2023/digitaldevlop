@@ -726,32 +726,94 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
             
             <div class="status-text" style="position: absolute;color: white;font-family: 'Lato';width: 43% !important;top: 0;height: 100%;box-sizing: border-box;display: flex;justify-content: center;padding-top: 10px;padding-right:20px"></div> -->
       </div>
-      <table class="table" style="background: #e7e7eb;font-size: 16px;font-weight: 600;position: absolute;width: 24%;top: 13%;left: right;right: 5em;">
+     
+      <div class="col-md-6" style="position: absolute;right: 2em;width: 29%;top: 10em;">
+ 
+        <!-- <textarea id="myTextarea" style="
+        height: 20em;
+        width: 20em;
+      "></textarea> -->
+      
         
-         <thead class="" style="
-         background: #545494;
-         color: white;
-         ">
-           <tr>
-             <th scope="col">Vehicle Log:</th>
-            
+        <table class="table" style="
+                 background: #e7e7eb;
+                 font-size: 16px;
+                 width: 102%;
+                 font-weight: 600;
+             ">
+                 <thead class="" style="
+             background: #545494;
+             color: white;
+             ">
+                   <tr>
+                     <th scope="col">Vehicle Info</th>
+                   
+                   </tr>
+                 </thead>
+                 <tbody>
+                   <tr>
+                     <td> <div id="divDoorlogger" style="
+                        height: 200px;
+                        overflow-y: scroll;
+                    "></td>
+                   
+                    
+                   </tr>
+                 
+                  
+                   
+                   
+                 </tbody>
+               </table>
+
+        <div style="margin-top: 1em;">
+              
+        </div>
+        <table class="table" style="
+        background: #e7e7eb;
+        font-size: 16px;
+        font-weight: 600;
+    ">
+        <thead class="" style="
+    background: #545494;
+    color: white;
+    ">
+          <tr>
+            <th scope="col">VSS API</th>
+            <th scope="col">Value</th>
+          
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Vehicle.Body.Hood.IsOpen</td>
+          
+            <td id="hood-vss">true</td>
            
+          </tr>
+        
+          <tr>
+            <td>Vehicle.Cabin.Door.Row1.Left.IsOpen</td> 
+            <td id="fl-vss">true</td>
+          </tr>
+          <tr>
+            <td>Vehicle.Cabin.Door.Row2.Left.IsOpen</td>
+            <td id="rl-vss">true</td>
+          </tr>
+          <tr>
+             <td>Vehicle.Cabin.Door.Row1.Right.IsOpen</td> 
+             <td id="fr-vss">true</td>
            </tr>
-         </thead>
-         
-         </table>
-<div class="col-md-6" style="position: absolute;right: 5em;bottom: 43%;width: 24%;font-size: 17px;/* border: 1px solid grey; */height: 15em;overflow-y: auto;background: #ece9e9;">
-
-    <!-- <textarea id="myTextarea" style="
-    height: 20em;
-    width: 20em;
-"></textarea> -->
-  <div id="divDoorlogger"></div>
-    
-  
-
- </div>
-      <div class="col-md-6" style="position: absolute;right: 5em;width: 26%;top: 28em;">
+           <tr>
+             <td>Vehicle.Cabin.Door.Row2.Right.IsOpen</td>
+             <td id="rr-vss">true</td>
+           </tr>
+          
+          
+        </tbody>
+      </table>
+      </div>
+      <!-- <div class="col-md-6" style="position: absolute;right: 5em;width: 26%;top: 28em;">
          <table class="table" style="
              background: #e7e7eb;
              font-size: 16px;
@@ -795,7 +857,7 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
                
              </tbody>
            </table>
-         </div>
+         </div> -->
       
       <script></script>
    
