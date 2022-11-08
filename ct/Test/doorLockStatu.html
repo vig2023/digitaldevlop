@@ -212,10 +212,10 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
                 // p.innerHTML = a
                 p2.innerHTML = 'Tap to unlock'
                 titleClass.innerHTML='LOCK';
-                titleClass.setAttribute("style","color:orange")
-                actionLog("Locked Hood")
-                eleOne.setAttribute("style", "display:none")
+                titleClass.setAttribute("style","font-weight:bolder;color:orange;")
+                eleOne.setAttribute("style", "display:none");
                 document.getElementById("hood-vss").innerText=false;
+                actionLog("Locked Hood")
                     // eleTwo.setAttribute("style","display:block;height: 3%;width: 7%;position: absolute;top: 38%;left: 30%;")
                     // eleThree.setAttribute("style","display:block;height:3%;width: 7%;position: absolute;top: 50%;left: 30%;")
                     // eleFour.setAttribute("style","display:block;height:3%;width:5%;position: absolute;top: 38%;right: 22%;")
@@ -389,7 +389,6 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
             // p.innerHTML = a
             p2.innerHTML = 'Tap to unlock'
             titleClass.innerHTML='LOCK';
-            debugger
             titleClass.setAttribute("style","font-weight:bolder;color: orange;")
             document.getElementById("fr-vss").innerText=false;
             actionLog("Front Right Door locked");
@@ -439,7 +438,7 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
             // p.innerHTML = a
             p2.innerHTML = 'Tap to unlock'
             titleClass.innerHTML='LOCK'
-            titleClass.setAttribute("style","font-weight:bolder;color:color: orange;")
+            titleClass.setAttribute("style","font-weight:bolder;color:orange;")
             eleSix.setAttribute("style", "display:none")
             actionLog("Boot locked")
          }else{
@@ -494,10 +493,16 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
             document.getElementById("fl-vss").innerText=false;
             document.getElementById("fr-vss").innerText=false;
             document.getElementById("hood-vss").innerText=false;
+            isFrontOpen=true;
+            isopenFrontLeft=true;
+            isopenRearLeft=true;
+            isopenBannet=true;
+            isopenFrontRight=true;
+            isRearRightNw=true;
             // unlockDoors.setAttribute("style","display:flex");
             actionLog("All doors opened")
             openAllDoor = !openAllDoor;
-            if(closeAllDoor){
+            // if(closeAllDoor){
                 openRearRightNw("LOCK");
                 openFrontRight("LOCK");
                 openRearLeft("LOCK");
@@ -505,7 +510,7 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
                 openFrontLeft("LOCK");
                 openFront("LOCK")
 
-            }
+            // }
             // openRearRight()
             // if(text == 'Lock All'){
             //    p.innerHTML = 'Unlock All'
@@ -545,14 +550,25 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
             // let unlockDoors= document.querySelector(".unlockBx")
             // unlockDoors.setAttribute("style","display:flex");
             // let lockDoors=document.querySelector(".lockBx").setAttribute("style","display:none");
-            closeAllDoor = !closeAllDoor
+            closeAllDoor = !closeAllDoor;
+            // isFrontOpen=!isFrontOpen;
+            // isopenFrontLeft=!isopenFrontLeft;
+            // isopenRearLeft=!isopenRearLeft;
+            // isopenBannet=!isopenBannet;
+            // isopenFrontRight=!isopenFrontRight;
+            isFrontOpen=false;
+            isopenFrontLeft=false;
+            isopenRearLeft=false;
+            isopenBannet=false;
+            isopenFrontRight=false;
+            isRearRightNw=false;
             document.getElementById("rr-vss").innerText=true;
             document.getElementById("rl-vss").innerText=true;
             document.getElementById("fl-vss").innerText=true;
             document.getElementById("fr-vss").innerText=true;
             document.getElementById("hood-vss").innerText=true;
             actionLog("All door closed..")
-            if(closeAllDoor){
+            // if(closeAllDoor){
                 openRearRightNw("UNLOCK");
                 openFrontRight("UNLOCK");
                 openRearLeft("UNLOCK");
@@ -560,7 +576,7 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
                 openFrontLeft("UNLOCK");
                 openFront("UNLOCK")
 
-            }
+            // }
             // openRearRight()
             // if(text == 'Lock All'){
             //    p.innerHTML = 'Unlock All'
