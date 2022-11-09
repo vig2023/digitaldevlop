@@ -156,6 +156,7 @@
    <body>
       <script>
          function actionLog(val) {  
+            locateCarLog("Locate my Car initiated");
 
              var latlng = { lat: 52.60336875142105, lng: 13.435691727919389 };
             var map = new google.maps.Map(document.getElementById('map'), {
@@ -185,10 +186,7 @@
              map.setZoom(6);
              var d = new Date();
              var n = d.toLocaleTimeString();
-         
-             var div = document.getElementById('divDoorlogger');
-         
-         div.innerHTML += `<p> ${n}:${val}</p>`;
+        
          
          //   document.getElementById("myTextarea").value = document.getElementById("myTextarea").value +n+"---" +val+"\n";
          
@@ -399,13 +397,13 @@ div.innerHTML += `<p> ${n}:${val}</p>`;
           <tr>
             <td>Vehicle.CurrentLocation.Latitude</td>
           
-            <td id="lat-vss">true</td>
+            <td id="lat-vss">--</td>
            
           </tr>
         
           <tr>
             <td>Vehicle.CurrentLocation.Longitude</td> 
-            <td id="lon-vss">true</td>
+            <td id="lon-vss">--</td>
           </tr>
           
           
