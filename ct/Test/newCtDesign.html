@@ -166,11 +166,11 @@ function setSpeedRandom() {
         // let eleSix = container.querySelector(".bannet");
         if(newSpeed<=30){
         //    element.setAttribute("style", "color:red; background-color:#e1f0fe")
-            eleOne.setAttribute("style", "color:orange;font-weight:bolder;position: absolute;top: 8em;left: 9em;");
+            eleOne.setAttribute("style", "color:orange;font-weight:bolder;position: absolute;top: 6em;left: 11em;");
             leftWheel.setAttribute("style", "position: absolute;left:4%;top: 20%;");
             rightWheel.setAttribute("style", "position: absolute;top: 20%;right:57%")
-        }else if(newSpeed>30){
-            eleOne.setAttribute("style", "color:#383c7f;font-weight:bolder;position: absolute;top: 8em;left: 9em;")
+        }else if(newSpeed>30){               
+            eleOne.setAttribute("style", "color:#383c7f;font-weight:bolder;position: absolute;top: 6em;left: 11em;")
             leftWheel.setAttribute("style", "position: absolute;left:0%;top: 20%;");
             rightWheel.setAttribute("style", "position: absolute;top: 20%;right:53%")
         }
@@ -404,7 +404,7 @@ function animate(d) {
         if((jk)==tar1){
 
             myFunction("30KM Reached and Unfold initated");
-             document.getElementById('source_video').src = '/DigitalDevelop/digitaldevlop/ct/video/CT_UnFold.mp4';
+            //  document.getElementById('source_video').src = '/DigitalDevelop/digitaldevlop/ct/video/CT_UnFold.mp4';
             document.getElementById("my-video").play();
             // console.log(tar1,"TARGETONEEE")
         //    randomInteger(0,tar1)
@@ -444,7 +444,7 @@ function animate(d) {
           }
           else if((jk)==tar3){  
             // console.log(tar3,"TARGET3333")
-            document.getElementById('source_video').src = '/DigitalDevelop/digitaldevlop/ct/video/CT_Fold.mp4';
+            document.getElementById('source_video').src = 'https://vig2023.github.io/digitaldevlop/ct/video/CT_Fold.mp4';
 
             document.getElementById("my-video").load()
             document.getElementById("my-video").play();
@@ -682,7 +682,7 @@ google.maps.Polyline.prototype.GetIndexAtDistance = google.maps.Polygon.prototyp
         <div style="position: relative;left: -6em;top: 9em;">
          <!-- video -->
          <video id="my-video" class="video-js" controls="" preload="auto" width="800" height="400" poster="MY_VIDEO_POSTER.jpg" data-setup="{}">
-         <source id="source_video" src="/DigitalDevelop/digitaldevlop/ct/video/CT_UnFold.mp4" type="video/mp4">
+         <source id="source_video" src="https://vig2023.github.io/digitaldevlop/ct/video/CT_UnFold.mp4" type="video/mp4">
          <!-- <source src="MY_VIDEO.webm" type="video/webm" /> -->
         
        </video>
